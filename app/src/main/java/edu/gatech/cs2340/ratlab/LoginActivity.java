@@ -3,6 +3,7 @@ package edu.gatech.cs2340.ratlab;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -83,12 +84,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
+        // This overrides the login acticity to the default for login activities
+        // In the future, we may want to switch to this
+//        mEmailSignInButton.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                attemptLogin();
+//            }
+//        });
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
@@ -345,6 +348,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    public void checkLogin(View view) {
+        if (true) { //TODO: replace with actually checking the model for a correct uid and password
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public void goBack(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
     }
 }
 
