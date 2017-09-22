@@ -360,6 +360,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void goBack(View view) {
+        Intent backToHome = new Intent(this, WelcomeActivity.class);
+        startActivity(backToHome);
         finish();
     }
 }
