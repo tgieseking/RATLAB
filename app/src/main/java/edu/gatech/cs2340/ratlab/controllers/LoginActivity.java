@@ -355,12 +355,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         if (true) { //TODO: replace with actually checking the model for a correct uid and password
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
     public void goBack(View view) {
-        Intent intent = new Intent(this, WelcomeActivity.class);
-        startActivity(intent);
+        finish();
     }
 }
 

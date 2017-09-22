@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     public void logout(View view) {
         // TODO: reset the currently logged in user attribute of the model
         Intent intent = new Intent(this, WelcomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }
