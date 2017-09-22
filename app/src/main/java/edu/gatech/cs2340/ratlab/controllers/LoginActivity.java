@@ -85,7 +85,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        // This overrides the login acticity to the default for login activities
+        // This overrides the login activity to the default for login activities
         // In the future, we may want to switch to this
 //        mEmailSignInButton.setOnClickListener(new OnClickListener() {
 //            @Override
