@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.gatech.cs2340.ratlab.R;
+import edu.gatech.cs2340.ratlab.model.Model;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -352,10 +353,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void checkLogin(View view) {
-        if (true) { //TODO: replace with actually checking the model for a correct uid and password
+        Model model = Model.getInstance();
+        String username = mEmailView.getText().toString();
+        String password = mPasswordView.getText().toString();
+        if (model.loginAttempt(username, password)) {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
             finish();
+        } else {
+            TextView invalidLoginText =  (TextView) findViewById(R.id.invalidLoginText);
+            invalidLoginText.setVisibility(View.VISIBLE);
         }
     }
 

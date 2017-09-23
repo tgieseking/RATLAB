@@ -78,6 +78,15 @@
                 android:onClick="goBack"
                 android:text="@string/back" />
 
+            <TextView
+                android:id="@+id/invalidLoginText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="The username/password you entered was invalid."
+                android:textAlignment="center"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
