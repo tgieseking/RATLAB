@@ -352,6 +352,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    /**
+     * Checks if the inputted username and password are valid. If
+     * they are valid, the user is allowed to continue to the MainActivity class.
+     *
+     * @param view
+     */
     public void checkLogin(View view) {
         Model model = Model.getInstance();
         String username = mEmailView.getText().toString();
@@ -366,6 +372,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    /**
+     * The method called when the back button on the login activity is clicked.
+     * When clicked, the screen starts up WelcomeActivity.
+     *
+     * @param view the back button
+     */
     public void goBack(View view) {
         Intent backToHome = new Intent(this, WelcomeActivity.class);
         startActivity(backToHome);
