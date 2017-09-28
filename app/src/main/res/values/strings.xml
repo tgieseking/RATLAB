@@ -20,6 +20,22 @@
         completions."
     </string>
 
+    <!-- Registration page strings -->
+    <string name="name">Name</string>
+    <string name="create_name">Enter name here</string>
+    <string name="username">Username</string>
+    <string name="create_user">Enter username here</string>
+    <string name="password">Password</string>
+    <string name="create_pass">Enter password here</string>
+    <string name="select_type">Account type</string>
+    <string-array name="user_type_array">
+        <item>User</item>
+        <item>Admin</item>
+    </string-array>
+    <string name="action_create_acc">Create account</string>
+    <string name="cancel_entry">Cancel</string>
+
+
     <!-- Main/home page strings -->
     <string name="logout">LOGOUT</string>
 
