@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1009111760781",
+    "firebase_url": "https://ratlab-9469e.firebaseio.com",
+    "project_id": "ratlab-9469e",
+    "storage_bucket": "ratlab-9469e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009111760781:android:b7d80767b32fc6ba",
+        "android_client_info": {
+          "package_name": "edu.gatech.cs2340.ratlab"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009111760781-k6a9mrms5sqd4qcri5nh686drkp72uri.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.gatech.cs2340.ratlab",
+            "certificate_hash": "dc13a2b507c66467d9bd7336171dbad7d1b4939c"
+          }
+        },
+        {
+          "client_id": "1009111760781-gvbq176febnbla11dfflt9suhdh64kbp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQ2xuofhShWlVm8NBFfnTTYdMXpxqTdAc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009111760781-gvbq176febnbla11dfflt9suhdh64kbp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
