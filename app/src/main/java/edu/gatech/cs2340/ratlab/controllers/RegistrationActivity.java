@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.ratlab.controllers;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +12,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 
 import edu.gatech.cs2340.ratlab.R;
@@ -30,27 +35,57 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void createAccount(View view) {
+        //TODO: Set a better way of responding to failures
         EditText emailView = (EditText) findViewById(R.id.emailTextBox);
         EditText passwordView = (EditText) findViewById(R.id.passwordTextBox);
 
         String email = emailView.getText().toString();
         String password = passwordView.getText().toString();
 
+        if (email.length() == 0) {
+            Toast.makeText(RegistrationActivity.this, "Empty email",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (password.length() == 0) {
+            Toast.makeText(RegistrationActivity.this, "Empty password",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            //Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            //updateUI(user);
+                            // Registration is successful
+                            Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         } else {
-                            // If sign in fails, display a message to the user.
-                            //Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(RegistrationActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                            //updateUI(null);
+                            // Registration is unsuccessful
+                            try {
+                                throw task.getException();
+                            } catch (FirebaseAuthUserCollisionException e) {
+                                Toast.makeText(RegistrationActivity.this, "Email in use",
+                                        Toast.LENGTH_SHORT).show();
+                            } catch (FirebaseAuthInvalidCredentialsException e) {
+                                Toast.makeText(RegistrationActivity.this, "Email is malformed",
+                                        Toast.LENGTH_SHORT).show();
+                            }catch (FirebaseException e) {
+                                if (e.toString().contains("WEAK_PASSWORD")) {
+                                    Toast.makeText(RegistrationActivity.this, "Weak password",
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(RegistrationActivity.this, task.getException().toString(),
+                                            Toast.LENGTH_SHORT).show();
+                                    Log.d("Registration", task.getException().toString());
+                                }
+                            } catch (Exception e) {
+                                Toast.makeText(RegistrationActivity.this, task.getException().toString(),
+                                        Toast.LENGTH_SHORT).show();
+                                Log.d("Registration", task.getException().toString());
+                            }
                         }
 
                         // ...
