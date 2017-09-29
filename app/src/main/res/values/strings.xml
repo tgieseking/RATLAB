@@ -26,6 +26,7 @@
     <string name="username">Username</string>
     <string name="create_user">Enter username here</string>
     <string name="password">Password</string>
+    <string name="email">Email</string>
     <string name="create_pass">Enter password here</string>
     <string name="select_type">Account type</string>
     <string-array name="user_type_array">
