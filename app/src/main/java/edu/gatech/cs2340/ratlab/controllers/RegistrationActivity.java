@@ -33,6 +33,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
     }
+    public void registrationCancel(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+    }
 
     public void createAccount(View view) {
         //TODO: Set a better way of responding to failures

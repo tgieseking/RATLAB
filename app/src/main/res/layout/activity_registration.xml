@@ -24,59 +24,63 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/regNameView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/name" />
 
             <EditText
                 android:id="@+id/nameTextBox"
+                android:labelFor="@id/nameTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/regUserView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/username" />
 
             <EditText
                 android:id="@+id/usernameTextBox"
+                android:labelFor="@id/usernameTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/regEmailView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/email" />
 
             <EditText
                 android:id="@+id/emailTextBox"
+                android:labelFor="@id/emailTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="numberPassword" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/regPassView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/password" />
 
             <EditText
                 android:id="@+id/passwordTextBox"
+                android:labelFor="@id/passwordTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="textPassword" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/regAccountTypeView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/select_type" />
@@ -99,6 +103,7 @@
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="registrationCancel"
                 android:text="@string/cancel_entry" />
 
         </LinearLayout>
