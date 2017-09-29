@@ -30,7 +30,7 @@
                 android:text="@string/name" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/nameTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -43,7 +43,7 @@
                 android:text="@string/username" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/usernameTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -56,7 +56,7 @@
                 android:text="@string/email" />
 
             <EditText
-                android:id="@+id/editText5"
+                android:id="@+id/emailTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -69,7 +69,7 @@
                 android:text="@string/password" />
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/passwordTextBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -82,19 +82,20 @@
                 android:text="@string/select_type" />
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/accountTypeSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="38dp" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/registerButton"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="createAccount"
                 android:text="@string/action_create_acc" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/cancelButton"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
