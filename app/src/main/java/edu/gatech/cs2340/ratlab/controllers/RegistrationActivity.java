@@ -82,10 +82,9 @@ public class RegistrationActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Registration is successful
 
-                            // Save the username to the database
+                            // Save the username and name to the database
                             mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).child("username").setValue(username);
                             mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).child("name").setValue(name);
-
 
                             Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
                             startActivity(intent);
@@ -115,8 +114,6 @@ public class RegistrationActivity extends AppCompatActivity {
                                 Log.d("Registration", task.getException().toString());
                             }
                         }
-
-                        // ...
                     }
                 });
     }
