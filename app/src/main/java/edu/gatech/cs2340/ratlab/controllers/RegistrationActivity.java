@@ -33,11 +33,24 @@ public class RegistrationActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
     }
+
+    /**
+     * Close the registration activity and return to the previous activity
+     *
+     * @param view the cancel button
+     */
     public void registrationCancel(View view) {
         Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Attempts to create a new user using the email and password entered. If account creation is
+     * successful, the app proceeds to the main activity. Otherwise, an explanatory error message
+     * is shown.
+     *
+     * @param view the register button
+     */
     public void createAccount(View view) {
         //TODO: Set a better way of responding to failures
         EditText emailView = (EditText) findViewById(R.id.emailTextBox);

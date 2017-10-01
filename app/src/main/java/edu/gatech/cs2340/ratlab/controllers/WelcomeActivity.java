@@ -16,13 +16,20 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
+     * Starts the login activity
      *
-     * @param view
+     * @param view the login button
      */
     public void goToLogin(View view) {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
+
+    /**
+     * Starts the registration activity
+     *
+     * @param view the register button
+     */
     public void goToRegister(View view) {
         Intent registerIntent = new Intent(this, RegistrationActivity.class);
         startActivity(registerIntent);

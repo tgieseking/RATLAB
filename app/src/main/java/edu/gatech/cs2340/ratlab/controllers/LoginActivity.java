@@ -40,9 +40,10 @@ public class LoginActivity extends AppCompatActivity{
 
     /**
      * Checks if the inputted username and password are valid. If
-     * they are valid, the user is allowed to continue to the MainActivity class.
+     * they are valid, the user is allowed to continue to the MainActivity class. Otherwise, an
+     * explanatory error message is shown.
      *
-     * @param view
+     * @param view the login button
      */
     public void checkLogin(View view) {
         String email = mEmailView.getText().toString();
