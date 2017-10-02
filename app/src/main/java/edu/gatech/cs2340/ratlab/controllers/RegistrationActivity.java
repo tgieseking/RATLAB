@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,12 +21,18 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.Model;
 
 public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private DatabaseReference mDatabase;
+
+    // UI references
+    private Spinner accountTypeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +40,13 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         mAuth = FirebaseAuth.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        accountTypeSpinner = (Spinner) findViewById(R.id.accountTypeSpinner);
+        ArrayAdapter<CharSequence> accountTypeAdapter = ArrayAdapter.createFromResource(this,
+                R.array.account_types, android.R.layout.simple_spinner_item);
+        accountTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        accountTypeSpinner.setAdapter(accountTypeAdapter);
     }
 
     /**
@@ -54,9 +69,13 @@ public class RegistrationActivity extends AppCompatActivity {
         //TODO: Set a better way of responding to failures
         EditText emailView = (EditText) findViewById(R.id.emailTextBox);
         EditText passwordView = (EditText) findViewById(R.id.passwordTextBox);
+        EditText usernameView = (EditText) findViewById(R.id.usernameTextBox);
+        EditText nameView = (EditText) findViewById(R.id.nameTextBox);
 
         String email = emailView.getText().toString();
         String password = passwordView.getText().toString();
+        final String username = usernameView.getText().toString();
+        final String name = nameView.getText().toString();
 
         if (email.length() == 0) {
             Toast.makeText(RegistrationActivity.this, "Empty email",
@@ -68,6 +87,16 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }
+        if (username.length() == 0) {
+            Toast.makeText(RegistrationActivity.this, "Empty uswername",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (name.length() == 0) {
+            Toast.makeText(RegistrationActivity.this, "Empty name",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -75,6 +104,14 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Registration is successful
+
+                            // Save the username to the database
+                            mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).child("username").setValue(username);
+                            mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).child("name").setValue(name);
+                            mDatabase.child("users").child(mAuth.getCurrentUser().getUid())
+                                    .child("account_type").setValue(accountTypeSpinner.getSelectedItem());
+
+
                             Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
