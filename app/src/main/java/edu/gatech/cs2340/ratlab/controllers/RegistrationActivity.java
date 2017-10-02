@@ -40,8 +40,7 @@ public class RegistrationActivity extends AppCompatActivity {
      * @param view the cancel button
      */
     public void registrationCancel(View view) {
-        Intent intent = new Intent(this, WelcomeActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     /**
