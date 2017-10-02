@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,12 +28,21 @@ import edu.gatech.cs2340.ratlab.model.Model;
 public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
+    // UI references
+    private Spinner accountTypeSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
         mAuth = FirebaseAuth.getInstance();
+
+        accountTypeSpinner = (Spinner) findViewById(R.id.accountTypeSpinner);
+        ArrayAdapter<CharSequence> accountTypeAdapter = ArrayAdapter.createFromResource(this,
+                R.array.account_types, android.R.layout.simple_spinner_item);
+        accountTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        accountTypeSpinner.setAdapter(accountTypeAdapter);
     }
 
     /**
