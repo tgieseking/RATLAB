@@ -85,8 +85,6 @@ public class LoginActivity extends AppCompatActivity{
      * @param view the back button
      */
     public void goBack(View view) {
-        Intent backToHome = new Intent(this, WelcomeActivity.class);
-        startActivity(backToHome);
         finish();
     }
 }
