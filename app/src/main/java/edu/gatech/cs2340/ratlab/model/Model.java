@@ -10,6 +10,12 @@ public class Model {
     //I didn't know where to put the dummy user but I guess here works for now
     User dummy = new User("user", "pass");
 
+    /**
+     * Tries to login a user with a given username and password
+     * @param user The username being passed in to check
+     * @param pass The password being passed in to check
+     * @return Whether or not the user was logged in
+     */
     public boolean loginAttempt(String user, String pass) {
         if (dummy.userPassMatch(user, pass)) {
             loggedIn = true;
@@ -18,6 +24,9 @@ public class Model {
         return false;
     }
 
+    /**
+     * Sets the user to logged out
+     */
     public void logout() {
         loggedIn = false;
     }
