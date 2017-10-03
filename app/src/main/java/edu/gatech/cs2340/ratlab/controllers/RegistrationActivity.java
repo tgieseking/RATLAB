@@ -82,8 +82,8 @@ public class RegistrationActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        if (password.length() == 0) {
-            Toast.makeText(RegistrationActivity.this, "Empty password",
+        if (password.length() < 6) {
+            Toast.makeText(RegistrationActivity.this, "Password too short",
                     Toast.LENGTH_SHORT).show();
             return;
         }
@@ -125,6 +125,7 @@ public class RegistrationActivity extends AppCompatActivity {
                             } catch (FirebaseAuthInvalidCredentialsException e) {
                                 Toast.makeText(RegistrationActivity.this, "Email is malformed",
                                         Toast.LENGTH_SHORT).show();
+                                Log.d("Registration", task.getException().toString());
                             }catch (FirebaseException e) {
                                 if (e.toString().contains("WEAK_PASSWORD")) {
                                     Toast.makeText(RegistrationActivity.this, "Weak password",
