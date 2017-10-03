@@ -88,7 +88,7 @@ public class RegistrationActivity extends AppCompatActivity {
             return;
         }
         if (username.length() == 0) {
-            Toast.makeText(RegistrationActivity.this, "Empty uswername",
+            Toast.makeText(RegistrationActivity.this, "Empty username",
                     Toast.LENGTH_SHORT).show();
             return;
         }
