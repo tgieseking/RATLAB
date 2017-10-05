@@ -39,5 +39,7 @@
 
     <!-- Main/home page strings -->
     <string name="logout">LOGOUT</string>
+    <string name="title_sighting_list">Sightings</string>
+    <string name="title_sighting_detail">Sighting Detail</string>
 
 </resources>

@@ -25,7 +25,20 @@
             android:name=".controllers.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".controllers.MainActivity" />
-        <activity android:name=".controllers.RegistrationActivity"></activity>
+        <activity android:name=".controllers.RegistrationActivity" />
+        <activity
+            android:name=".SightingListActivity"
+            android:label="@string/title_sighting_list"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".SightingDetailActivity"
+            android:label="@string/title_sighting_detail"
+            android:parentActivityName=".SightingListActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.gatech.cs2340.ratlab.SightingListActivity" />
+        </activity>
     </application>
 
 </manifest>
