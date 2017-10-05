@@ -1,17 +1,20 @@
 package edu.gatech.cs2340.ratlab.model;
 
 class User {
+    private String email;
     private String username;
-    private String password;
+    private String name;
 
     /**
      * Creates a user with a given username and password
+     * @param email The email of the user
      * @param username The username of the user
-     * @param password The password of the user
+     * @param name The name of the user
      */
-    User(String username, String password) {
+    User(String email, String username, String name) {
+        this.email = email;
         this.username = username;
-        this.password = password;
+        this.name = name;
     }
 
     /**
@@ -21,16 +24,10 @@ class User {
     public String getUsername() {
         return username;
     }
-
-    /**
-     * Checks if the username and password passed in match the username and
-     * password of current user
-     * @param user The username being checked
-     * @param pass The password being checked
-     * @return Whether or not the username and password match
-     */
-    boolean userPassMatch(String user, String pass) {
-        return ((username.equals(user) && password.equals(pass)) ||
-                (user.equals("user") && pass.equals("pass")));
+    public String getEmail() {
+        return email;
+    }
+    public String getName() {
+        return name;
     }
 }

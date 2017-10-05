@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import edu.gatech.cs2340.ratlab.R;
+import edu.gatech.cs2340.ratlab.model.Model;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -13,6 +14,8 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+
+        Model.getInstance().readHistoricalData(this);
     }
 
     /**
