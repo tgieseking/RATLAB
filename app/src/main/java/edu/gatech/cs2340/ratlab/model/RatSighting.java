@@ -15,6 +15,10 @@ public class RatSighting {
     private double latitude;
     private double longitude;
 
+    public String getKey() {
+        return key;
+    }
+
     RatSighting(String key, String createdDate, String locationType, String address, String zipCode,
                 String city, Borough borough, double latitude, double longitude) {
         this.key = key;

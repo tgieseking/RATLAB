@@ -5,8 +5,10 @@ import android.util.Log;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -21,10 +23,10 @@ public class Model {
     private User currentUser;
 
     // The list of all rat sightings
-    private Set<RatSighting> ratSightings;
+    private Map<String,RatSighting> ratSightings;
 
     Model() {
-        ratSightings = new HashSet<>();
+        ratSightings = new HashMap<>();
     }
 
     public void readHistoricalData(Context context) {
@@ -38,7 +40,7 @@ public class Model {
             nextLine = historicalDataScanner.nextLine();
             currentSighting = RatSighting.createRatSightingFromCsvLine(nextLine);
             if (currentSighting != null) {
-                ratSightings.add(currentSighting);
+                ratSightings.put(currentSighting.getKey(), currentSighting);
             }
         }
     }
