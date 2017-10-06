@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.ratlab.model;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -90,18 +91,29 @@ public class Model {
     }
 
     public void readHistoricalData(Context context) {
-        InputStream historicalDataStream = context.getResources().openRawResource(R.raw.rat_sightings);
-        Scanner historicalDataScanner = new Scanner(historicalDataStream);
-        historicalDataScanner.nextLine(); // Don't read the header
+        new ReadHistoricalDataTask().execute(context);
+    }
 
-        RatSighting currentSighting;
-        String nextLine;
-        while (historicalDataScanner.hasNextLine()) {
-            nextLine = historicalDataScanner.nextLine();
-            currentSighting = RatSighting.createRatSightingFromCsvLine(nextLine);
-            if (currentSighting != null) {
-                ratSightings.put(currentSighting.getKey(), currentSighting);
+    private class ReadHistoricalDataTask extends AsyncTask<Context, Void, Void> {
+        @Override
+        protected Void doInBackground(Context... contexts) {
+            Log.d("async_data", "Starting to read data");
+            InputStream historicalDataStream = contexts[0].getResources().openRawResource(R.raw.rat_sightings);
+            Scanner historicalDataScanner = new Scanner(historicalDataStream);
+            historicalDataScanner.nextLine(); // Don't read the header
+
+            RatSighting currentSighting;
+            String nextLine;
+            while (historicalDataScanner.hasNextLine()) {
+                nextLine = historicalDataScanner.nextLine();
+                currentSighting = RatSighting.createRatSightingFromCsvLine(nextLine);
+                if (currentSighting != null) {
+                    ratSightings.put(currentSighting.getKey(), currentSighting);
+                }
             }
+            Log.d("async_data", "Finished reading data. There are " + ratSightings.size()
+                    + "sightings.");
+            return (null);
         }
     }
 }
