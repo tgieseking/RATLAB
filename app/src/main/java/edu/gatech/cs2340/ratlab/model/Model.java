@@ -74,6 +74,7 @@ public class Model {
             }
 
             private RatSighting createRatSighting(DataSnapshot dataSnapshot) {
+                Log.d("sightings_database", "Starting to create RatSighting");
                 String key = dataSnapshot.getKey();
                 String createdDate = (String) dataSnapshot.child("createdDate").getValue();
                 String locationType = (String) dataSnapshot.child("locationType").getValue();
@@ -83,8 +84,11 @@ public class Model {
                 Borough borough = Borough.valueOf((String) dataSnapshot.child("borough").getValue());
                 double latitude = (double) dataSnapshot.child("latitude").getValue();
                 double longitude = (double) dataSnapshot.child("longitude").getValue();
-                return new RatSighting(key, createdDate, locationType, address, zipCode, city,
+                RatSighting sighting = new RatSighting(key, createdDate, locationType, address, zipCode, city,
                         borough, latitude, longitude);
+                Log.d("sightings_database", "Added new Ratsighting from database to model: " + sighting);
+                return sighting;
+
             }
         };
         sightingsReference.addChildEventListener(sightingsListener);
@@ -115,5 +119,26 @@ public class Model {
                     + "sightings.");
             return (null);
         }
+    }
+
+    /** Adds a rat sighting to thd database. The sighting should not have a key, since the key is
+     * generated when the sighting is added to the database. Note that the sighting is added as a
+     * Map so that all fields update at the same time and the sightingsListener does not try to add
+     * an incomplete sighting.
+     *
+     * @param sighting the sighting to add to the database
+     */
+    public void addRatSightingToDatabase(RatSighting sighting) {
+        DatabaseReference newNode = sightingsReference.push();
+        Map<String, Object> newRat = new HashMap<>();
+        newRat.put("createdDate", sighting.getCreatedDate());
+        newRat.put("locationType", sighting.getLocationType());
+        newRat.put("address", sighting.getAddress());
+        newRat.put("zipCode", sighting.getZipCode());
+        newRat.put("city", sighting.getCity());
+        newRat.put("borough", sighting.getBorough());
+        newRat.put("latitude", sighting.getLongitude());
+        newRat.put("longitude", sighting.getLatitude());
+        newNode.setValue(newRat);
     }
 }

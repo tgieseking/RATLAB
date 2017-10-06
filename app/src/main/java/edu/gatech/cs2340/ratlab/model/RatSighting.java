@@ -19,7 +19,39 @@ public class RatSighting {
         return key;
     }
 
-    RatSighting(String key, String createdDate, String locationType, String address, String zipCode,
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public String getLocationType() {
+        return locationType;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public Borough getBorough() {
+        return borough;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public RatSighting(String key, String createdDate, String locationType, String address, String zipCode,
                 String city, Borough borough, double latitude, double longitude) {
         this.key = key;
         this.createdDate = createdDate;

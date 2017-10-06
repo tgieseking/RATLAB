@@ -3,11 +3,15 @@ package edu.gatech.cs2340.ratlab.controllers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.ratlab.R;
+import edu.gatech.cs2340.ratlab.model.Borough;
+import edu.gatech.cs2340.ratlab.model.Model;
+import edu.gatech.cs2340.ratlab.model.RatSighting;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,5 +33,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    /** This is a method to test adding rat sightings to the database */
+    public void pushSightingTest(View view) {
+        RatSighting testSighting = new RatSighting(null, "testDate", "testLT", "testAddress",
+                "testZip", "testCity", Borough.QUEENS, 10.1, 11.3);
+        Model.getInstance().addRatSightingToDatabase(testSighting);
+        Log.d("sightings_database", "Pushed sighting");
     }
 }
