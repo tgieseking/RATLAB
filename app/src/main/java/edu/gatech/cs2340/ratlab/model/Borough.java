@@ -5,7 +5,8 @@ public enum Borough {
     BROOKLYN ("Brooklyn"),
     MANHATTAN ("Manhattan"),
     QUEENS ("Queens"),
-    STATEN_ISLAND ("Staten Island");
+    STATEN_ISLAND ("Staten Island"),
+    UNKNOWN ("Unknown");
 
     // The borough name as it should be printed in text
     private final String textName;

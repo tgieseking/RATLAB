@@ -37,13 +37,17 @@ public class RatSighting {
             double longitude = 0;
             try {
                 borough = Borough.valueOf(splitLine[6]);
+            } catch (Exception e) {
+                borough = Borough.UNKNOWN;
+            }
+            try {
                 latitude = Double.parseDouble(splitLine[7]);
                 longitude = Double.parseDouble(splitLine[8]);
+                return new RatSighting(splitLine[0], splitLine[1], splitLine[2], splitLine[4],
+                        splitLine[3], splitLine[5], borough, latitude, longitude);
             } catch (Exception e) {
                 Log.d("historical_data", "Row with id " + splitLine[0] + " could not be parsed");
             }
-            return new RatSighting(splitLine[0], splitLine[1], splitLine[2], splitLine[4],
-                    splitLine[3], splitLine[5], borough, latitude, longitude);
         } else if (splitLine.length > 0){
             Log.d("historical_data", "Row with id " + splitLine[0] + " has too few rows");
         } else {
