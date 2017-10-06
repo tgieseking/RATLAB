@@ -5,8 +5,10 @@ import android.util.Log;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import edu.gatech.cs2340.ratlab.R;
 
@@ -19,10 +21,10 @@ public class Model {
     private User currentUser;
 
     // The list of all rat sightings
-    private List<RatSighting> ratSightings;
+    private Set<RatSighting> ratSightings;
 
     Model() {
-        ratSightings = new ArrayList<>();
+        ratSightings = new HashSet<>();
     }
 
     public void readHistoricalData(Context context) {

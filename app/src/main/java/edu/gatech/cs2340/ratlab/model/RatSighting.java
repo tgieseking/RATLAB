@@ -59,4 +59,8 @@ public class RatSighting {
     public String toString() {
         return key + createdDate + locationType + address + zipCode + city + borough + latitude + longitude;
     }
+
+    public int hashCode() {
+        return key.hashCode();
+    }
 }
