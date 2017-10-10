@@ -10,12 +10,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
         <Button
             android:id="@+id/sightingsButton"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:onClick="onClickSightings"
             android:text="@string/rat_sightings" />
@@ -23,7 +24,7 @@
         <Button
             android:id="@+id/reportButton"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:onClick="pushSightingTest"
             android:text="@string/report" />
@@ -31,7 +32,7 @@
         <Button
             android:id="@+id/logoutButton"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="match_parent"
+            android:layout_width="320dp"
             android:layout_height="wrap_content"
             android:onClick="logout"
             android:text="@string/logout" />
