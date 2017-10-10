@@ -44,6 +44,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d("sightings_database", "Pushed sighting");
     }
 
+    /**
+     * Changes the current activity to SightingListActivity when
+     * the button sightingsButton is clicked.
+     *
+     * @param view sightingsButton on registration activity
+     */
     public void onClickSightings(View view) {
         Intent intent = new Intent(this, SightingListActivity.class);
         startActivity(intent);
