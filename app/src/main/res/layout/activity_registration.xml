@@ -21,19 +21,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/regNameView"
-                android:layout_width="346dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
                 android:text="@string/name"
                 android:textAlignment="textStart" />
 
             <EditText
                 android:id="@+id/nameTextBox"
-                android:layout_width="301dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:ems="10"
@@ -43,82 +43,81 @@
 
             <TextView
                 android:id="@+id/regUserView"
-                android:layout_width="347dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:text="@string/username"
-                android:layout_marginBottom="5dp"/>
+                android:text="@string/username" />
 
             <EditText
                 android:id="@+id/usernameTextBox"
-                android:layout_width="306dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:ems="10"
                 android:inputType="textVisiblePassword|textNoSuggestions"
                 android:labelFor="@id/usernameTextBox"
-                android:layout_marginBottom="15dp"/>
+                android:textAlignment="textStart" />
 
             <TextView
                 android:id="@+id/regEmailView"
-                android:layout_width="349dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:text="@string/email"
-                android:layout_marginBottom="5dp"/>
+                android:text="@string/email" />
 
             <EditText
                 android:id="@+id/emailTextBox"
-                android:layout_width="307dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:ems="10"
                 android:inputType="textEmailAddress"
                 android:labelFor="@id/emailTextBox"
-                android:layout_marginBottom="15dp"/>
+                android:textAlignment="textStart" />
 
             <TextView
                 android:id="@+id/regPassView"
-                android:layout_width="352dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:text="@string/password"
-                android:layout_marginBottom="5dp"/>
+                android:text="@string/password" />
 
             <EditText
                 android:id="@+id/passwordTextBox"
-                android:layout_width="312dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
                 android:ems="10"
                 android:inputType="textPassword"
                 android:labelFor="@id/passwordTextBox"
-                android:layout_marginBottom="15dp"/>
+                android:textAlignment="textStart" />
 
             <TextView
                 android:id="@+id/regAccountTypeView"
-                android:layout_width="353dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
-                android:text="@string/select_type"
-                android:layout_marginBottom="5dp"/>
+                android:text="@string/select_type" />
 
             <Spinner
                 android:id="@+id/accountTypeSpinner"
-                android:layout_width="318dp"
+                android:layout_width="320dp"
                 android:layout_height="38dp"
                 android:layout_marginBottom="15dp" />
 
             <Button
                 android:id="@+id/registerButton"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="350dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:onClick="createAccount"
-                android:text="@string/action_create_acc"
-                android:layout_marginBottom="5dp"/>
+                android:text="@string/action_create_acc" />
 
             <Button
                 android:id="@+id/cancelButton"
                 style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="350dp"
+                android:layout_width="320dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:onClick="registrationCancel"
-                android:text="@string/cancel_entry" />
+                android:text="@string/cancel_entry"
+                android:layout_centerInParent="true"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>
