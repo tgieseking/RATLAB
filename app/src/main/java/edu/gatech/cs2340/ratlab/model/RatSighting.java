@@ -64,6 +64,12 @@ public class RatSighting {
         this.longitude = longitude;
     }
 
+    /** Reads data in the format of a line of the historical data csv and creates the corresponding
+     * rat sighting.
+     *
+     * @param csvLine a line of the historical data csv
+     * @return a new rat sighting corresponding to the data in the csv line
+     */
     static RatSighting createRatSightingFromCsvLine(String csvLine) {
         String[] splitLine = csvLine.split(",");
         if (splitLine.length == 9) {
@@ -96,6 +102,10 @@ public class RatSighting {
         return key + createdDate + locationType + address + zipCode + city + borough + latitude + longitude;
     }
 
+    /** Returns a hash code based on the key attribute
+     *
+     * @return the hash code
+     */
     public int hashCode() {
         return key.hashCode();
     }

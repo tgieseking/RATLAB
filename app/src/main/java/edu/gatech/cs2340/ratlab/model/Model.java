@@ -94,6 +94,10 @@ public class Model {
         sightingsReference.addChildEventListener(sightingsListener);
     }
 
+    /** Asynchronously reads the historical data csv and adds the sightings to the model
+     *
+     * @param context the current activity
+     */
     public void readHistoricalData(Context context) {
         new ReadHistoricalDataTask().execute(context);
     }
