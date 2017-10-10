@@ -13,14 +13,15 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/sightingsButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="onClickSightings"
             android:text="@string/rat_sightings" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/reportButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,6 +33,7 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="logout"
             android:text="@string/logout" />
 
     </LinearLayout>

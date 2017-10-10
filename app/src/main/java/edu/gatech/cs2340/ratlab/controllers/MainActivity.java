@@ -9,6 +9,7 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.ratlab.R;
+import edu.gatech.cs2340.ratlab.SightingListActivity;
 import edu.gatech.cs2340.ratlab.model.Borough;
 import edu.gatech.cs2340.ratlab.model.Model;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
@@ -41,5 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 "testZip", "testCity", Borough.QUEENS, 10.1, 11.3);
         Model.getInstance().addRatSightingToDatabase(testSighting);
         Log.d("sightings_database", "Pushed sighting");
+    }
+
+    public void onClickSightings(View view) {
+        Intent intent = new Intent(this, SightingListActivity.class);
+        startActivity(intent);
     }
 }
