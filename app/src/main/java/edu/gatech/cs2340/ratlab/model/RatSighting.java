@@ -99,7 +99,15 @@ public class RatSighting {
     }
 
     public String toString() {
-        return key + createdDate + locationType + address + zipCode + city + borough + latitude + longitude;
+        return "Key: " + key
+                + "\nDate: " + createdDate
+                + "\nLocation Type: " + locationType
+                + "\nAddress" + address
+                + "\nZip Code: " + zipCode
+                + "\nCity: " + city
+                + "\nBorough: " + borough
+                + "\nLatitude: " + latitude
+                + "\nLatitude: " + longitude;
     }
 
     /** Returns a hash code based on the key attribute
