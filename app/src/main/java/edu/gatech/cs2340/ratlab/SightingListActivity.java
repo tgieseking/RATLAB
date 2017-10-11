@@ -21,6 +21,8 @@ import edu.gatech.cs2340.ratlab.model.RatSighting;
 import java.util.List;
 
 /**
+ * TOP LEVEL WINDOW THAT THE USER SEES WHEN CLICKING RAT SIGHTINGS
+ *
  * An activity representing a list of Sightings. This activity
  * has different presentations for handset and tablet-size devices. On
  * handsets, the activity presents a list of items, which when touched,
@@ -32,7 +34,7 @@ public class SightingListActivity extends AppCompatActivity {
 
     /**
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
-     * device.
+     * device. THIS IS EXTRA CREDIT.
      */
     private boolean mTwoPane;
 
@@ -54,10 +56,14 @@ public class SightingListActivity extends AppCompatActivity {
             }
         });
 
+        //Setup the recycler view by getting it from our layout in the main window
         View recyclerView = findViewById(R.id.sighting_list);
         assert recyclerView != null;
+
+        //Hook up the adapter to the view
         setupRecyclerView((RecyclerView) recyclerView);
 
+        //For multiple displays
         if (findViewById(R.id.sighting_detail_container) != null) {
             // The detail container view will be present only in the
             // large-screen layouts (res/values-w900dp).
@@ -67,22 +73,44 @@ public class SightingListActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Set up an adapter and hook it to the provided view
+     * @param recyclerView the view that needs this adapter
+     */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         Model model = Model.getInstance();
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(model.createSightingsList()));
+        recyclerView.setAdapter(new SimpleSightingRecyclerViewAdapter(model.createSightingsList()));
     }
 
-    public class SimpleItemRecyclerViewAdapter
-            extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
+    /**
+     * This inner class is our custom adapter.  It takes our basic model information and
+     * converts it to the correct layout for this view.
+     *
+     * In this case, we are just mapping the toString of the RatSighting object to a text field.
+     */
+    public class SimpleSightingRecyclerViewAdapter
+            extends RecyclerView.Adapter<SimpleSightingRecyclerViewAdapter.ViewHolder> {
 
-        private final List<RatSighting> mRatSightings;
+        /**
+         * Collection of items to be shown in the list
+         */
+        private final List<RatSighting> mSightings;
 
-        public SimpleItemRecyclerViewAdapter(List<RatSighting> items) {
-            mRatSightings = items;
+        /**
+         * set the items to be used by the adapter
+         * @param items the list of items to be displayed in the recycler view
+         */
+        public SimpleSightingRecyclerViewAdapter(List<RatSighting> items) {
+            mSightings = items;
         }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            /*
+              This sets up the view for each individual item in the recycler display
+              To edit the actual layout, we would look at: res/layout/sighting_list_content.xml
+              If you look at the example file, you will see it currently just 2 TextView elements
+             */
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.sighting_list_content, parent, false);
             return new ViewHolder(view);
@@ -93,26 +121,45 @@ public class SightingListActivity extends AppCompatActivity {
 
             final Model model = Model.getInstance();
 
-            holder.mRatSighting = mRatSightings.get(position);
-            holder.mIdView.setText(mRatSightings.get(position).getCreatedDate());
-            holder.mContentView.setText(mRatSightings.get(position).getAddress());
+            /*
+            This is where we have to bind each data element in the list (given by position parameter)
+            to an element in the view (which is one of our two TextView widgets
+             */
+            //start by getting the element at the correct position
+            holder.mSighting = mSightings.get(position);
+            /*
+              Now we bind the data to the widgets.
+             */
+            holder.mIdView.setText(mSightings.get(position).getCreatedDate());
+            holder.mContentView.setText(mSightings.get(position).getAddress());
 
+            /*
+             * set up a listener to handle if the user clicks on this list item, what should happen?
+             */
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mTwoPane) {
+                        //if a two pane window, we change the contents on the main screen
                         Bundle arguments = new Bundle();
-                        arguments.putString(SightingDetailFragment.ARG_ITEM_ID, holder.mRatSighting.getCreatedDate());
+                        arguments.putString(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getCreatedDate());
                         SightingDetailFragment fragment = new SightingDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.sighting_detail_container, fragment)
                                 .commit();
                     } else {
+                        //on a phone, we need to change windows to the detail view
                         Context context = v.getContext();
+                        //create our new intent with the new screen (activity)
                         Intent intent = new Intent(context, SightingDetailActivity.class);
-                        intent.putExtra(SightingDetailFragment.ARG_ITEM_ID, holder.mRatSighting.getCreatedDate());
+                        /*
+                            pass along the date of the sighting so we can retrieve the correct data in
+                            the next window
+                         */
+                        intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getCreatedDate());
 
+                        //now just display the new window
                         context.startActivity(intent);
                     }
                 }
@@ -121,14 +168,19 @@ public class SightingListActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return mRatSightings.size();
+            return mSightings.size();
         }
 
+        /**
+         * This inner class represents a ViewHolder which provides us a way to cache information
+         * about the binding between the model element (in this case a RatSighting) and the widgets in
+         * the list view (in this case the two TextView)
+         */
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public RatSighting mRatSighting;
+            public RatSighting mSighting;
 
             public ViewHolder(View view) {
                 super(view);

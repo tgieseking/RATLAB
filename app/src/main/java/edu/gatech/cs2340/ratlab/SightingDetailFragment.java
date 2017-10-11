@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import edu.gatech.cs2340.ratlab.model.RatSighting;
+import edu.gatech.cs2340.ratlab.model.Model;
 
 
 /**
@@ -23,13 +24,12 @@ public class SightingDetailFragment extends Fragment {
      * The fragment argument representing the item ID that this fragment
      * represents.
      */
-    public static final String ARG_ITEM_ID = "item_id";
-    public static final String ARG_RATSIGHTING_ID = "ratSighting_id";
+    public static final String ARG_SIGHTING_ID = "sighting_id";
 
     /**
-     * The dummy content this fragment is presenting.
+     * The ratsighting that this detail view is for.
      */
-    private RatSighting mRatSighting;
+    private RatSighting mSighting;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -42,16 +42,17 @@ public class SightingDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments().containsKey(ARG_ITEM_ID)) {
-            // Load the dummy content specified by the fragment
-            // arguments. In a real-world scenario, use a Loader
-            // to load content from a content provider.
-            mRatSighting = DummyContent.ITEM_MAP.get(getArguments().getString(ARG_ITEM_ID));
+        if (getArguments().containsKey(ARG_SIGHTING_ID)) {
+            // Get the id from the intent arguments (bundle) and
+            //ask the model to give us the course object
+            Model model = Model.getInstance();
+            // mCourse = model.getCourseById(getArguments().getInt(ARG_COURSE_ID));
+            mSighting = model.getCurrentSighting();
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(mRatSighting.content);
+                appBarLayout.setTitle("Rat Sighting " + mSighting.getKey());
             }
         }
     }
@@ -61,9 +62,9 @@ public class SightingDetailFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.sighting_detail, container, false);
 
-        // Show the dummy content as text in a TextView.
-        if (mRatSighting != null) {
-            ((TextView) rootView.findViewById(R.id.sighting_detail)).setText(mRatSighting.details);
+        // Show the dummy content as text in a TextView. CHANGE THIS STUFF !!!!!!!!!!!!!!!!!!!!!!!!!
+        if (mSighting != null) {
+            ((TextView) rootView.findViewById(R.id.sighting_detail)).setText(mSighting.getAddress());
         }
 
         return rootView;
