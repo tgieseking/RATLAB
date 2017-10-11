@@ -5,23 +5,25 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.gatech.cs2340.ratlab.model.RatSighting;
+
 /**
  * Helper class for providing sample content for user interfaces created by
  * Android template wizards.
  * <p>
  * TODO: Replace all uses of this class before publishing your app.
  */
-public class DummyContent {
+public class SightingListContent {
 
     /**
      * An array of sample (dummy) items.
      */
-    public static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
+    public static final List<RatSighting> ITEMS = new ArrayList<RatSighting>();
 
     /**
      * A map of sample (dummy) items, by ID.
      */
-    public static final Map<String, DummyItem> ITEM_MAP = new HashMap<String, DummyItem>();
+    public static final Map<String, RatSighting> ITEM_MAP = new HashMap<String, RatSighting>();
 
     private static final int COUNT = 25;
 

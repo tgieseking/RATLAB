@@ -145,4 +145,7 @@ public class Model {
         newRat.put("longitude", sighting.getLatitude());
         newNode.setValue(newRat);
     }
+    public List<RatSighting> createSightingList() {
+
+    }
 }
