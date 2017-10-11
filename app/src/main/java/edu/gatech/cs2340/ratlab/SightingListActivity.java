@@ -15,7 +15,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
-import edu.gatech.cs2340.ratlab.dummy.DummyContent;
+import edu.gatech.cs2340.ratlab.model.Model;
+import edu.gatech.cs2340.ratlab.model.RatSighting;
 
 import java.util.List;
 
@@ -67,16 +68,17 @@ public class SightingListActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(DummyContent.ITEMS));
+        Model model = Model.getInstance();
+        recyclerView.setAdapter(new SimpleItemRecyclerViewAdapter(model.createSightingsList()));
     }
 
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private final List<DummyContent.DummyItem> mValues;
+        private final List<RatSighting> mRatSightings;
 
-        public SimpleItemRecyclerViewAdapter(List<DummyContent.DummyItem> items) {
-            mValues = items;
+        public SimpleItemRecyclerViewAdapter(List<RatSighting> items) {
+            mRatSightings = items;
         }
 
         @Override
@@ -88,16 +90,19 @@ public class SightingListActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
-            holder.mItem = mValues.get(position);
-            holder.mIdView.setText(mValues.get(position).id);
-            holder.mContentView.setText(mValues.get(position).content);
+
+            final Model model = Model.getInstance();
+
+            holder.mRatSighting = mRatSightings.get(position);
+            holder.mIdView.setText(mRatSightings.get(position).getCreatedDate());
+            holder.mContentView.setText(mRatSightings.get(position).getAddress());
 
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
-                        arguments.putString(SightingDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        arguments.putString(SightingDetailFragment.ARG_ITEM_ID, holder.mRatSighting.getCreatedDate());
                         SightingDetailFragment fragment = new SightingDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -106,7 +111,7 @@ public class SightingListActivity extends AppCompatActivity {
                     } else {
                         Context context = v.getContext();
                         Intent intent = new Intent(context, SightingDetailActivity.class);
-                        intent.putExtra(SightingDetailFragment.ARG_ITEM_ID, holder.mItem.id);
+                        intent.putExtra(SightingDetailFragment.ARG_ITEM_ID, holder.mRatSighting.getCreatedDate());
 
                         context.startActivity(intent);
                     }
@@ -116,14 +121,14 @@ public class SightingListActivity extends AppCompatActivity {
 
         @Override
         public int getItemCount() {
-            return mValues.size();
+            return mRatSightings.size();
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
-            public DummyContent.DummyItem mItem;
+            public RatSighting mRatSighting;
 
             public ViewHolder(View view) {
                 super(view);
