@@ -184,6 +184,12 @@ public class SightingListActivity extends AppCompatActivity {
             public final TextView mContentView;
             public RatSighting mSighting;
 
+            /**
+             * Constructor that creates a ViewHolder object with attributes
+             * mView, mIdView, mContentView, and mSighting.
+             *
+             * @param view the view to display on the sightingList
+             */
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
