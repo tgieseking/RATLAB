@@ -159,6 +159,8 @@ public class SightingListActivity extends AppCompatActivity {
                          */
                         intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getCreatedDate());
 
+                        model.setCurrentSighting(holder.mSighting);
+
                         //now just display the new window
                         context.startActivity(intent);
                     }

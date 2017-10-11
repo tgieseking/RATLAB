@@ -42,6 +42,7 @@ public class SightingDetailFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Check if we got a valid sighting passed to us
         if (getArguments().containsKey(ARG_SIGHTING_ID)) {
             // Get the id from the intent arguments (bundle) and
             //ask the model to give us the course object
@@ -52,7 +53,7 @@ public class SightingDetailFragment extends Fragment {
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
-                appBarLayout.setTitle("Rat Sighting " + mSighting.getKey());
+                appBarLayout.setTitle("Sighting Details");
             }
         }
     }
@@ -64,10 +65,11 @@ public class SightingDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView. CHANGE THIS STUFF !!!!!!!!!!!!!!!!!!!!!!!!!
         if (mSighting != null) {
-            ((TextView) rootView.findViewById(R.id.sighting_detail)).setText(mSighting.getAddress());
+            ((TextView) rootView.findViewById(R.id.sighting_detail)).setText(mSighting.toString());
         }
 
         return rootView;
     }
+
 
 }
