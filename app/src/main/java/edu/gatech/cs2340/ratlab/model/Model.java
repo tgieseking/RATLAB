@@ -15,6 +15,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -145,7 +147,14 @@ public class Model {
         newRat.put("longitude", sighting.getLatitude());
         newNode.setValue(newRat);
     }
-    public List<RatSighting> createSightingList() {
-
+    public List<RatSighting> createSightingsList() {
+        List<RatSighting> sightingsList = new ArrayList<>(ratSightings.values());
+        Collections.sort(sightingsList, new Comparator<RatSighting>() {
+            @Override
+            public int compare(RatSighting sighting1, RatSighting sighting2) {
+                return sighting1.getCreatedDate().compareTo(sighting2.getCreatedDate());
+            }
+        });
+        return sightingsList;
     }
 }
