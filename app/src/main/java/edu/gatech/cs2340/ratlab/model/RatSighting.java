@@ -106,8 +106,8 @@ public class RatSighting {
                 + "\nZip Code: " + zipCode
                 + "\nCity: " + city
                 + "\nBorough: " + borough
-                + "\nLatitude: " + latitude
-                + "\nLatitude: " + longitude;
+                + "\nLongitude: " + longitude
+                + "\nLatitude: " + latitude;
     }
 
     /** Returns a hash code based on the key attribute
