@@ -158,10 +158,8 @@ public class SightingListActivity extends AppCompatActivity {
                             pass along the date of the sighting so we can retrieve the correct data in
                             the next window
                          */
-                        intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getCreatedDate());
-
-                        sightingsManager.setCurrentSighting(holder.mSighting);
-
+                        intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getKey());
+                        
                         //now just display the new window
                         context.startActivity(intent);
                     }

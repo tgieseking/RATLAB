@@ -49,7 +49,7 @@ public class SightingDetailFragment extends Fragment {
             //ask the sightingsManager to give us the course object
             SightingsManager sightingsManager = SightingsManager.getInstance();
             // mCourse = sightingsManager.getCourseById(getArguments().getInt(ARG_COURSE_ID));
-            mSighting = sightingsManager.getCurrentSighting();
+            mSighting = sightingsManager.getSightingByKey(getArguments().getString(ARG_SIGHTING_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);

@@ -28,9 +28,6 @@ public class SightingsManager {
     // The list of all rat sightings
     private Map<String,RatSighting> ratSightings;
 
-    //The currently selected rat sighting, defaults to first rat sighting
-    private RatSighting currentSighting;
-
     // Database variables for syncing the rat sighting list with firebase
     private DatabaseReference sightingsReference;
     private ChildEventListener sightingsListener;
@@ -151,14 +148,7 @@ public class SightingsManager {
         return sightingsList;
     }
 
-    //I'm scared I messed up, bryan edits below hehe
-
-    /**
-     *
-     * @return  the currently selected sighting
-     */
-    public RatSighting getCurrentSighting() { return currentSighting;}
-
-    public void setCurrentSighting(RatSighting sighting) { currentSighting = sighting; }
-
+    public RatSighting getSightingByKey(String key) {
+        return ratSightings.get(key);
+    }
 }
