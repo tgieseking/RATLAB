@@ -36,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /** This is a method to test adding rat sightings to the database */
+    /** This is a method to test adding rat sightings to the database
+     *
+     * @param view button clicked to activate this method
+     */
     public void pushSightingTest(View view) {
         RatSighting testSighting = new RatSighting(null, "testDate", "testLT", "testAddress",
                 "testZip", "testCity", Borough.QUEENS, 10.1, 11.3);
