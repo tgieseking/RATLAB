@@ -68,11 +68,7 @@ public class LoginActivity extends AppCompatActivity{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            int errorCode = userManager.login();
-                            if (errorCode == 0) {
-                                Toast.makeText(LoginActivity.this, "Database information invalid",
-                                        Toast.LENGTH_SHORT).show();
-                            }
+                            userManager.login();
                             // Sign in success, update UI with the signed-in user's information
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);

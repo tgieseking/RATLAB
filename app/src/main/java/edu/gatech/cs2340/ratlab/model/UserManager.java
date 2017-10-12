@@ -46,7 +46,7 @@ public class UserManager {
                 .child("account_type").setValue(accountType);
     }
 
-    public int login() {
+    public void login() {
         String uid = firebaseAuth.getCurrentUser().getUid();
         DatabaseReference userNode = firebaseDatabase.getReference().child("users").child(uid);
         final String email = firebaseAuth.getCurrentUser().getEmail();
@@ -72,11 +72,6 @@ public class UserManager {
 
             }
         });
-        if (currentUser != null) {
-            return 1;
-        } else {
-            return 0;
-        }
     }
 
     public void logout() {
