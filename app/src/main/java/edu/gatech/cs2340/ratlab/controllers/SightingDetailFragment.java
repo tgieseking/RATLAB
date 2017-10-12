@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
-import edu.gatech.cs2340.ratlab.model.Model;
+import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 
 /**
@@ -46,10 +46,10 @@ public class SightingDetailFragment extends Fragment {
         //Check if we got a valid sighting passed to us
         if (getArguments().containsKey(ARG_SIGHTING_ID)) {
             // Get the id from the intent arguments (bundle) and
-            //ask the model to give us the course object
-            Model model = Model.getInstance();
-            // mCourse = model.getCourseById(getArguments().getInt(ARG_COURSE_ID));
-            mSighting = model.getCurrentSighting();
+            //ask the sightingsManager to give us the course object
+            SightingsManager sightingsManager = SightingsManager.getInstance();
+            // mCourse = sightingsManager.getCourseById(getArguments().getInt(ARG_COURSE_ID));
+            mSighting = sightingsManager.getCurrentSighting();
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);

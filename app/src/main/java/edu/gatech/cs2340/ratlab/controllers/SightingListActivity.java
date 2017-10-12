@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 
 import edu.gatech.cs2340.ratlab.R;
-import edu.gatech.cs2340.ratlab.model.Model;
+import edu.gatech.cs2340.ratlab.model.SightingsManager;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 
 import java.util.List;
@@ -79,8 +79,8 @@ public class SightingListActivity extends AppCompatActivity {
      * @param recyclerView the view that needs this adapter
      */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        Model model = Model.getInstance();
-        recyclerView.setAdapter(new SimpleSightingRecyclerViewAdapter(model.createSightingsList()));
+        SightingsManager sightingsManager = SightingsManager.getInstance();
+        recyclerView.setAdapter(new SimpleSightingRecyclerViewAdapter(sightingsManager.createSightingsList()));
     }
 
     /**
@@ -120,7 +120,7 @@ public class SightingListActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
 
-            final Model model = Model.getInstance();
+            final SightingsManager sightingsManager = SightingsManager.getInstance();
 
             /*
             This is where we have to bind each data element in the list (given by position parameter)
@@ -160,7 +160,7 @@ public class SightingListActivity extends AppCompatActivity {
                          */
                         intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getCreatedDate());
 
-                        model.setCurrentSighting(holder.mSighting);
+                        sightingsManager.setCurrentSighting(holder.mSighting);
 
                         //now just display the new window
                         context.startActivity(intent);

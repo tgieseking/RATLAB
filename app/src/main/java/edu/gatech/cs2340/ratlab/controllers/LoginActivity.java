@@ -15,6 +15,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.ratlab.R;
+import edu.gatech.cs2340.ratlab.model.UserManager;
 
 /**
  * A login screen that offers login via email/password.
@@ -22,6 +23,7 @@ import edu.gatech.cs2340.ratlab.R;
 public class LoginActivity extends AppCompatActivity{
     // Reference to the Firebase authorization backend
     private FirebaseAuth mAuth;
+    private UserManager userManager;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
@@ -36,6 +38,7 @@ public class LoginActivity extends AppCompatActivity{
         mPasswordView = (EditText) findViewById(R.id.password);
 
         mAuth = FirebaseAuth.getInstance();
+        userManager = userManager.getInstance();
     }
 
     /**
@@ -65,6 +68,11 @@ public class LoginActivity extends AppCompatActivity{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            int errorCode = userManager.login();
+                            if (errorCode == 0) {
+                                Toast.makeText(LoginActivity.this, "Database information invalid",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                             // Sign in success, update UI with the signed-in user's information
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);

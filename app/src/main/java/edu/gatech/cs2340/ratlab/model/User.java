@@ -4,6 +4,7 @@ class User {
     private String email;
     private String username;
     private String name;
+    private AccountType accountType;
 
     /**
      * Creates a user with a given username and password
@@ -11,10 +12,11 @@ class User {
      * @param username The username of the user
      * @param name The name of the user
      */
-    User(String email, String username, String name) {
+    User(String email, String username, String name, AccountType accountType) {
         this.email = email;
         this.username = username;
         this.name = name;
+        this.accountType = accountType;
     }
 
     /**

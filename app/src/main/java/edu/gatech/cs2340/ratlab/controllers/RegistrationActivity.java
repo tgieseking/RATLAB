@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -19,17 +18,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.cs2340.ratlab.R;
-import edu.gatech.cs2340.ratlab.model.Model;
+import edu.gatech.cs2340.ratlab.model.UserManager;
 
 public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
+    private UserManager userManager;
 
     // UI references
     private Spinner accountTypeSpinner;
@@ -41,6 +39,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        userManager = UserManager.getInstance();
 
         accountTypeSpinner = (Spinner) findViewById(R.id.accountTypeSpinner);
         ArrayAdapter<CharSequence> accountTypeAdapter = ArrayAdapter.createFromResource(this,
@@ -104,12 +103,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Registration is successful
-
-                            // Save the username to the database
-                            mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).child("username").setValue(username);
-                            mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).child("name").setValue(name);
-                            mDatabase.child("users").child(mAuth.getCurrentUser().getUid())
-                                    .child("account_type").setValue(accountTypeSpinner.getSelectedItem());
+                            userManager.addUserToDatabase(username, name,
+                                    (String) accountTypeSpinner.getSelectedItem());
+                            userManager.login();
 
 
                             Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);

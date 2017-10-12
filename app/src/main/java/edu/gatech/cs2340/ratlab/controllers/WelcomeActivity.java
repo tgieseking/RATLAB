@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import edu.gatech.cs2340.ratlab.R;
-import edu.gatech.cs2340.ratlab.model.Model;
+import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -15,7 +15,7 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        Model.getInstance().readHistoricalData(this);
+        SightingsManager.getInstance().readHistoricalData(this);
     }
 
     /**

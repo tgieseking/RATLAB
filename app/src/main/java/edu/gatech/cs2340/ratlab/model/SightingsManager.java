@@ -3,37 +3,27 @@ package edu.gatech.cs2340.ratlab.model;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 
 import edu.gatech.cs2340.ratlab.R;
-import edu.gatech.cs2340.ratlab.controllers.MainActivity;
 
-public class Model {
-
-    private static final Model instance = new Model();
-    public static Model getInstance() { return instance; }
-
-    // Stores information on the currently logged in user
-    private User currentUser;
+public class SightingsManager {
+    private static final SightingsManager instance = new SightingsManager();
+    public static SightingsManager getInstance() { return instance; }
 
     // The list of all rat sightings
     private Map<String,RatSighting> ratSightings;
@@ -45,7 +35,7 @@ public class Model {
     private DatabaseReference sightingsReference;
     private ChildEventListener sightingsListener;
 
-    Model() {
+    SightingsManager() {
         ratSightings = new HashMap<>();
         sightingsReference = FirebaseDatabase.getInstance().getReference().child("sightings");
 

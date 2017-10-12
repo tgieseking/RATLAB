@@ -10,15 +10,19 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.Borough;
-import edu.gatech.cs2340.ratlab.model.Model;
+import edu.gatech.cs2340.ratlab.model.SightingsManager;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
+import edu.gatech.cs2340.ratlab.model.UserManager;
 
 public class MainActivity extends AppCompatActivity {
+    private UserManager userManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        userManager = UserManager.getInstance();
     }
 
     /**
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view the logout button
      */
     public void logout(View view) {
-        FirebaseAuth.getInstance().signOut();
+        userManager.logout();
         Intent intent = new Intent(this, WelcomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public void pushSightingTest(View view) {
         RatSighting testSighting = new RatSighting(null, "testDate", "testLT", "testAddress",
                 "testZip", "testCity", Borough.QUEENS, 10.1, 11.3);
-        Model.getInstance().addRatSightingToDatabase(testSighting);
+        SightingsManager.getInstance().addRatSightingToDatabase(testSighting);
         Log.d("sightings_database", "Pushed sighting");
     }
 
