@@ -36,6 +36,13 @@ public class UserManager {
         firebaseDatabase = FirebaseDatabase.getInstance();
     }
 
+    /** Adds the additional account information to an account into the firebase database. This
+     * should be called whenever a new account is registered.
+     *
+     * @param username the user's username
+     * @param name the user's name
+     * @param accountType the user's account type
+     */
     public void addUserToDatabase(String username, String name, String accountType) {
         String uid = firebaseAuth.getCurrentUser().getUid();
         firebaseDatabase.getReference().child("users").child(uid)
@@ -46,6 +53,10 @@ public class UserManager {
                 .child("account_type").setValue(accountType);
     }
 
+    /** Gets the current account information and puts it into the current user. This does not do
+     * the actual login in firebase because it creates new tasks, so it is cleaner to put into the
+     * relevant activity.
+     */
     public void login() {
         String uid = firebaseAuth.getCurrentUser().getUid();
         DatabaseReference userNode = firebaseDatabase.getReference().child("users").child(uid);
@@ -74,6 +85,8 @@ public class UserManager {
         });
     }
 
+    /** Logs out of firebase.
+     */
     public void logout() {
         firebaseAuth.signOut();
         currentUser = null;

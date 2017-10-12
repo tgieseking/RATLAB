@@ -159,7 +159,7 @@ public class SightingListActivity extends AppCompatActivity {
                             the next window
                          */
                         intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getKey());
-                        
+
                         //now just display the new window
                         context.startActivity(intent);
                     }

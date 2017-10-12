@@ -137,6 +137,12 @@ public class SightingsManager {
         newRat.put("longitude", sighting.getLatitude());
         newNode.setValue(newRat);
     }
+
+    /** Converts the ratSightings HashMap into a list of sightings. The sightings are ordered
+     * lexicographically by date.
+     *
+     * @return a list  of the sightings
+     */
     public List<RatSighting> createSightingsList() {
         List<RatSighting> sightingsList = new ArrayList<>(ratSightings.values());
         Collections.sort(sightingsList, new Comparator<RatSighting>() {
@@ -148,6 +154,11 @@ public class SightingsManager {
         return sightingsList;
     }
 
+    /** Gets the rat sighting with the given key.
+     *
+     * @param key a rat sighting key
+     * @return the rat sighting with the given key
+     */
     public RatSighting getSightingByKey(String key) {
         return ratSightings.get(key);
     }
