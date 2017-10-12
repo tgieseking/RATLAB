@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="edu.gatech.cs2340.ratlab.SightingListActivity"
+    tools:context="edu.gatech.cs2340.ratlab.controllers.SightingListActivity"
     tools:listitem="@layout/sighting_list_content" />

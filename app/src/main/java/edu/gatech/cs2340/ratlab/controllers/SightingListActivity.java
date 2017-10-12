@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.ratlab;
+package edu.gatech.cs2340.ratlab.controllers;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.Model;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 

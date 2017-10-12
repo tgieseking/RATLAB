@@ -27,17 +27,17 @@
         <activity android:name=".controllers.MainActivity" />
         <activity android:name=".controllers.RegistrationActivity" />
         <activity
-            android:name=".SightingListActivity"
+            android:name=".controllers.SightingListActivity"
             android:label="@string/title_sighting_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".SightingDetailActivity"
+            android:name=".controllers.SightingDetailActivity"
             android:label="@string/title_sighting_detail"
-            android:parentActivityName=".SightingListActivity"
+            android:parentActivityName=".controllers.SightingListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.gatech.cs2340.ratlab.SightingListActivity" />
+                android:value="edu.gatech.cs2340.ratlab.controllers.SightingListActivity" />
         </activity>
     </application>
 

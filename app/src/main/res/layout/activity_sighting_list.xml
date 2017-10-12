@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="edu.gatech.cs2340.ratlab.SightingListActivity">
+    tools:context="edu.gatech.cs2340.ratlab.controllers.SightingListActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"

@@ -1,4 +1,4 @@
-package edu.gatech.cs2340.ratlab;
+package edu.gatech.cs2340.ratlab.controllers;
 
 import android.app.Activity;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.Model;
 

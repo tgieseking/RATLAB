@@ -9,7 +9,6 @@ import android.view.View;
 import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.ratlab.R;
-import edu.gatech.cs2340.ratlab.SightingListActivity;
 import edu.gatech.cs2340.ratlab.model.Borough;
 import edu.gatech.cs2340.ratlab.model.Model;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
