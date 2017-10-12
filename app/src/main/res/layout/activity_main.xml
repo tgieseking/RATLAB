@@ -30,6 +30,20 @@
             android:text="@string/report" />
 
         <Button
+            android:id="@+id/mapDisplayButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="Map Display" />
+
+        <Button
+            android:id="@+id/historicalButton"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:text="Historical Graph" />
+
+        <Button
             android:id="@+id/logoutButton"
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="320dp"
