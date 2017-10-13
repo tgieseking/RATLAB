@@ -122,9 +122,9 @@ public class RatSighting {
 
     public String toString() {
         return "Key: " + key
-                + "\nDate: " + createdDate
+                + "\nDate: " + getCreatedDateString()
                 + "\nLocation Type: " + locationType
-                + "\nAddress" + address
+                + "\nAddress: " + address
                 + "\nZip Code: " + zipCode
                 + "\nCity: " + city
                 + "\nBorough: " + borough
