@@ -131,7 +131,7 @@ public class SightingListActivity extends AppCompatActivity {
             /*
               Now we bind the data to the widgets.
              */
-            holder.mIdView.setText(mSightings.get(position).getCreatedDate());
+            holder.mIdView.setText(mSightings.get(position).getCreatedDateString());
             holder.mContentView.setText(mSightings.get(position).getAddress());
 
             /*
@@ -143,7 +143,7 @@ public class SightingListActivity extends AppCompatActivity {
                     if (mTwoPane) {
                         //if a two pane window, we change the contents on the main screen
                         Bundle arguments = new Bundle();
-                        arguments.putString(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getCreatedDate());
+                        arguments.putString(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getCreatedDateString());
                         SightingDetailFragment fragment = new SightingDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()

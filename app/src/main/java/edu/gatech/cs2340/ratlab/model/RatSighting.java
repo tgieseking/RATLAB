@@ -2,11 +2,14 @@ package edu.gatech.cs2340.ratlab.model;
 
 import android.util.Log;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class RatSighting {
     private String key;
-    private String createdDate;  // This maybe should be a java.util.Date
+    private Date createdDate;  // This maybe should be a java.util.Date
     private String locationType;
     private String address;
     private String zipCode;
@@ -19,8 +22,15 @@ public class RatSighting {
         return key;
     }
 
-    public String getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
+    }
+
+    public String getCreatedDateString() {
+        String format = "M/d/yy";
+        DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
+        return dateFormat.format(createdDate);
+//        return createdDate.toString();
     }
 
     public String getLocationType() {
@@ -51,7 +61,7 @@ public class RatSighting {
         return longitude;
     }
 
-    public RatSighting(String key, String createdDate, String locationType, String address, String zipCode,
+    public RatSighting(String key, Date createdDate, String locationType, String address, String zipCode,
                 String city, Borough borough, double latitude, double longitude) {
         this.key = key;
         this.createdDate = createdDate;
@@ -62,6 +72,18 @@ public class RatSighting {
         this.borough = borough;
         this.latitude = latitude;
         this.longitude = longitude;
+    }
+
+    public RatSighting(String key, String createdDateString, String locationType, String address, String zipCode,
+                       String city, Borough borough, double latitude, double longitude) {
+        this(key, new Date(), locationType, address, zipCode, city, borough, latitude, longitude);
+        String format = "M/d/yyyy H:mm";
+        DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
+        try {
+            this.createdDate = dateFormat.parse(createdDateString);
+        } catch (Exception e) {
+            Log.d("DateFormat", "Could not parse date " + createdDateString);
+        }
     }
 
     /** Reads data in the format of a line of the historical data csv and creates the corresponding
