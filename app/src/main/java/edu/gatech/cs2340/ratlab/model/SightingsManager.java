@@ -32,8 +32,11 @@ public class SightingsManager {
     private DatabaseReference sightingsReference;
     private ChildEventListener sightingsListener;
 
+    private boolean loadingHistoricalDataComplete;
+
     SightingsManager() {
         ratSightings = new HashMap<>();
+        loadingHistoricalDataComplete = false;
         sightingsReference = FirebaseDatabase.getInstance().getReference().child("sightings");
 
         sightingsListener = new ChildEventListener() {
@@ -115,6 +118,15 @@ public class SightingsManager {
                     + "sightings.");
             return (null);
         }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            SightingsManager.this.loadingHistoricalDataComplete = true;
+        }
+    }
+
+    public boolean isLoadingHistoricalDataComplete() {
+        return loadingHistoricalDataComplete;
     }
 
     /** Adds a rat sighting to thd database. The sighting should not have a key, since the key is

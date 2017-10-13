@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -16,6 +17,7 @@ import edu.gatech.cs2340.ratlab.model.UserManager;
 
 public class MainActivity extends AppCompatActivity {
     private UserManager userManager;
+    private SightingsManager sightingsManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         userManager = UserManager.getInstance();
+        sightingsManager = SightingsManager.getInstance();
     }
 
     /**
@@ -57,7 +60,12 @@ public class MainActivity extends AppCompatActivity {
      * @param view sightingsButton on registration activity
      */
     public void onClickSightings(View view) {
-        Intent intent = new Intent(this, SightingListActivity.class);
-        startActivity(intent);
+        if (sightingsManager.isLoadingHistoricalDataComplete()) {
+            Intent intent = new Intent(this, SightingListActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(MainActivity.this, "Historical data is still loading",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 }
