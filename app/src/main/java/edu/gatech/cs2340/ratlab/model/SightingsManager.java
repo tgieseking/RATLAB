@@ -139,7 +139,7 @@ public class SightingsManager {
     }
 
     /** Converts the ratSightings HashMap into a list of sightings. The sightings are ordered
-     * lexicographically by date.
+     * newest to oldest.
      *
      * @return a list  of the sightings
      */
@@ -148,7 +148,7 @@ public class SightingsManager {
         Collections.sort(sightingsList, new Comparator<RatSighting>() {
             @Override
             public int compare(RatSighting sighting1, RatSighting sighting2) {
-                return sighting1.getCreatedDate().compareTo(sighting2.getCreatedDate());
+                return sighting2.getCreatedDate().compareTo(sighting1.getCreatedDate());
             }
         });
         return sightingsList;
