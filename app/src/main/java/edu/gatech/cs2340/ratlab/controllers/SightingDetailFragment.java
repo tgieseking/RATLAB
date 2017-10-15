@@ -66,11 +66,28 @@ public class SightingDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView. CHANGE THIS STUFF !!!!!!!!!!!!!!!!!!!!!!!!!
         if (mSighting != null) {
-            ((TextView) rootView.findViewById(R.id.sighting_detail)).setText(mSighting.toString());
+            ((TextView) rootView.findViewById(R.id.sighting_detail)).setText(ratSightingsDetails(mSighting));
         }
 
         return rootView;
     }
 
-
+    private String ratSightingsDetails(RatSighting sighting) {
+        if (sighting.getBorough() == null) {
+            return "Key: " + sighting.getKey()
+                    + "\nDate: " + sighting.getCreatedDateString()
+                    + "\nLocation Type: " + sighting.getLocationType().getTextName()
+                    + "\nAddress: " + sighting.getAddress()
+                    + "\nLongitude: " + sighting.getLocation().getLongitude()
+                    + "\nLatitude: " + sighting.getLocation().getLatitude();
+        } else {
+            return "Key: " + sighting.getKey()
+                    + "\nDate: " + sighting.getCreatedDateString()
+                    + "\nLocation Type: " + sighting.getLocationType().getTextName()
+                    + "\nAddress: " + sighting.getAddress()
+                    + "\nBorough: " + sighting.getBorough()
+                    + "\nLongitude: " + sighting.getLocation().getLongitude()
+                    + "\nLatitude: " + sighting.getLocation().getLatitude();
+        }
+    }
 }

@@ -120,26 +120,6 @@ public class RatSighting {
         return null;
     }
 
-    public String toString() {
-        if (location.getBorough() == null) {
-            return "Key: " + key
-                    + "\nDate: " + getCreatedDateString()
-                    + "\nLocation Type: " + location.getLocationType().getTextName()
-                    + "\nAddress: " + location.getAddress()
-                    + "\nLongitude: " + location.getLongitude()
-                    + "\nLatitude: " + location.getLatitude();
-        } else {
-            return "Key: " + key
-                    + "\nDate: " + getCreatedDateString()
-                    + "\nLocation Type: " + location.getLocationType().getTextName()
-                    + "\nAddress: " + location.getAddress()
-                    + "\nBorough: " + location.getBorough()
-                    + "\nLongitude: " + location.getLongitude()
-                    + "\nLatitude: " + location.getLatitude();
-        }
-
-    }
-
     /** Returns a hash code based on the key attribute
      *
      * @return the hash code
