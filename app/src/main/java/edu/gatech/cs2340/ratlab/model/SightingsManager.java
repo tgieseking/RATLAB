@@ -72,7 +72,8 @@ public class SightingsManager {
                 Log.d("sightings_database", "Starting to create RatSighting");
                 String key = dataSnapshot.getKey();
                 String createdDate = (String) dataSnapshot.child("createdDate").getValue();
-                String locationType = (String) dataSnapshot.child("locationType").getValue();
+                String locationTypeString = (String) dataSnapshot.child("locationType").getValue();
+                LocationType locationType = LocationType.locationTypeFromTextName(locationTypeString);
                 String address = (String) dataSnapshot.child("address").getValue();
                 String zipCode = (String) dataSnapshot.child("zipCode").getValue();
                 String city = (String) dataSnapshot.child("city").getValue();
@@ -139,14 +140,14 @@ public class SightingsManager {
     public void addRatSightingToDatabase(RatSighting sighting) {
         DatabaseReference newNode = sightingsReference.push();
         Map<String, Object> newRat = new HashMap<>();
-        newRat.put("createdDate", sighting.getCreatedDate());
+        newRat.put("createdDate", sighting.getCreatedDateDatabaseString());
         newRat.put("locationType", sighting.getLocationType());
-        newRat.put("address", sighting.getAddress());
-        newRat.put("zipCode", sighting.getZipCode());
-        newRat.put("city", sighting.getCity());
+        newRat.put("address", sighting.getAddress().getAddressLine());
+        newRat.put("zipCode", sighting.getAddress().getZipCode());
+        newRat.put("city", sighting.getAddress().getCity());
         newRat.put("borough", sighting.getBorough());
-        newRat.put("latitude", sighting.getLongitude());
-        newRat.put("longitude", sighting.getLatitude());
+        newRat.put("latitude", sighting.getLocation().getLongitude());
+        newRat.put("longitude", sighting.getLocation().getLatitude());
         newNode.setValue(newRat);
     }
 

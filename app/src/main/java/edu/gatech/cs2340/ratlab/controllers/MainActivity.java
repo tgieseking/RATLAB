@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.Borough;
+import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.UserManager;
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view button clicked to activate this method
      */
     public void pushSightingTest(View view) {
-        RatSighting testSighting = new RatSighting(null, "testDate", "testLT", "testAddress",
+        RatSighting testSighting = new RatSighting(null, "10/15/2017 3:00", LocationType.HOSPITAL, "testAddress",
                 "testZip", "testCity", Borough.QUEENS, 10.1, 11.3);
         SightingsManager.getInstance().addRatSightingToDatabase(testSighting);
         Log.d("sightings_database", "Pushed sighting");

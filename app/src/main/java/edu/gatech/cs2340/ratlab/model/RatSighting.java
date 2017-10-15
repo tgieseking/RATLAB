@@ -10,13 +10,7 @@ import java.util.Locale;
 public class RatSighting {
     private String key;
     private Date createdDate;  // This maybe should be a java.util.Date
-    private String locationType;
-    private String address;
-    private String zipCode;
-    private String city;
-    private Borough borough;
-    private double latitude;
-    private double longitude;
+    private Location location;
 
     public String getKey() {
         return key;
@@ -26,56 +20,61 @@ public class RatSighting {
         return createdDate;
     }
 
+    /**
+     * Gets the created date in a printable string format
+     * @return the date as a string
+     */
     public String getCreatedDateString() {
         String format = "M/d/yy";
         DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
         return dateFormat.format(createdDate);
-//        return createdDate.toString();
     }
 
-    public String getLocationType() {
-        return locationType;
+    /**
+     * Gets the created date in the format it will be stored in the database
+     * @return the date as a string
+     */
+    public String getCreatedDateDatabaseString() {
+        String format = "M/d/yyyy H:mm";
+        DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
+        return dateFormat.format(createdDate);
     }
 
-    public String getAddress() {
-        return address;
+    public LocationType getLocationType() {
+        return location.getLocationType();
     }
 
-    public String getZipCode() {
-        return zipCode;
+    public Address getAddress() {
+        return location.getAddress();
     }
 
-    public String getCity() {
-        return city;
+    public Location getLocation() {
+        return location;
     }
 
     public Borough getBorough() {
-        return borough;
+        return location.getBorough();
     }
 
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public RatSighting(String key, Date createdDate, String locationType, String address, String zipCode,
-                String city, Borough borough, double latitude, double longitude) {
+    public RatSighting(String key, Date createdDate, LocationType locationType, String addressLine,
+                       String zipCode, String city, String state, Borough borough, double latitude,
+                       double longitude) {
         this.key = key;
         this.createdDate = createdDate;
-        this.locationType = locationType;
-        this.address = address;
-        this.zipCode = zipCode;
-        this.city = city;
-        this.borough = borough;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        Address address = new Address(addressLine, city, state, zipCode);
+        this.location = new Location(latitude, longitude, address, borough, locationType);
     }
 
-    public RatSighting(String key, String createdDateString, String locationType, String address, String zipCode,
-                       String city, Borough borough, double latitude, double longitude) {
+    public RatSighting(String key, Date createdDate, LocationType locationType, String addressLine,
+                       String zipCode, String city, Borough borough, double latitude,
+                       double longitude) {
+        this(key, createdDate, locationType, addressLine, zipCode, city, "NY", borough, latitude,
+                longitude);
+    }
+
+    public RatSighting(String key, String createdDateString, LocationType locationType,
+                       String address, String zipCode, String city, Borough borough,
+                       double latitude, double longitude) {
         this(key, new Date(), locationType, address, zipCode, city, borough, latitude, longitude);
         String format = "M/d/yyyy H:mm";
         DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
@@ -104,10 +103,11 @@ public class RatSighting {
             } catch (Exception e) {
                 borough = Borough.UNKNOWN;
             }
+            LocationType locationType = LocationType.locationTypeFromTextName(splitLine[2]);
             try {
                 latitude = Double.parseDouble(splitLine[7]);
                 longitude = Double.parseDouble(splitLine[8]);
-                return new RatSighting(splitLine[0], splitLine[1], splitLine[2], splitLine[4],
+                return new RatSighting(splitLine[0], splitLine[1], locationType, splitLine[4],
                         splitLine[3], splitLine[5], borough, latitude, longitude);
             } catch (Exception e) {
                 Log.d("historical_data", "Row with id " + splitLine[0] + " could not be parsed");
@@ -121,15 +121,23 @@ public class RatSighting {
     }
 
     public String toString() {
-        return "Key: " + key
-                + "\nDate: " + getCreatedDateString()
-                + "\nLocation Type: " + locationType
-                + "\nAddress: " + address
-                + "\nZip Code: " + zipCode
-                + "\nCity: " + city
-                + "\nBorough: " + borough
-                + "\nLongitude: " + longitude
-                + "\nLatitude: " + latitude;
+        if (location.getBorough() == null) {
+            return "Key: " + key
+                    + "\nDate: " + getCreatedDateString()
+                    + "\nLocation Type: " + location.getLocationType().getTextName()
+                    + "\nAddress: " + location.getAddress()
+                    + "\nLongitude: " + location.getLongitude()
+                    + "\nLatitude: " + location.getLatitude();
+        } else {
+            return "Key: " + key
+                    + "\nDate: " + getCreatedDateString()
+                    + "\nLocation Type: " + location.getLocationType().getTextName()
+                    + "\nAddress: " + location.getAddress()
+                    + "\nBorough: " + location.getBorough()
+                    + "\nLongitude: " + location.getLongitude()
+                    + "\nLatitude: " + location.getLatitude();
+        }
+
     }
 
     /** Returns a hash code based on the key attribute
