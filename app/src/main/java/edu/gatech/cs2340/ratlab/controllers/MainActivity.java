@@ -10,6 +10,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.ratlab.R;
+import edu.gatech.cs2340.ratlab.ReportSighting;
 import edu.gatech.cs2340.ratlab.model.Borough;
 import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
@@ -43,15 +44,15 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    /** This is a method to test adding rat sightings to the database
+    /**
+     * Changes the current activity to ReportSightingActivity when
+     * the button reportSightingButton is clicked.
      *
      * @param view button clicked to activate this method
      */
-    public void pushSightingTest(View view) {
-        RatSighting testSighting = new RatSighting(null, "10/15/2017 3:00", LocationType.HOSPITAL, "testAddress",
-                "testZip", "testCity", Borough.QUEENS, 10.1, 11.3);
-        SightingsManager.getInstance().addRatSightingToDatabase(testSighting);
-        Log.d("sightings_database", "Pushed sighting");
+    public void onClickReportSightings(View view) {
+        Intent intent = new Intent(this, ReportSighting.class);
+        startActivity(intent);
     }
 
     /**
@@ -69,4 +70,5 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
     }
+
 }
