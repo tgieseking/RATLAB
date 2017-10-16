@@ -39,7 +39,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.gatech.cs2340.ratlab.controllers.SightingListActivity" />
         </activity>
-        <activity android:name=".ReportSighting" />
         <activity android:name=".MapFilter"></activity>
     </application>
 

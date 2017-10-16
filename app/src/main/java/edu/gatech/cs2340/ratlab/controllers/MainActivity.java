@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.ratlab.R;
-import edu.gatech.cs2340.ratlab.ReportSighting;
 import edu.gatech.cs2340.ratlab.model.Borough;
 import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
      * @param view button clicked to activate this method
      */
     public void onClickReportSightings(View view) {
-        Intent intent = new Intent(this, ReportSighting.class);
+        Intent intent = new Intent(this, ReportSightingActivity.class);
         startActivity(intent);
     }
 

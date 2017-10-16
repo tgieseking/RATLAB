@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="borough_names">
+        <item>BRONX</item>
+        <item>BROOKLYN</item>
+        <item>MANHATTAN</item>
+        <item>QUEENS</item>
+        <item>STATEN ISLAND</item>
+    </string-array>
+    <string-array name="city_names">
+        <item>Arverne</item>
+        <item>Astoria</item>
+        <item>Bayside</item>
+        <item>BEDSTUY</item>
+        <item>Bellarose</item>
+        <item>BRICKTOWN</item>
+        <item>BRONX</item>
+        <item>BROOKLYN</item>
+        <item>Cambria Heights</item>
+        <item>CENTRAL PARK</item>
+        <item>CLERMONT</item>
+        <item>College Point</item>
+        <item>Corona</item>
+        <item>EAST ELMHURST</item>
+        <item>Elmhurst</item>
+        <item>Far Rockaway</item>
+        <item>Floral Park</item>
+        <item>Flushing</item>
+        <item>Forest Hills</item>
+        <item>Fresh Meadows</item>
+        <item>GLEN OAKS</item>
+        <item>GLENDALE</item>
+        <item>Hollis</item>
+        <item>Howard Beach</item>
+        <item>Jackson Heights</item>
+        <item>Jamaica</item>
+        <item>Kew Gardens</item>
+        <item>Little Neck</item>
+        <item>Long Island City</item>
+        <item>MANHATTAN</item>
+        <item>Maspeth</item>
+        <item>Middle Village</item>
+        <item>New Hyde Park</item>
+        <item>NEW YORK</item>
+        <item>NEW YORK CITY</item>
+        <item>Oakland Gardens</item>
+        <item>Ozone Park</item>
+        <item>QUEENS</item>
+        <item>Queens Village</item>
+        <item>Rego Park</item>
+        <item>RICHMOND COUNTY</item>
+        <item>Richmond Hill</item>
+        <item>RIDGEWOOD</item>
+        <item>Rockaway Park</item>
+        <item>Rosedale</item>
+        <item>Saint Albans</item>
+        <item>South Ozone Park</item>
+        <item>South Richmond Hill</item>
+        <item>Springfield Gardens</item>
+        <item>STATEN ISLAND</item>
+        <item>Sunnyside</item>
+        <item>Whitestone</item>
+        <item>Woodhaven</item>
+        <item>Woodside</item>
+    </string-array>
+    <string-array name="location_types">
+        <item>3+ Family Mixed Use Building</item>
+        <item>Commercial Building</item>
+        <item>1-2 Family Dwelling</item>
+        <item>3+ Family Apt. Building</item>
+        <item>Public Stairs</item>
+        <item>Vacant Lot</item>
+        <item>Construction Site</item>
+        <item>Hospital</item>
+        <item>Parking Lot/Garage</item>
+        <item>Catch Basin/Sewer</item>
+        <item>Vacant Building</item>
+        <item>1-2 Family Mixed Use Building</item>
+        <item>Public Garden</item>
+        <item>Government Building</item>
+        <item>Office Building</item>
+        <item>School/Pre-School</item>
+        <item>Day Care/Nursery</item>
+        <item>Single Room Occupancy (SRO)</item>
+        <item>Summer Camp</item>
+    </string-array>
+</resources>
