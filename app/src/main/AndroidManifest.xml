@@ -29,7 +29,7 @@
         <activity
             android:name=".controllers.SightingListActivity"
             android:label="@string/title_sighting_list"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".controllers.SightingDetailActivity"
             android:label="@string/title_sighting_detail"
@@ -39,6 +39,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.gatech.cs2340.ratlab.controllers.SightingListActivity" />
         </activity>
+        <activity android:name=".ReportSighting"></activity>
     </application>
 
 </manifest>
