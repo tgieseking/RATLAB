@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="edu.gatech.cs2340.ratlab.MapFilter">
+
+    <TextView
+        android:id="@+id/startDateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Date:"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <TextView
+        android:id="@+id/endDateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Date:"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="86dp" />
+
+    <TextView
+        android:id="@+id/boroughView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borough:"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="169dp" />
+
+    <CheckBox
+        android:id="@+id/bronxBox"
+        android:layout_width="85dp"
+        android:layout_height="33dp"
+        android:text="Bronx"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="200dp" />
+
+    <CheckBox
+        android:id="@+id/brooklynBox"
+        android:layout_width="95dp"
+        android:layout_height="30dp"
+        android:text="Brooklyn"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="240dp" />
+
+    <CheckBox
+        android:id="@+id/queensBox"
+        android:layout_width="86dp"
+        android:layout_height="31dp"
+        android:text="Queens"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="275dp" />
+
+    <CheckBox
+        android:id="@+id/manhattenBox"
+        android:layout_width="104dp"
+        android:layout_height="33dp"
+        android:text="Manhattan"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="314dp" />
+
+    <CheckBox
+        android:id="@+id/statenIslandBox"
+        android:layout_width="125dp"
+        android:layout_height="32dp"
+        android:text="Staten Island"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="354dp" />
+
+    <Spinner
+        android:id="@+id/endMonthSpinner"
+        android:layout_width="86dp"
+        android:layout_height="23dp"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <Spinner
+        android:id="@+id/startMonthSpinner"
+        android:layout_width="86dp"
+        android:layout_height="23dp"
+        tools:layout_editor_absoluteX="26dp"
+        tools:layout_editor_absoluteY="43dp" />
+
+    <Spinner
+        android:id="@+id/startDaySpinner"
+        android:layout_width="30dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="44dp" />
+
+    <Spinner
+        android:id="@+id/endYearSpinner"
+        android:layout_width="68dp"
+        android:layout_height="23dp"
+        tools:layout_editor_absoluteX="187dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <Spinner
+        android:id="@+id/endDaySpinner"
+        android:layout_width="30dp"
+        android:layout_height="24dp"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="120dp" />
+
+    <Spinner
+        android:id="@+id/startYearSpinner"
+        android:layout_width="68dp"
+        android:layout_height="23dp"
+        tools:layout_editor_absoluteX="187dp"
+        tools:layout_editor_absoluteY="44dp" />
+
+    <Button
+        android:id="@+id/mapFilterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        tools:layout_editor_absoluteX="147dp"
+        tools:layout_editor_absoluteY="425dp" />
+</android.support.constraint.ConstraintLayout>
