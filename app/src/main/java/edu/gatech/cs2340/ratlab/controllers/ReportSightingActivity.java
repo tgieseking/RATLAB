@@ -9,7 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import edu.gatech.cs2340.ratlab.R;
@@ -65,20 +67,74 @@ public class ReportSightingActivity extends AppCompatActivity{
         EditText longitudeView = (EditText) findViewById(R.id.longitudeEditText);
         EditText latitudeView = (EditText) findViewById(R.id.latitudeEditText);
 
-        Date currentDate = new Date();
+        Date currentDate = Calendar.getInstance().getTime();
         LocationType locationType = LocationType.locationTypeFromTextName(locationSpinner.getSelectedItem().toString());
         String addressLine = addressView.getText().toString();
+        if (addressLine.length() == 0) {
+            Toast.makeText(this, "Address field cannot be empty",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         String zipCode = zipView.getText().toString();
+        if (zipCode.length() == 0) {
+            Toast.makeText(this, "Zip code field cannot be empty",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
         String city = citySpinner.getSelectedItem().toString();
         Borough borough = Borough.valueOf(boroughSpinner.getSelectedItem().toString());
-        Double longitude = Double.parseDouble(longitudeView.getText().toString());
-        Double latitude = Double.parseDouble(latitudeView.getText().toString());
+        Double latitude,longitude;
+        String latitudeString = latitudeView.getText().toString();
+        if (latitudeString.length() == 0) {
+            Toast.makeText(this, "latitude field cannot be empty",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            latitude = Double.parseDouble(latitudeString);
+        } catch (Exception e) {
+            Toast.makeText(this, "Could not parse latitude field",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (latitude <  -90.0 || latitude > 90.0) {
+            Toast.makeText(this, "latitude must be between -90 and 90",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        String longitudeString = longitudeView.getText().toString();
+        if (longitudeString.length() == 0) {
+            Toast.makeText(this, "longitude field cannot be empty",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        try {
+            longitude = Double.parseDouble(longitudeString);
+        } catch (Exception e) {
+            Toast.makeText(this, "Could not parse longitude field",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (longitude <  -180.0 || longitude > 180.0) {
+            Toast.makeText(this, "latitude must be between -90 and 90",
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
 
 
-        RatSighting newSighting = new RatSighting(null, "9/1/2017 4:30", locationType, addressLine,
+        RatSighting newSighting = new RatSighting(null, currentDate, locationType, addressLine,
                 zipCode, city, borough, latitude, longitude);
         SightingsManager.getInstance().addRatSightingToDatabase(newSighting);
 
+        finish();
+    }
+
+    /**
+     * Closes current activity for most recent activity on stack.
+     *
+     * @param view cancel button clicked
+     */
+    public void onClickCancel(View view) {
         finish();
     }
 }
