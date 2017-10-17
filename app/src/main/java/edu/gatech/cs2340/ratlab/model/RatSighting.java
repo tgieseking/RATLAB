@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class RatSighting implements Serializable{
+public class RatSighting {
     private String key;
     private Date createdDate;  // This maybe should be a java.util.Date
     private Location location;

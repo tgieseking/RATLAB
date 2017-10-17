@@ -24,7 +24,6 @@ public class ReportSightingActivity extends AppCompatActivity{
     Spinner locationSpinner;
     Spinner citySpinner;
     Spinner boroughSpinner;
-    RatSighting newSighting;
 
 
     @Override
@@ -51,21 +50,6 @@ public class ReportSightingActivity extends AppCompatActivity{
         boroughSpinner.setAdapter(boroughAdapter);
 
         Button createReportButton = (Button) findViewById(R.id.reportSubmitButton);
-        createReportButton.setOnClickListener(new View.OnClickListener() {
-            /**
-             * Packages rat sighting into Serializable, and passes it back to MainActivity
-             * @param view the create report button
-             */
-            public void onClick(View view) {
-                createSighting(getCurrentFocus());
-
-                Intent intent = new Intent();
-                intent.putExtra("ratSighting", newSighting);
-                setResult(RESULT_OK, intent);
-                finish();
-            }
-        });
-
     }
 
     /**
@@ -91,8 +75,10 @@ public class ReportSightingActivity extends AppCompatActivity{
         Double latitude = Double.parseDouble(latitudeView.getText().toString());
 
 
-        newSighting = new RatSighting("1", "9/1/2017 4:30", locationType, addressLine,
+        RatSighting newSighting = new RatSighting(null, "9/1/2017 4:30", locationType, addressLine,
                 zipCode, city, borough, latitude, longitude);
+        SightingsManager.getInstance().addRatSightingToDatabase(newSighting);
 
+        finish();
     }
 }

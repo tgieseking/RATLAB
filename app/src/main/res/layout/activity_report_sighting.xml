@@ -99,12 +99,13 @@
         android:id="@+id/reportSubmitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:onClick="createSighting"
         android:text="Submit"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="436dp"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        tools:layout_editor_absoluteY="436dp" />
 
     <EditText
         android:id="@+id/zipEditText"
