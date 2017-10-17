@@ -83,8 +83,9 @@ public class ReportSightingActivity extends AppCompatActivity{
     }
 
     /**
+     * Closes current activity for most recent activity on stack.
      *
-     * @param view
+     * @param view cancel button clicked
      */
     public void onClickCancel(View view) {
         finish();
