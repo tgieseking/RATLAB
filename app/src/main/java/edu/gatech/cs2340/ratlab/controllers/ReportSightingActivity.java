@@ -81,4 +81,12 @@ public class ReportSightingActivity extends AppCompatActivity{
 
         finish();
     }
+
+    /**
+     *
+     * @param view
+     */
+    public void onClickCancel(View view) {
+        finish();
+    }
 }

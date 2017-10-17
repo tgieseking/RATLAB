@@ -99,13 +99,13 @@
         android:id="@+id/reportSubmitButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:onClick="createSighting"
         android:text="Submit"
         tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="436dp" />
+        tools:layout_editor_absoluteY="436dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/longitudeView" />
 
     <EditText
         android:id="@+id/zipEditText"
@@ -162,6 +162,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/boroughView"
         android:layout_alignStart="@+id/latitudeView" />
+
+    <Button
+        android:id="@+id/cancelReportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/reportSubmitButton"
+        android:layout_marginStart="20dp"
+        android:layout_toEndOf="@+id/zipEditText"
+        android:onClick="onClickCancel"
+        android:text="Cancel" />
 
 </RelativeLayout>
 
