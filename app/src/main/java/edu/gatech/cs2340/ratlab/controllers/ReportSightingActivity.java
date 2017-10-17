@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import edu.gatech.cs2340.ratlab.R;
@@ -65,7 +66,7 @@ public class ReportSightingActivity extends AppCompatActivity{
         EditText longitudeView = (EditText) findViewById(R.id.longitudeEditText);
         EditText latitudeView = (EditText) findViewById(R.id.latitudeEditText);
 
-        Date currentDate = new Date();
+        Date currentDate = Calendar.getInstance().getTime();
         LocationType locationType = LocationType.locationTypeFromTextName(locationSpinner.getSelectedItem().toString());
         String addressLine = addressView.getText().toString();
         String zipCode = zipView.getText().toString();
@@ -75,7 +76,7 @@ public class ReportSightingActivity extends AppCompatActivity{
         Double latitude = Double.parseDouble(latitudeView.getText().toString());
 
 
-        RatSighting newSighting = new RatSighting(null, "9/1/2017 4:30", locationType, addressLine,
+        RatSighting newSighting = new RatSighting(null, currentDate, locationType, addressLine,
                 zipCode, city, borough, latitude, longitude);
         SightingsManager.getInstance().addRatSightingToDatabase(newSighting);
 
