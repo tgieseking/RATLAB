@@ -42,25 +42,41 @@ public class SightingsManager {
         sightingsListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
-                RatSighting sighting = createRatSighting(dataSnapshot);
-                ratSightings.put(sighting.getKey(), sighting);
+                try {
+                    RatSighting sighting = createRatSighting(dataSnapshot);
+                    ratSightings.put(sighting.getKey(), sighting);
+                } catch (Exception e) {
+                    Log.e("sightings_database", "Sighting add failed", e);
+                }
             }
 
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String previousChildName) {
-                RatSighting sighting = createRatSighting(dataSnapshot);
-                ratSightings.put(sighting.getKey(), sighting);
+                try {
+                    RatSighting sighting = createRatSighting(dataSnapshot);
+                    ratSightings.put(sighting.getKey(), sighting);
+                } catch (Exception e) {
+                    Log.e("sightings_database", "Sighting change failed", e);
+                }
             }
 
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-                ratSightings.remove(dataSnapshot.getKey());
+                try {
+                    ratSightings.remove(dataSnapshot.getKey());
+                } catch (Exception e) {
+                    Log.e("sightings_database", "Sighting removal failed", e);
+                }
             }
 
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String previousChildName) {
-                RatSighting sighting = createRatSighting(dataSnapshot);
-                ratSightings.put(sighting.getKey(), sighting);
+                try {
+                    RatSighting sighting = createRatSighting(dataSnapshot);
+                    ratSightings.put(sighting.getKey(), sighting);
+                } catch (Exception e) {
+                    Log.e("sightings_database", "Sighting move failed", e);
+                }
             }
 
             @Override
@@ -71,28 +87,21 @@ public class SightingsManager {
             private RatSighting createRatSighting(DataSnapshot dataSnapshot) {
                 Log.d("sightings_database", "Starting to create RatSighting");
                 String key = dataSnapshot.getKey();
-                String createdDate = (String) dataSnapshot.child("createdDate").getValue();
-                String locationTypeString = (String) dataSnapshot.child("locationType").getValue();
+                String createdDate = dataSnapshot.child("createdDate").getValue(String.class);
+                String locationTypeString = dataSnapshot.child("locationType").getValue(String.class);
                 LocationType locationType = LocationType.locationTypeFromTextName(locationTypeString);
-                String address = (String) dataSnapshot.child("address").getValue();
-                String zipCode = (String) dataSnapshot.child("zipCode").getValue();
-                String city = (String) dataSnapshot.child("city").getValue();
-                Borough borough = Borough.valueOf((String) dataSnapshot.child("borough").getValue());
+                String address = dataSnapshot.child("address").getValue(String.class);
+                String zipCode = dataSnapshot.child("zipCode").getValue(String.class);
+                String city = dataSnapshot.child("city").getValue(String.class);
+                String boroughString = dataSnapshot.child("borough").getValue(String.class);
+                Borough borough = Borough.valueOf(boroughString);
                 double latitude,longitude;
-                try {
-                    latitude = (double) dataSnapshot.child("latitude").getValue();
-                    longitude = (double) dataSnapshot.child("longitude").getValue();
-                } catch (Exception e) {
-                    Long latitudeLong = (long) dataSnapshot.child("latitude").getValue();
-                    Long longitudeLong = (long) dataSnapshot.child("longitude").getValue();
-                    latitude = latitudeLong.doubleValue();
-                    longitude = longitudeLong.doubleValue();
-                }
+                latitude = dataSnapshot.child("latitude").getValue(Double.class);
+                longitude = dataSnapshot.child("longitude").getValue(Double.class);
                 RatSighting sighting = new RatSighting(key, createdDate, locationType, address, zipCode, city,
                         borough, latitude, longitude);
                 Log.d("sightings_database", "Added new Ratsighting from database to model: " + sighting);
                 return sighting;
-
             }
         };
         sightingsReference.addChildEventListener(sightingsListener);
