@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.ratlab.model;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable{
     private String addressLine;
     private String city;
     private String state;

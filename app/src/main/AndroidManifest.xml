@@ -26,6 +26,7 @@
             android:label="@string/title_activity_login" />
         <activity android:name=".controllers.MainActivity" />
         <activity android:name=".controllers.RegistrationActivity" />
+        <activity android:name=".controllers.ReportSightingActivity"/>
         <activity
             android:name=".controllers.SightingListActivity"
             android:label="@string/title_sighting_list"
@@ -40,6 +41,7 @@
                 android:value="edu.gatech.cs2340.ratlab.controllers.SightingListActivity" />
         </activity>
         <activity android:name=".MapFilter"></activity>
+
     </application>
 
 </manifest>

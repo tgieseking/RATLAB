@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.ratlab.model;
 
-public class Location {
+import java.io.Serializable;
+
+public class Location implements Serializable{
     private double latitude;
     private double longitude;
     private Address address;

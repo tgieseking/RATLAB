@@ -1,10 +1,12 @@
 package edu.gatech.cs2340.ratlab.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Timothy on 10/15/2017.
  */
 
-public enum LocationType {
+public enum LocationType implements Serializable{
     THREE_PLUS_FAMILY_MIXED_USE_BUILDING("3+ Family Mixed Use Building"),
     COMMERCIAL_BUILDING("Commercial Building"),
     ONE_TO_TWO_FAMILY_DWELLING("1-2 Family Dwelling"),

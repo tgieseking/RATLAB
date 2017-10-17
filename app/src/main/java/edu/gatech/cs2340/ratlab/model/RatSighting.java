@@ -2,12 +2,13 @@ package edu.gatech.cs2340.ratlab.model;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class RatSighting {
+public class RatSighting implements Serializable{
     private String key;
     private Date createdDate;  // This maybe should be a java.util.Date
     private Location location;
@@ -127,4 +128,7 @@ public class RatSighting {
     public int hashCode() {
         return key.hashCode();
     }
+
+
+
 }

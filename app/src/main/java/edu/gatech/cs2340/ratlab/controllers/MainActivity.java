@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private UserManager userManager;
     private SightingsManager sightingsManager;
 
+    private static final int REPORT_ACTIVITY_RESULT_CODE = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,26 @@ public class MainActivity extends AppCompatActivity {
      */
     public void onClickReportSightings(View view) {
         Intent intent = new Intent(this, ReportSightingActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REPORT_ACTIVITY_RESULT_CODE);
+    }
+
+    /**
+     * Pass in rat sighting data when ReportSightingActivity is finished
+     * @param requestCode the status of the request
+     * @param resultCode the status of the result
+     * @param data the data containing the rat sighting
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // check that it is the ReportSightingActivity with an OK result
+        if (requestCode == REPORT_ACTIVITY_RESULT_CODE) {
+            if (resultCode == RESULT_OK) {
+                RatSighting newSighting = (RatSighting) getIntent().getSerializableExtra("ratSighting");
+                sightingsManager.addRatSightingToDatabase(newSighting);
+            }
+        }
     }
 
     /**

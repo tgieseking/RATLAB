@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.ratlab.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ButtonBarLayout;
@@ -9,14 +10,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.Date;
+
 import edu.gatech.cs2340.ratlab.R;
+import edu.gatech.cs2340.ratlab.model.Borough;
 import edu.gatech.cs2340.ratlab.model.Location;
 import edu.gatech.cs2340.ratlab.model.LocationType;
+import edu.gatech.cs2340.ratlab.model.RatSighting;
+import edu.gatech.cs2340.ratlab.model.SightingsManager;
+
 
 public class ReportSightingActivity extends AppCompatActivity{
     Spinner locationSpinner;
     Spinner citySpinner;
     Spinner boroughSpinner;
+    RatSighting newSighting;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,22 +52,47 @@ public class ReportSightingActivity extends AppCompatActivity{
 
         Button createReportButton = (Button) findViewById(R.id.reportSubmitButton);
         createReportButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * Packages rat sighting into Serializable, and passes it back to MainActivity
+             * @param view the create report button
+             */
             public void onClick(View view) {
                 createSighting(getCurrentFocus());
+
+                Intent intent = new Intent();
+                intent.putExtra("ratSighting", newSighting);
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
 
     }
 
+    /**
+     * Creates a new rat sighting from the input
+     * @param view the current view
+     */
     public void createSighting(View view) {
         locationSpinner = (Spinner) findViewById(R.id.locationTypeSpinner);
         citySpinner = (Spinner) findViewById(R.id.citySpinner);
         boroughSpinner = (Spinner) findViewById(R.id.boroughSpinner);
-        EditText addressEditText = (EditText) findViewById(R.id.addressEditText);
-        EditText zipEditText = (EditText) findViewById(R.id.zipEditText);
-        EditText longitudeEditText = (EditText) findViewById(R.id.longitudeEditText);
-        EditText latitudeEditText = (EditText) findViewById(R.id.latitudeEditText);
+        EditText addressView = (EditText) findViewById(R.id.addressEditText);
+        EditText zipView = (EditText) findViewById(R.id.zipEditText);
+        EditText longitudeView = (EditText) findViewById(R.id.longitudeEditText);
+        EditText latitudeView = (EditText) findViewById(R.id.latitudeEditText);
 
+        Date currentDate = new Date();
+        LocationType locationType = LocationType.locationTypeFromTextName(locationSpinner.getSelectedItem().toString());
+        String addressLine = addressView.getText().toString();
+        String zipCode = zipView.getText().toString();
+        String city = citySpinner.getSelectedItem().toString();
+        Borough borough = Borough.valueOf(boroughSpinner.getSelectedItem().toString());
+        Double longitude = Double.parseDouble(longitudeView.getText().toString());
+        Double latitude = Double.parseDouble(latitudeView.getText().toString());
+
+
+        newSighting = new RatSighting("1", "9/1/2017 4:30", locationType, addressLine,
+                zipCode, city, borough, latitude, longitude);
 
     }
 }

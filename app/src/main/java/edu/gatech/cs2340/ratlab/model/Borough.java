@@ -1,6 +1,8 @@
 package edu.gatech.cs2340.ratlab.model;
 
-public enum Borough {
+import java.io.Serializable;
+
+public enum Borough implements Serializable{
     BRONX ("Bronx"),
     BROOKLYN ("Brooklyn"),
     MANHATTAN ("Manhattan"),
