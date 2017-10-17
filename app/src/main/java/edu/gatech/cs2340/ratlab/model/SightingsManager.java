@@ -78,8 +78,16 @@ public class SightingsManager {
                 String zipCode = (String) dataSnapshot.child("zipCode").getValue();
                 String city = (String) dataSnapshot.child("city").getValue();
                 Borough borough = Borough.valueOf((String) dataSnapshot.child("borough").getValue());
-                double latitude = (double) dataSnapshot.child("latitude").getValue();
-                double longitude = (double) dataSnapshot.child("longitude").getValue();
+                double latitude,longitude;
+                try {
+                    latitude = (double) dataSnapshot.child("latitude").getValue();
+                    longitude = (double) dataSnapshot.child("longitude").getValue();
+                } catch (Exception e) {
+                    Long latitudeLong = (long) dataSnapshot.child("latitude").getValue();
+                    Long longitudeLong = (long) dataSnapshot.child("longitude").getValue();
+                    latitude = latitudeLong.doubleValue();
+                    longitude = longitudeLong.doubleValue();
+                }
                 RatSighting sighting = new RatSighting(key, createdDate, locationType, address, zipCode, city,
                         borough, latitude, longitude);
                 Log.d("sightings_database", "Added new Ratsighting from database to model: " + sighting);
