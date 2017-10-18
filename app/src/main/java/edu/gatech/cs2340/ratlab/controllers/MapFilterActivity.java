@@ -1,9 +1,11 @@
-package edu.gatech.cs2340.ratlab;
+package edu.gatech.cs2340.ratlab.controllers;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MapFilter extends AppCompatActivity {
+import edu.gatech.cs2340.ratlab.R;
+
+public class MapFilterActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
