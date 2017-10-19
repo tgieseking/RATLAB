@@ -45,5 +45,6 @@
 
     <string name="title_sighting_list">Sightings</string>
     <string name="title_sighting_detail">Sighting Detail</string>
+    <string name="title_activity_maps">Map</string>
 
 </resources>
