@@ -14,10 +14,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 import edu.gatech.cs2340.ratlab.R;
 
@@ -191,5 +195,53 @@ public class SightingsManager {
      */
     public RatSighting getSightingByKey(String key) {
         return ratSightings.get(key);
+    }
+
+    /**
+     * Gets all rat sightings filtered by a date range, borough, and location type.
+     *
+     * @param startDate the start of the date range
+     * @param endDate tne end of the date range
+     * @param boroughs the list of boroughs which will be included
+     * @param locationTypes the list of location types which will be included
+     * @return a set of rat sightings which meet all criteria
+     */
+    public Set<RatSighting> filterRatSightings(Date startDate, Date endDate, Set<Borough> boroughs,
+                                               Set<LocationType> locationTypes) {
+        Set<RatSighting> filteredSightings = new HashSet<>();
+        for (RatSighting sighting : ratSightings.values()) {
+            if (sighting.getCreatedDate().compareTo(startDate) >= 0
+                    && sighting.getCreatedDate().compareTo(endDate) <= 0
+                    && boroughs.contains(sighting.getBorough())
+                    && locationTypes.contains(sighting.getLocationType())) {
+                filteredSightings.add(sighting);
+            }
+        }
+        return filteredSightings;
+    }
+
+    /**
+     * Gets a set of rat sightings filtered by a date range, borough, and location type. If the
+     * total number of sightings that meet all criteria is at most maxSightings, all sightings are
+     * included. Otherwise, a random subset of size maxSightings is returned.
+     *
+     * @param startDate the start of the date range
+     * @param endDate tne end of the date range
+     * @param boroughs the list of boroughs which will be included
+     * @param maxSightings the maximum size of the returned set
+     * @return a set of rat sightings which meet all criteria of size at most maxSightings
+     */
+    public Set<RatSighting> filterRatSightings(Date startDate, Date endDate, Set<Borough> boroughs,
+                                               Set<LocationType> locationTypes, int maxSightings) {
+        Set<RatSighting> filteredSightings = filterRatSightings(startDate, endDate, boroughs,
+                locationTypes);
+        if (filteredSightings.size() <= maxSightings) {
+            return filteredSightings;
+        } else {
+            List<RatSighting> filteredSightingsList = new LinkedList<>(filteredSightings);
+            Collections.shuffle(filteredSightingsList);
+            Set<RatSighting> subset = new HashSet<>(filteredSightingsList.subList(0, maxSightings));
+            return subset;
+        }
     }
 }
