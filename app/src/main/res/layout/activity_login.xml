@@ -71,6 +71,14 @@
                 android:text="@string/action_sign_in" />
 
             <Button
+                android:id="@+id/resetPasswordButton"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="goToForgotPassword"
+                android:text="RESET PASSWORD" />
+
+            <Button
                 android:id="@+id/back_button"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"

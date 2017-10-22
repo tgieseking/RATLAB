@@ -91,5 +91,10 @@ public class LoginActivity extends AppCompatActivity{
     public void goBack(View view) {
         finish();
     }
+
+    public void goToForgotPassword(View view) {
+        Intent intent = new Intent(this, ForgotPasswordActivity.class);
+        startActivity(intent);
+    }
 }
 
