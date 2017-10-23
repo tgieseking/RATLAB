@@ -122,4 +122,9 @@ public class MainActivity extends AppCompatActivity {
         Log.d("filter_test", "" + filteredSightings.size());
     }
 
+    public void onClickMapDisplay(View view) {
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -34,7 +34,7 @@
             style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="320dp"
             android:layout_height="wrap_content"
-            android:onClick="filterTest"
+            android:onClick="onClickMapDisplay"
             android:text="Map Display" />
 
         <Button
