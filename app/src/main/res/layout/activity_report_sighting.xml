@@ -116,7 +116,7 @@
         tools:layout_editor_absoluteX="243dp"
         tools:layout_editor_absoluteY="206dp"
         android:layout_below="@+id/zipView"
-        android:layout_alignStart="@+id/reportSubmitButton" />
+        android:layout_alignStart="@+id/zipView" />
 
     <EditText
         android:id="@+id/longitudeEditText"
