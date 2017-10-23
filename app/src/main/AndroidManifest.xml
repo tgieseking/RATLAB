@@ -64,7 +64,7 @@
         <activity
             android:name=".controllers.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".controllers.ForgotPasswordActivity"></activity>
+        <activity android:name=".controllers.ForgotPasswordActivity" />
     </application>
 
 </manifest>
