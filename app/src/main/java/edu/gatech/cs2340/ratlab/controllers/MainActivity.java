@@ -122,9 +122,15 @@ public class MainActivity extends AppCompatActivity {
         Log.d("filter_test", "" + filteredSightings.size());
     }
 
+    /**
+     * Changes the current activity to display the map filter display
+     * when the map display button is pressed.
+     *
+     * @param view map display button
+     */
     public void onClickMapDisplay(View view) {
         if (sightingsManager.isLoadingHistoricalDataComplete()) {
-            Intent intent = new Intent(this, MapsActivity.class);
+            Intent intent = new Intent(this, MapFilterActivity.class);
             startActivity(intent);
         } else {
             Toast.makeText(MainActivity.this, "Historical data is still loading",
