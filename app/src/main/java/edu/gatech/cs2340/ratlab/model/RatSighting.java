@@ -2,13 +2,16 @@ package edu.gatech.cs2340.ratlab.model;
 
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+import com.google.maps.android.clustering.ClusterItem;
+
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class RatSighting {
+public class RatSighting implements ClusterItem {
     private String key;
     private Date createdDate;  // This maybe should be a java.util.Date
     private Location location;
@@ -129,6 +132,20 @@ public class RatSighting {
         return key.hashCode();
     }
 
+    @Override
+    public LatLng getPosition() {
+        return new LatLng(getLocation().getLatitude(), getLocation().getLongitude());
+    }
+
+    @Override
+    public String getTitle() {
+        return key;
+    }
+
+    @Override
+    public String getSnippet() {
+        return getCreatedDateString();
+    }
 
 
 }
