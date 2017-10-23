@@ -173,7 +173,7 @@ public class SightingsManager {
     }
 
     /** Converts the ratSightings HashMap into a list of sightings. The sightings are ordered
-     * newest to oldest.
+     * newest to oldest. The historical data needs to be loaded before this method is called.
      *
      * @return a list  of the sightings
      */
@@ -198,7 +198,8 @@ public class SightingsManager {
     }
 
     /**
-     * Gets all rat sightings filtered by a date range, borough, and location type.
+     * Gets all rat sightings filtered by a date range, borough, and location type. The historical
+     * data needs to be loaded before this method is called.
      *
      * @param startDate the start of the date range
      * @param endDate tne end of the date range
@@ -223,7 +224,8 @@ public class SightingsManager {
     /**
      * Gets a set of rat sightings filtered by a date range, borough, and location type. If the
      * total number of sightings that meet all criteria is at most maxSightings, all sightings are
-     * included. Otherwise, a random subset of size maxSightings is returned.
+     * included. Otherwise, a random subset of size maxSightings is returned. The historical data
+     * needs to be loaded before this method is called.
      *
      * @param startDate the start of the date range
      * @param endDate tne end of the date range
