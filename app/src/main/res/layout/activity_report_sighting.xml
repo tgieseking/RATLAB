@@ -57,10 +57,8 @@
         android:text="Zip Code:"
         tools:layout_editor_absoluteX="172dp"
         tools:layout_editor_absoluteY="206dp"
-        android:layout_alignBaseline="@+id/cityView"
-        android:layout_alignBottom="@+id/cityView"
-        android:layout_alignEnd="@+id/addressEditText"
-        android:layout_marginEnd="21dp" />
+        android:layout_above="@+id/boroughView"
+        android:layout_toEndOf="@+id/addressEditText" />
 
     <TextView
         android:id="@+id/boroughView"
@@ -146,8 +144,8 @@
         android:id="@+id/citySpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/cityView"
-        android:layout_below="@+id/cityView" />
+        android:layout_below="@+id/cityView"
+        android:layout_alignStart="@+id/cityView" />
 
     <Spinner
         android:id="@+id/locationTypeSpinner"
