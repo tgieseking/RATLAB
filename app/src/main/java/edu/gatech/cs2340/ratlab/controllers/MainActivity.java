@@ -123,8 +123,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickMapDisplay(View view) {
-        Intent intent = new Intent(this, MapsActivity.class);
-        startActivity(intent);
+        if (sightingsManager.isLoadingHistoricalDataComplete()) {
+            Intent intent = new Intent(this, MapsActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(MainActivity.this, "Historical data is still loading",
+                    Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
