@@ -29,6 +29,7 @@ import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -68,9 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
      * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
+     *
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -90,6 +89,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    /**
+     * Creates the marker on the map based on the given parameters
+     * @param latitude the latitude of the marker
+     * @param longitude the longitude value of the marker
+     * @param title the main text for the marker
+     * @param snippet the secondary text for the marker
+     * @return calls the method addMarker() to add it to the map
+     */
     private Marker createMarker(double latitude, double longitude, String title, String snippet) {
         return mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(latitude, longitude))
