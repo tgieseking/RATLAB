@@ -165,11 +165,10 @@
         android:id="@+id/cancelReportButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/reportSubmitButton"
-        android:layout_marginStart="20dp"
-        android:layout_toEndOf="@+id/zipEditText"
         android:onClick="onClickCancel"
-        android:text="Cancel" />
+        android:text="Cancel"
+        android:layout_below="@+id/longitudeEditText"
+        android:layout_alignEnd="@+id/zipView" />
 
 </RelativeLayout>
 
