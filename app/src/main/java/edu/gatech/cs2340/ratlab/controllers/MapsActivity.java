@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.ratlab.controllers;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,7 @@ import com.google.maps.android.clustering.ClusterManager;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
@@ -38,20 +40,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+        Intent startIntent = getIntent();
 
-
-        Set<Borough> boroughs = new HashSet<>(Arrays.asList(Borough.values()));
-        Set<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
-        String format = "M/d/yyyy H:mm";
-        DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
-        Date startDate = new Date();
-        Date endDate = new Date();
-        try {
-            startDate = dateFormat.parse("8/23/2016 0:00");
-            endDate = dateFormat.parse("8/25/2017 0:00");
-        } catch (Exception e) {
-            Log.e("filter_test", "parse error", e);
+        Log.d("parcel_test", "1");
+        Set<Borough> boroughs = new HashSet<>();
+        if (startIntent.getBooleanExtra("bronx", false)) {
+            boroughs.add(Borough.BRONX);
         }
+        if (startIntent.getBooleanExtra("brooklyn", false)) {
+            boroughs.add(Borough.BROOKLYN);
+        }
+        if (startIntent.getBooleanExtra("queens", false)) {
+            boroughs.add(Borough.QUEENS);
+        }
+        if (startIntent.getBooleanExtra("manhattan", false)) {
+            boroughs.add(Borough.MANHATTAN);
+        }
+        if (startIntent.getBooleanExtra("staten_island", false)) {
+            boroughs.add(Borough.STATEN_ISLAND);
+        }
+        Log.d("parcel_test", "2");
+
+        Date startDate = new Date(startIntent.getLongExtra("start_date", 0));
+        Date endDate = new Date(startIntent.getLongExtra("end_date", 0));
+
+        Log.d("parcel_test", "3");
+
+        Set<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
 
         sightingsList = SightingsManager.getInstance()
                 .filterRatSightings(startDate, endDate, boroughs, locationTypes, 1000);

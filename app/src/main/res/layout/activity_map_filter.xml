@@ -49,7 +49,7 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/manhattenBox"
+        app:layout_constraintBottom_toBottomOf="@+id/manhattanBox"
         android:layout_marginEnd="1dp"
         app:layout_constraintRight_toRightOf="@+id/queensBox"
         android:layout_marginTop="114dp"
@@ -82,7 +82,7 @@
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/manhattenBox"
+        app:layout_constraintBottom_toBottomOf="@+id/manhattanBox"
         app:layout_constraintRight_toRightOf="@+id/brooklynBox"
         android:layout_marginTop="42dp"
         app:layout_constraintTop_toBottomOf="@+id/bronxBox"
@@ -91,7 +91,7 @@
         app:layout_constraintLeft_toLeftOf="@+id/brooklynBox" />
 
     <CheckBox
-        android:id="@+id/manhattenBox"
+        android:id="@+id/manhattanBox"
         android:layout_width="0dp"
         android:layout_height="33dp"
         android:text="Manhattan"
