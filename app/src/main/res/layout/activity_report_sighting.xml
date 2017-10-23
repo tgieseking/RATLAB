@@ -108,7 +108,7 @@
     <EditText
         android:id="@+id/zipEditText"
         android:layout_width="97dp"
-        android:layout_height="25dp"
+        android:layout_height="50dp"
         android:ems="10"
         android:inputType="number"
         tools:layout_editor_absoluteX="243dp"
