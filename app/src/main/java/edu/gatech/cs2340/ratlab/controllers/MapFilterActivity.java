@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
-
+import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.Spinner;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,17 +27,31 @@ public class MapFilterActivity extends AppCompatActivity {
     public void onClickFilter(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
 
-        //TODO: replace this once the date selector is put in
+        DatePicker startDatePicker = (DatePicker) findViewById(R.id.startDatePicker);
+        DatePicker endDatePicker = (DatePicker) findViewById(R.id.endDatePicker);
+
+        int startDay = startDatePicker.getDayOfMonth();
+        int startMonth = startDatePicker.getMonth() + 1;
+        int startYear = startDatePicker.getYear();
+        int endDay = startDatePicker.getDayOfMonth();
+        int endMonth = startDatePicker.getMonth() + 1;
+        int endYear = startDatePicker.getYear();
+
         String format = "M/d/yyyy H:mm";
         DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
         Date startDate = new Date();
         Date endDate = new Date();
+        String start = startMonth + "/" + startDay + "/" + startYear + " 0:00";
+        String end = endMonth + "/" + endDay + "/" + endYear + " 0:00";
+
+        //not sure if this needs to be a try catch but it was so I'm gonna leave it that way
         try {
-            startDate = dateFormat.parse("8/23/2017 0:00");
-            endDate = dateFormat.parse("8/25/2017 0:00");
+            startDate = dateFormat.parse(start);
+            endDate = dateFormat.parse(end);
         } catch (Exception e) {
             Log.e("filter_test", "parse error", e);
         }
+
         intent.putExtra("start_date", startDate.getTime());
         intent.putExtra("end_date", endDate.getTime());
 
