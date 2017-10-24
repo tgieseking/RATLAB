@@ -35,65 +35,45 @@
         android:id="@+id/boroughView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Borough:"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/bronxBox"
+        android:text="Borough: "
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/endDatePicker"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="18dp"
-        app:layout_constraintLeft_toLeftOf="@+id/bronxBox"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/endDatePicker" />
+        app:layout_constraintLeft_toLeftOf="@+id/endDatePicker" />
 
     <CheckBox
         android:id="@+id/bronxBox"
-        android:layout_width="0dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Bronx"
-        android:layout_marginStart="10dp"
         tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="@+id/brooklynBox"
-        android:layout_marginEnd="12dp"
-        app:layout_constraintRight_toRightOf="@+id/brooklynBox"
-        android:layout_marginTop="31dp"
-        app:layout_constraintTop_toBottomOf="@+id/endDatePicker"
+        android:layout_marginTop="11dp"
+        app:layout_constraintTop_toBottomOf="@+id/boroughView"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="@+id/endDatePicker"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintLeft_toLeftOf="@+id/boroughView" />
 
     <CheckBox
         android:id="@+id/brooklynBox"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Brooklyn"
-        app:layout_constraintRight_toLeftOf="@+id/mapFilterButton"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        android:layout_marginStart="26dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginEnd="26dp"
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toBottomOf="@+id/bronxBox"
         tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginBottom="103dp" />
+        app:layout_constraintLeft_toLeftOf="@+id/bronxBox" />
 
     <CheckBox
         android:id="@+id/queensBox"
-        android:layout_width="0dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Queens"
         tools:layout_constraintTop_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="@+id/brooklynBox"
         app:layout_constraintTop_toBottomOf="@+id/brooklynBox"
         tools:layout_constraintLeft_creator="1"
-        android:layout_marginBottom="73dp"
-        app:layout_constraintLeft_toLeftOf="@+id/brooklynBox"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintLeft_toLeftOf="@+id/brooklynBox" />
+
 
     <CheckBox
         android:id="@+id/manhattanBox"

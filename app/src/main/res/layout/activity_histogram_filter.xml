@@ -17,7 +17,7 @@
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp" />
+        android:layout_marginLeft="26dp" />
 
     <Button
         android:id="@+id/mapFilterButton2"
@@ -37,75 +37,106 @@
         android:datePickerMode="spinner"
         android:calendarViewShown="false"
         android:id="@+id/startDatePicker"
-        android:layout_width="246dp"
+        android:layout_width="0dp"
         android:layout_height="120dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:layout_marginTop="-17dp"
-        app:layout_constraintTop_toBottomOf="@+id/startDateView" />
+        app:layout_constraintTop_toBottomOf="@+id/startDateView"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/endDatePicker"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/endDatePicker" />
 
     <DatePicker
         android:datePickerMode="spinner"
         android:calendarViewShown="false"
         android:id="@+id/endDatePicker"
-        android:layout_width="246dp"
+        android:layout_width="0dp"
         android:layout_height="120dp"
-        tools:layout_editor_absoluteX="16dp"
         android:layout_marginTop="14dp"
-        app:layout_constraintTop_toBottomOf="@+id/startDatePicker" />
+        app:layout_constraintTop_toBottomOf="@+id/startDatePicker"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintRight_toRightOf="@+id/checkBox4"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
         android:id="@+id/startDateView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start Date:"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="16dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/startDatePicker"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/boroughTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Borough: "
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="294dp" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintTop_toBottomOf="@+id/endDatePicker"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/endDatePicker" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bronx"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="322dp" />
+        tools:layout_constraintTop_creator="1"
+        android:layout_marginTop="11dp"
+        app:layout_constraintTop_toBottomOf="@+id/boroughTextView"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/boroughTextView" />
 
     <CheckBox
         android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Brooklyn"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="354dp" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/checkBox" />
 
     <CheckBox
         android:id="@+id/checkBox3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Queens"
-        tools:layout_editor_absoluteX="26dp"
-        tools:layout_editor_absoluteY="386dp" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox2"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/checkBox2" />
 
     <CheckBox
         android:id="@+id/checkBox4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Staten Island"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="336dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/checkBox3"
+        android:layout_marginTop="49dp"
+        app:layout_constraintTop_toBottomOf="@+id/endDatePicker"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintLeft_toLeftOf="@+id/mapFilterButton2" />
 
     <CheckBox
         android:id="@+id/checkBox5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Manhattan"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="368dp" />
+        tools:layout_constraintTop_creator="1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox4"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/checkBox4" />
 </android.support.constraint.ConstraintLayout>

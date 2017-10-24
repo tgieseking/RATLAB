@@ -138,4 +138,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void onClickHistoricalGraph(View view) {
+        Intent intent = new Intent(this, HistogramFilterActivity.class);
+        startActivity(intent);
+    }
+
 }
