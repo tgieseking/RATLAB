@@ -29,7 +29,7 @@
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginLeft="16dp" />
+        android:layout_marginLeft="26dp" />
 
     <TextView
         android:id="@+id/boroughView"
@@ -41,18 +41,27 @@
         tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="18dp"
         app:layout_constraintLeft_toLeftOf="@+id/bronxBox"
-        android:layout_marginLeft="0dp"
         android:layout_marginTop="8dp"
         app:layout_constraintTop_toBottomOf="@+id/endDatePicker" />
 
     <CheckBox
         android:id="@+id/bronxBox"
-        android:layout_width="77dp"
-        android:layout_height="33dp"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
         android:text="Bronx"
-        android:layout_marginEnd="1dp"
-        tools:layout_editor_absoluteY="333dp"
-        tools:layout_editor_absoluteX="26dp" />
+        android:layout_marginStart="10dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/brooklynBox"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintRight_toRightOf="@+id/brooklynBox"
+        android:layout_marginTop="31dp"
+        app:layout_constraintTop_toBottomOf="@+id/endDatePicker"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/endDatePicker"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/brooklynBox"
@@ -67,16 +76,24 @@
         android:layout_marginEnd="26dp"
         tools:layout_constraintLeft_creator="1"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.76" />
+        android:layout_marginBottom="103dp" />
 
     <CheckBox
         android:id="@+id/queensBox"
-        android:layout_width="88dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:text="Queens"
-        tools:layout_editor_absoluteY="396dp"
-        tools:layout_editor_absoluteX="26dp" />
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/brooklynBox"
+        app:layout_constraintTop_toBottomOf="@+id/brooklynBox"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintLeft_toLeftOf="@+id/brooklynBox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0" />
 
     <CheckBox
         android:id="@+id/manhattanBox"
@@ -85,17 +102,26 @@
         android:text="Manhattan"
         app:layout_constraintLeft_toRightOf="@+id/brooklynBox"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/statenIslandBox" />
+        app:layout_constraintTop_toBottomOf="@+id/statenIslandBox"
+        android:layout_marginStart="25dp" />
 
     <CheckBox
         android:id="@+id/statenIslandBox"
-        android:layout_width="125dp"
+        android:layout_width="0dp"
         android:layout_height="32dp"
         android:text="Staten Island"
-        android:layout_marginStart="26dp"
-        tools:layout_editor_absoluteY="346dp"
-        tools:layout_editor_absoluteX="148dp" />
+        android:layout_marginStart="1dp"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/brooklynBox"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintRight_toRightOf="@+id/manhattanBox"
+        android:layout_marginTop="12dp"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="18dp"
+        app:layout_constraintLeft_toLeftOf="@+id/manhattanBox"
+        app:layout_constraintTop_toTopOf="@+id/bronxBox" />
 
     <Button
         android:id="@+id/mapFilterButton"
@@ -117,17 +143,24 @@
         android:id="@+id/startDatePicker"
         android:layout_width="246dp"
         android:layout_height="120dp"
-        tools:layout_editor_absoluteX="18dp"
-        android:layout_marginTop="-1dp"
-        app:layout_constraintTop_toBottomOf="@+id/startDateView" />
+        app:layout_constraintTop_toBottomOf="@+id/startDateView"
+        android:layout_marginStart="18dp"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent" />
 
     <DatePicker
         android:datePickerMode="spinner"
         android:calendarViewShown="false"
         android:id="@+id/endDatePicker"
-        android:layout_width="246dp"
+        android:layout_width="0dp"
         android:layout_height="120dp"
-        tools:layout_editor_absoluteX="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@+id/startDatePicker" />
+        android:layout_marginTop="42dp"
+        app:layout_constraintTop_toBottomOf="@+id/startDatePicker"
+        tools:layout_constraintRight_creator="1"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="11dp"
+        app:layout_constraintRight_toRightOf="@+id/statenIslandBox"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.448" />
 </android.support.constraint.ConstraintLayout>
