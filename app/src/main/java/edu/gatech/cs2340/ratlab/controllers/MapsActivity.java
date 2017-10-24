@@ -12,14 +12,17 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
@@ -30,7 +33,8 @@ import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback ,
+        ClusterManager.OnClusterItemInfoWindowClickListener<RatSighting> {
 
     private GoogleMap map;
     private Set<RatSighting> sightingsList;
@@ -46,18 +50,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Set<Borough> boroughs = new HashSet<>();
         if (startIntent.getBooleanExtra("bronx", false)) {
             boroughs.add(Borough.BRONX);
+            Log.d("filters", "bronx");
         }
         if (startIntent.getBooleanExtra("brooklyn", false)) {
             boroughs.add(Borough.BROOKLYN);
+            Log.d("filters", "brooklyn");
         }
         if (startIntent.getBooleanExtra("queens", false)) {
             boroughs.add(Borough.QUEENS);
+            Log.d("filters", "queens");
         }
         if (startIntent.getBooleanExtra("manhattan", false)) {
             boroughs.add(Borough.MANHATTAN);
+            Log.d("filters", "manhattan");
         }
         if (startIntent.getBooleanExtra("staten_island", false)) {
             boroughs.add(Borough.STATEN_ISLAND);
+            Log.d("filters", "staten_island");
         }
         Log.d("parcel_test", "2");
 
@@ -103,6 +112,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.730610, -73.935242), 10));
+        map.setOnInfoWindowClickListener(clusterManager);
+        clusterManager.setOnClusterItemInfoWindowClickListener(this);
+    }
 
+    public void onClusterItemInfoWindowClick(RatSighting sighting) {
+        String key = sighting.getKey();
+        Intent intent = new Intent(this, SightingDetailActivity.class);
+        intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID, key);
+        startActivity(intent);
     }
 }
