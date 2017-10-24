@@ -31,11 +31,11 @@ public class MapFilterActivity extends AppCompatActivity {
         DatePicker endDatePicker = (DatePicker) findViewById(R.id.endDatePicker);
 
         int startDay = startDatePicker.getDayOfMonth();
-        int startMonth = startDatePicker.getMonth() + 1;
+        int startMonth = endDatePicker.getMonth() + 1;
         int startYear = startDatePicker.getYear();
-        int endDay = startDatePicker.getDayOfMonth();
+        int endDay = endDatePicker.getDayOfMonth();
         int endMonth = startDatePicker.getMonth() + 1;
-        int endYear = startDatePicker.getYear();
+        int endYear = endDatePicker.getYear();
 
         String format = "M/d/yyyy H:mm";
         DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
