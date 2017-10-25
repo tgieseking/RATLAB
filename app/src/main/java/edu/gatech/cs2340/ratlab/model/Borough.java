@@ -20,4 +20,15 @@ public enum Borough implements Serializable{
     public String toString() {
         return textName;
     }
+
+    public static Borough getBoroughFromTextName(String textName) {
+        switch (textName) {
+            case "Bronx" : return BRONX;
+            case "Brooklyn" : return BROOKLYN;
+            case "Manhattan" : return MANHATTAN;
+            case "Queens" : return QUEENS;
+            case "Staten Island" : return STATEN_ISLAND;
+            default : return UNKNOWN;
+        }
+    }
 }
