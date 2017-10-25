@@ -42,7 +42,7 @@ public class MapFilterActivity extends AppCompatActivity {
         Date startDate = new Date();
         Date endDate = new Date();
         String start = startMonth + "/" + startDay + "/" + startYear + " 0:00";
-        String end = endMonth + "/" + endDay + "/" + endYear + " 0:00";
+        String end = endMonth + "/" + endDay + "/" + endYear + " 23:59";
 
         //not sure if this needs to be a try catch but it was so I'm gonna leave it that way
         try {
@@ -65,6 +65,8 @@ public class MapFilterActivity extends AppCompatActivity {
         intent.putExtra("manhattan", manhattanBox.isChecked());
         CheckBox statenIslandBox = (CheckBox) findViewById(R.id.statenIslandBox);
         intent.putExtra("staten_island", statenIslandBox.isChecked());
+        CheckBox unknownBox = (CheckBox) findViewById(R.id.unknownBox);
+        intent.putExtra("unknown_borough", unknownBox.isChecked());
 
         startActivity(intent);
     }

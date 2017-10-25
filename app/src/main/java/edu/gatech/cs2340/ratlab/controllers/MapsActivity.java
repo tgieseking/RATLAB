@@ -73,6 +73,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             boroughs.add(Borough.STATEN_ISLAND);
             Log.d("filters", "staten_island");
         }
+        if (startIntent.getBooleanExtra("unknown_borough", false)) {
+            boroughs.add(Borough.UNKNOWN);
+            Log.d("filters", "unknown");
+        }
         Log.d("parcel_test", "2");
 
         Date startDate = new Date(startIntent.getLongExtra("start_date", 0));
