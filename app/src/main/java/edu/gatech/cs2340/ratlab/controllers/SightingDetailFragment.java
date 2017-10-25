@@ -86,8 +86,8 @@ public class SightingDetailFragment extends Fragment {
                     + "\nLocation Type: " + sighting.getLocationType().getTextName()
                     + "\nAddress: " + sighting.getAddress()
                     + "\nBorough: " + sighting.getBorough()
-                    + "\nLongitude: " + sighting.getLocation().getLongitude()
-                    + "\nLatitude: " + sighting.getLocation().getLatitude();
+                    + "\nLatitude: " + sighting.getLocation().getLatitude()
+                    + "\nLongitude: " + sighting.getLocation().getLongitude();
         }
     }
 }
