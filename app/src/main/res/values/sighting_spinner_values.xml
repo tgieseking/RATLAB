@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="borough_names">
-        <item>BRONX</item>
-        <item>BROOKLYN</item>
-        <item>MANHATTAN</item>
-        <item>QUEENS</item>
-        <item>STATEN ISLAND</item>
+        <item>Bronx</item>
+        <item>Brooklyn</item>
+        <item>Manhattan</item>
+        <item>Queens</item>
+        <item>Staten Island</item>
+        <item>Unknown</item>
     </string-array>
     <string-array name="city_names">
         <item>Arverne</item>

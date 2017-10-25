@@ -57,8 +57,8 @@
         android:text="Zip Code:"
         tools:layout_editor_absoluteX="172dp"
         tools:layout_editor_absoluteY="206dp"
-        android:layout_above="@+id/boroughView"
-        android:layout_toEndOf="@+id/addressEditText" />
+        android:layout_above="@+id/zipEditText"
+        android:layout_alignStart="@+id/zipEditText" />
 
     <TextView
         android:id="@+id/boroughView"
@@ -113,8 +113,10 @@
         android:inputType="number"
         tools:layout_editor_absoluteX="243dp"
         tools:layout_editor_absoluteY="206dp"
-        android:layout_below="@+id/zipView"
-        android:layout_alignStart="@+id/zipView" />
+        android:layout_marginStart="19dp"
+        android:layout_alignTop="@+id/cityEditText"
+        android:layout_toEndOf="@+id/cityEditText"
+        android:layout_alignBottom="@+id/cityEditText" />
 
     <EditText
         android:id="@+id/longitudeEditText"
@@ -141,13 +143,6 @@
         android:layout_marginBottom="14dp" />
 
     <Spinner
-        android:id="@+id/citySpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cityView"
-        android:layout_alignStart="@+id/cityView" />
-
-    <Spinner
         android:id="@+id/locationTypeSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -169,6 +164,33 @@
         android:text="Cancel"
         android:layout_below="@+id/longitudeEditText"
         android:layout_alignEnd="@+id/zipView" />
+
+    <EditText
+        android:id="@+id/cityEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/boroughSpinner"
+        android:layout_below="@+id/cityView"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/stateEditText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/zipEditText"
+        android:layout_alignStart="@+id/zipEditText"
+        android:layout_below="@+id/boroughView"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/stateEditText"
+        android:layout_alignStart="@+id/zipEditText"
+        android:text="State Code:" />
 
 </RelativeLayout>
 

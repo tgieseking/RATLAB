@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ButtonBarLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,7 +25,7 @@ import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 public class ReportSightingActivity extends AppCompatActivity{
     Spinner locationSpinner;
-    Spinner citySpinner;
+    EditText cityEditText;
     Spinner boroughSpinner;
 
 
@@ -39,11 +40,7 @@ public class ReportSightingActivity extends AppCompatActivity{
         locationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         locationSpinner.setAdapter(locationAdapter);
 
-        citySpinner = (Spinner) findViewById(R.id.citySpinner);
-        ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(this,
-                R.array.city_names, android.R.layout.simple_spinner_item);
-        cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        citySpinner.setAdapter(cityAdapter);
+        cityEditText = (EditText) findViewById(R.id.cityEditText);
 
         boroughSpinner = (Spinner) findViewById(R.id.boroughSpinner);
         ArrayAdapter<CharSequence> boroughAdapter = ArrayAdapter.createFromResource(this,
@@ -51,7 +48,89 @@ public class ReportSightingActivity extends AppCompatActivity{
         boroughAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         boroughSpinner.setAdapter(boroughAdapter);
 
+        EditText addressEditText = (EditText) findViewById(R.id.addressEditText);
+        EditText zipEditText = (EditText) findViewById(R.id.zipEditText);
+        EditText latitudeEditText = (EditText) findViewById(R.id.latitudeEditText);
+        EditText longitudeEditText = (EditText) findViewById(R.id.longitudeEditText);
+        EditText stateEditText = (EditText) findViewById(R.id.stateEditText);
+
         Button createReportButton = (Button) findViewById(R.id.reportSubmitButton);
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("address")) {
+            android.location.Address address = (android.location.Address)
+                    intent.getParcelableExtra("address");
+
+            String street = address.getThoroughfare();
+            String streetNumber = address.getSubThoroughfare();
+            if (street != null && streetNumber != null) {
+                addressEditText.setText(streetNumber + " " + street);
+            }
+
+            String zipCode = address.getPostalCode();
+            if (zipCode != null) {
+                zipEditText.setText(zipCode);
+            }
+
+            String state = address.getAdminArea();
+            if (state != null) {
+                stateEditText.setText(state);
+            }
+
+            String city = address.getLocality();
+            if (city != null) {
+                cityEditText.setText(city);
+            }
+
+            String subLocality = address.getSubLocality();
+            if (subLocality != null) {
+                Log.d("address_parse", subLocality);
+                Borough borough = Borough.getBoroughFromTextName(subLocality);
+                Log.d("address_parse", borough.toString());
+                int selection = 5;
+                switch (borough) {
+                    case BRONX: selection = 0;
+                        break;
+                    case BROOKLYN: selection = 1;
+                        break;
+                    case MANHATTAN: selection = 2;
+                        break;
+                    case QUEENS: selection = 3;
+                        break;
+                    case STATEN_ISLAND: selection = 4;
+                        break;
+                    case UNKNOWN: selection = 5;
+                        break;
+                }
+                final int selectionFinal = selection;
+                Log.d("address_parse", "" + selectionFinal);
+                boroughSpinner.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        boroughSpinner.setSelection(selectionFinal);
+                    }
+                });
+                if (borough != Borough.UNKNOWN) {
+                    // We do this because some of new york city has its borough as a sublocality
+                    // and no locality
+                    cityEditText.setText("New York");
+                }
+            } else {
+                boroughSpinner.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        boroughSpinner.setSelection(5);
+                    }
+                });
+            }
+
+
+
+            if (address.hasLatitude() && address.hasLongitude()) {
+                latitudeEditText.setText("" + address.getLatitude());
+                longitudeEditText.setText("" + address.getLongitude());
+            }
+        }
     }
 
     /**
@@ -60,10 +139,11 @@ public class ReportSightingActivity extends AppCompatActivity{
      */
     public void createSighting(View view) {
         locationSpinner = (Spinner) findViewById(R.id.locationTypeSpinner);
-        citySpinner = (Spinner) findViewById(R.id.citySpinner);
+        EditText cityEditText = (EditText) findViewById(R.id.cityEditText);
         boroughSpinner = (Spinner) findViewById(R.id.boroughSpinner);
         EditText addressView = (EditText) findViewById(R.id.addressEditText);
         EditText zipView = (EditText) findViewById(R.id.zipEditText);
+        EditText stateView = (EditText) findViewById(R.id.stateEditText);
         EditText longitudeView = (EditText) findViewById(R.id.longitudeEditText);
         EditText latitudeView = (EditText) findViewById(R.id.latitudeEditText);
 
@@ -81,8 +161,9 @@ public class ReportSightingActivity extends AppCompatActivity{
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        String city = citySpinner.getSelectedItem().toString();
-        Borough borough = Borough.valueOf(boroughSpinner.getSelectedItem().toString());
+        String city = cityEditText.getText().toString();
+        String state = stateView.getText().toString();
+        Borough borough = Borough.getBoroughFromTextName(boroughSpinner.getSelectedItem().toString());
         Double latitude,longitude;
         String latitudeString = latitudeView.getText().toString();
         if (latitudeString.length() == 0) {
@@ -123,7 +204,7 @@ public class ReportSightingActivity extends AppCompatActivity{
 
 
         RatSighting newSighting = new RatSighting(null, currentDate, locationType, addressLine,
-                zipCode, city, borough, latitude, longitude);
+                zipCode, city, state, borough, latitude, longitude);
         SightingsManager.getInstance().addRatSightingToDatabase(newSighting);
 
         finish();

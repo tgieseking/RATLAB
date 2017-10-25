@@ -1,6 +1,7 @@
 package edu.gatech.cs2340.ratlab.controllers;
 
 import android.content.Intent;
+import android.location.Geocoder;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.maps.android.clustering.Cluster;
 import com.google.maps.android.clustering.ClusterManager;
 
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,14 +29,17 @@ import java.util.Locale;
 import java.util.Set;
 
 import edu.gatech.cs2340.ratlab.R;
+import edu.gatech.cs2340.ratlab.model.Address;
 import edu.gatech.cs2340.ratlab.model.Borough;
+import edu.gatech.cs2340.ratlab.model.Location;
 import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback ,
-        ClusterManager.OnClusterItemInfoWindowClickListener<RatSighting> {
+        ClusterManager.OnClusterItemInfoWindowClickListener<RatSighting>,
+        GoogleMap.OnMapLongClickListener {
 
     private GoogleMap map;
     private Set<RatSighting> sightingsList;
@@ -114,6 +119,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.730610, -73.935242), 10));
         map.setOnInfoWindowClickListener(clusterManager);
         clusterManager.setOnClusterItemInfoWindowClickListener(this);
+        map.setOnMapLongClickListener(this);
     }
 
     public void onClusterItemInfoWindowClick(RatSighting sighting) {
@@ -121,5 +127,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = new Intent(this, SightingDetailActivity.class);
         intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID, key);
         startActivity(intent);
+    }
+
+    @Override
+    public void onMapLongClick(LatLng latLng) {
+        Log.d("map_click", "map long click");
+        Geocoder geocoder = new Geocoder(this);
+        try {
+            List<android.location.Address> addresses = geocoder.getFromLocation(latLng.latitude,
+                    latLng.longitude, 1);
+            if (addresses.isEmpty()) {
+                Log.d("map_click", "no matches");
+            } else {
+                Log.d("map_click", "" + addresses.get(0).getLatitude());
+                Log.d("map_click", "" + addresses.get(0).getLongitude());
+                Log.d("map_click", "" + addresses.get(0).getAddressLine(0));
+                Log.d("map_click", "" + addresses.get(0).getSubThoroughfare());
+                Log.d("map_click", "" + addresses.get(0).getThoroughfare());
+                Intent intent = new Intent(this, ReportSightingActivity.class);
+                intent.putExtra("address", addresses.get(0));
+                startActivity(intent);
+            }
+        } catch (IOException e) {
+
+        }
+
     }
 }
