@@ -166,6 +166,7 @@ public class SightingsManager {
         newRat.put("address", sighting.getAddress().getAddressLine());
         newRat.put("zipCode", sighting.getAddress().getZipCode());
         newRat.put("city", sighting.getAddress().getCity());
+        newRat.put("state", sighting.getLocation().getAddress().getState());
         newRat.put("borough", sighting.getBorough());
         newRat.put("latitude", sighting.getLocation().getLatitude());
         newRat.put("longitude", sighting.getLocation().getLongitude());
