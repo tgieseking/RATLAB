@@ -65,7 +65,8 @@
             android:name=".controllers.MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".controllers.ForgotPasswordActivity" />
-        <activity android:name=".controllers.HistogramFilterActivity"></activity>
+        <activity android:name=".controllers.HistogramFilterActivity" />
+        <activity android:name=".controllers.HistoricalGraphActivity"></activity>
     </application>
 
 </manifest>
