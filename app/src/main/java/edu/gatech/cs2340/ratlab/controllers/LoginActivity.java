@@ -92,6 +92,12 @@ public class LoginActivity extends AppCompatActivity{
         finish();
     }
 
+    /**
+     * Starts the ForgotPassword activity wehn the forgot
+     * password button is clicked.
+     *
+     * @param view forgot password button
+     */
     public void goToForgotPassword(View view) {
         Intent intent = new Intent(this, ForgotPasswordActivity.class);
         startActivity(intent);

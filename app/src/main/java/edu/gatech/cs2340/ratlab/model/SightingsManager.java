@@ -151,7 +151,7 @@ public class SightingsManager {
         return loadingHistoricalDataComplete;
     }
 
-    /** Adds a rat sighting to thd database. The sighting should not have a key, since the key is
+    /** Adds a rat sighting to the database. The sighting should not have a key, since the key is
      * generated when the sighting is added to the database. Note that the sighting is added as a
      * Map so that all fields update at the same time and the sightingsListener does not try to add
      * an incomplete sighting.
