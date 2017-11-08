@@ -3,10 +3,10 @@ package edu.gatech.cs2340.ratlab.model;
 import java.io.Serializable;
 
 public class Address implements Serializable{
-    private String addressLine;
-    private String city;
-    private String state;
-    private String zipCode;
+    private final String addressLine;
+    private final String city;
+    private final String state;
+    private final String zipCode;
 
     public String getAddressLine() {
         return addressLine;

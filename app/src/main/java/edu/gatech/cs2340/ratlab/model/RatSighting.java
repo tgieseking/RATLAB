@@ -11,9 +11,9 @@ import java.util.Date;
 import java.util.Locale;
 
 public class RatSighting implements ClusterItem {
-    private String key;
+    private final String key;
     private Date createdDate;  // This maybe should be a java.util.Date
-    private Location location;
+    private final Location location;
 
     public String getKey() {
         return key;
@@ -68,9 +68,9 @@ public class RatSighting implements ClusterItem {
         this.location = new Location(latitude, longitude, address, borough, locationType);
     }
 
-    public RatSighting(String key, Date createdDate, LocationType locationType, String addressLine,
-                       String zipCode, String city, Borough borough, double latitude,
-                       double longitude) {
+    private RatSighting(String key, Date createdDate, LocationType locationType, String addressLine,
+                        String zipCode, String city, Borough borough, double latitude,
+                        double longitude) {
         this(key, createdDate, locationType, addressLine, zipCode, city, "NY", borough, latitude,
                 longitude);
     }

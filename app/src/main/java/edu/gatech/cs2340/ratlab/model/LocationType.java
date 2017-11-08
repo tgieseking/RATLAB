@@ -26,7 +26,7 @@ public enum LocationType implements Serializable{
     SUMMER_CAMP("Summer Camp"),
     OTHER("Other");
 
-    private String textName;
+    private final String textName;
 
     public String getTextName() {
         return textName;
