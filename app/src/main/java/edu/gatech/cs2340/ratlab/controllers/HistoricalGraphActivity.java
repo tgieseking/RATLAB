@@ -20,6 +20,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -34,7 +35,7 @@ import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 public class HistoricalGraphActivity extends AppCompatActivity {
 
-    private Set<Set<RatSighting>> sightingsByBorough;
+    private Collection<Collection<RatSighting>> sightingsByBorough;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,12 +52,12 @@ public class HistoricalGraphActivity extends AppCompatActivity {
 
         Date startDate = new Date(startIntent.getLongExtra("start_date", 0));
         Date endDate = new Date(startIntent.getLongExtra("end_date", 0));
-        Set<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
+        Collection<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
 
-        sightingsByBorough = new HashSet<Set<RatSighting>>();
+        sightingsByBorough = new HashSet<Collection<RatSighting>>();
 
         Log.d("parcel_test", "1");
-        Set<Borough> boroughs = new HashSet<>();
+        Collection<Borough> boroughs = new HashSet<>();
         if (startIntent.getBooleanExtra("bronx", false)) {
             boroughs.add(Borough.BRONX);
             sightingsByBorough.add(SightingsManager.getInstance()
@@ -104,7 +105,7 @@ public class HistoricalGraphActivity extends AppCompatActivity {
         final int yellow = Color.rgb(194, 201, 115);
         int[] colorArray = {gray, pink,
                 light_gray, blue, yellow};
-        for (Set<RatSighting> boroughSet : sightingsByBorough) {
+        for (Collection<RatSighting> boroughSet : sightingsByBorough) {
             int[] rangeValues = new int[10];
             String borough = "Unknown";
             for (RatSighting sighting : boroughSet) {

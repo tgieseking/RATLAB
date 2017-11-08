@@ -12,6 +12,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
@@ -208,9 +209,9 @@ public class SightingsManager {
      * @param locationTypes the list of location types which will be included
      * @return a set of rat sightings which meet all criteria
      */
-    public Set<RatSighting> filterRatSightings(Date startDate, Date endDate, Set<Borough> boroughs,
-                                               Set<LocationType> locationTypes) {
-        Set<RatSighting> filteredSightings = new HashSet<>();
+    public Collection<RatSighting> filterRatSightings(Date startDate, Date endDate, Collection<Borough> boroughs,
+                                                      Collection<LocationType> locationTypes) {
+        Collection<RatSighting> filteredSightings = new HashSet<>();
         for (RatSighting sighting : ratSightings.values()) {
             if (sighting.getCreatedDate().compareTo(startDate) >= 0
                     && sighting.getCreatedDate().compareTo(endDate) <= 0
@@ -234,16 +235,16 @@ public class SightingsManager {
      * @param maxSightings the maximum size of the returned set
      * @return a set of rat sightings which meet all criteria of size at most maxSightings
      */
-    public Set<RatSighting> filterRatSightings(Date startDate, Date endDate, Set<Borough> boroughs,
-                                               Set<LocationType> locationTypes, int maxSightings) {
-        Set<RatSighting> filteredSightings = filterRatSightings(startDate, endDate, boroughs,
+    public Collection<RatSighting> filterRatSightings(Date startDate, Date endDate, Collection<Borough> boroughs,
+                                               Collection<LocationType> locationTypes, int maxSightings) {
+        Collection<RatSighting> filteredSightings = filterRatSightings(startDate, endDate, boroughs,
                 locationTypes);
         if (filteredSightings.size() <= maxSightings) {
             return filteredSightings;
         } else {
             List<RatSighting> filteredSightingsList = new LinkedList<>(filteredSightings);
             Collections.shuffle(filteredSightingsList);
-            Set<RatSighting> subset = new HashSet<>(filteredSightingsList.subList(0, maxSightings));
+            Collection<RatSighting> subset = new HashSet<>(filteredSightingsList.subList(0, maxSightings));
             return subset;
         }
     }

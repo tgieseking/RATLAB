@@ -15,6 +15,7 @@ import com.google.maps.android.clustering.ClusterManager;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
@@ -32,7 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleMap.OnMapLongClickListener {
 
     private GoogleMap map;
-    private Set<RatSighting> sightingsList;
+    private Collection<RatSighting> sightingsList;
     private ClusterManager<RatSighting> clusterManager;
 
     @Override
@@ -42,7 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent startIntent = getIntent();
 
         Log.d("parcel_test", "1");
-        Set<Borough> boroughs = new HashSet<>();
+        Collection<Borough> boroughs = new HashSet<>();
         if (startIntent.getBooleanExtra("bronx", false)) {
             boroughs.add(Borough.BRONX);
             Log.d("filters", "bronx");
@@ -74,7 +75,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Log.d("parcel_test", "3");
 
-        Set<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
+        Collection<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
 
         sightingsList = SightingsManager.getInstance()
                 .filterRatSightings(startDate, endDate, boroughs, locationTypes, 1000);
