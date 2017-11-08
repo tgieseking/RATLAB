@@ -34,8 +34,6 @@ import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 public class HistoricalGraphActivity extends AppCompatActivity {
 
-    private Set<Set<RatSighting>> sightingsByBorough;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +51,7 @@ public class HistoricalGraphActivity extends AppCompatActivity {
         Date endDate = new Date(startIntent.getLongExtra("end_date", 0));
         Set<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
 
-        sightingsByBorough = new HashSet<Set<RatSighting>>();
+        Set<Set<RatSighting>> sightingsByBorough = new HashSet<>();
 
         Log.d("parcel_test", "1");
         Set<Borough> boroughs = new HashSet<>();
@@ -95,7 +93,7 @@ public class HistoricalGraphActivity extends AppCompatActivity {
 
         double timeRange = (endDate.getTime() - startDate.getTime()) / 10;
         //iterates through the individual borough sets of sightings
-        List<ILineDataSet> boroughDataSets = new ArrayList<ILineDataSet>();
+        List<ILineDataSet> boroughDataSets = new ArrayList<>();
         int colorCount = 0;
         final int gray = Color.rgb(82, 94, 97);
         final int pink = Color.rgb(218, 121, 89);
@@ -113,7 +111,7 @@ public class HistoricalGraphActivity extends AppCompatActivity {
                 rangeValues[(int)((Math.abs(startDate.getTime() - sighting.getCreatedDate().getTime()))
                         / timeRange)]++;
             }
-            List<Entry> boroughData = new ArrayList<Entry>();
+            List<Entry> boroughData = new ArrayList<>();
             for (int i = 0; i < 10; i++) {
                 boroughData.add(new Entry((float) (startDate.getTime() + (i * timeRange)),
                         (float) rangeValues[i]));

@@ -4,7 +4,6 @@ class User {
     private String email;
     private String username;
     private String name;
-    private AccountType accountType;
 
     /**
      * Creates a user with a given username and password
@@ -16,7 +15,7 @@ class User {
         this.email = email;
         this.username = username;
         this.name = name;
-        this.accountType = accountType;
+        AccountType accountType1 = accountType;
     }
 
     /**

@@ -31,9 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ClusterManager.OnClusterItemInfoWindowClickListener<RatSighting>,
         GoogleMap.OnMapLongClickListener {
 
-    private GoogleMap map;
     private Set<RatSighting> sightingsList;
-    private ClusterManager<RatSighting> clusterManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,11 +93,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        map = googleMap;
+        GoogleMap map = googleMap;
         map.getUiSettings().setZoomControlsEnabled(true);
         map.getUiSettings().setCompassEnabled(true);
 
-        clusterManager = new ClusterManager<RatSighting>(this, map);
+        ClusterManager<RatSighting> clusterManager = new ClusterManager<>(this, map);
         clusterManager.setAnimation(false);
         map.setOnCameraIdleListener(clusterManager);
         map.setOnMarkerClickListener(clusterManager);
@@ -146,7 +144,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         } catch (IOException e) {
-
+            //TODO: complete catch block
         }
 
     }
