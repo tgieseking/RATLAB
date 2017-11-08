@@ -247,4 +247,8 @@ public class SightingsManager {
             return subset;
         }
     }
+
+    public int numSightings() {
+        return ratSightings.size();
+    }
 }
