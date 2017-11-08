@@ -178,7 +178,9 @@ public class ReportSightingActivity extends AppCompatActivity{
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        if (latitude <  -90.0 || latitude > 90.0) {
+        final double minLat = -90.0;
+        final double maxLat = 90.0;
+        if (latitude <  minLat || latitude > maxLat) {
             Toast.makeText(this, "latitude must be between -90 and 90",
                     Toast.LENGTH_SHORT).show();
             return;
@@ -196,7 +198,9 @@ public class ReportSightingActivity extends AppCompatActivity{
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        if (longitude <  -180.0 || longitude > 180.0) {
+        final double minLng = -180.0;
+        final double maxLng = 180.0;
+        if (longitude <  minLng || longitude > maxLng) {
             Toast.makeText(this, "latitude must be between -90 and 90",
                     Toast.LENGTH_SHORT).show();
             return;

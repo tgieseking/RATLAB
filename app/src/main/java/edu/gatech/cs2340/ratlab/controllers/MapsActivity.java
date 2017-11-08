@@ -120,7 +120,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.730610, -73.935242), 10));
+        final double newYorkLat = 40.730610;
+        final double newYorkLng = -73.935242;
+
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(newYorkLat, newYorkLng), 10));
         map.setOnInfoWindowClickListener(clusterManager);
         clusterManager.setOnClusterItemInfoWindowClickListener(this);
         map.setOnMapLongClickListener(this);

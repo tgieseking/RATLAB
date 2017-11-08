@@ -101,28 +101,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This is a test method. Remove it when the map display is implemented.
-     */
-    public void filterTest(View view) {
-        Set<Borough> boroughs = new HashSet<>(Arrays.asList(Borough.values()));
-        //boroughs.remove(Borough.MANHATTAN);
-        Set<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
-        //locationTypes.remove(LocationType.SINGLE_ROOM_OCCUPANCY);
-        String format = "M/d/yyyy H:mm";
-        DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
-        Date startDate = new Date();
-        Date endDate = new Date();
-        try {
-            startDate = dateFormat.parse("8/23/2017 0:00");
-            endDate = dateFormat.parse("8/25/2017 0:00");
-        } catch (Exception e) {
-            Log.e("filter_test", "parse error", e);
-        }
-        Set<RatSighting> filteredSightings = sightingsManager.filterRatSightings(startDate, endDate, boroughs, locationTypes, 30);
-        Log.d("filter_test", "" + filteredSightings.size());
-    }
-
-    /**
      * Changes the current activity to display the map filter display
      * when the map display button is pressed.
      *

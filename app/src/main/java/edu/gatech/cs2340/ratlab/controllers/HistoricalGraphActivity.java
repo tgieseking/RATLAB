@@ -45,6 +45,11 @@ public class HistoricalGraphActivity extends AppCompatActivity {
         setContentView(R.layout.activity_historical_graph);
         Intent startIntent = getIntent();
 
+        final float lineWidth = 1.25f;
+        final float circleRadius = 3f;
+        final float textSize = 7.5f;
+        final int labelRotationAngle = 30;
+
         LineChart reportLineChart = (LineChart) findViewById(R.id.reportLineChart);
 
         Date startDate = new Date(startIntent.getLongExtra("start_date", 0));
@@ -95,8 +100,13 @@ public class HistoricalGraphActivity extends AppCompatActivity {
         //iterates through the individual borough sets of sightings
         List<ILineDataSet> boroughDataSets = new ArrayList<ILineDataSet>();
         int colorCount = 0;
-        int[] colorArray = {Color.rgb(82, 94, 97), Color.rgb(218, 121, 89),
-                Color.rgb(146, 171, 178), Color.rgb(102, 136, 145), Color.rgb(194, 201, 115)};
+        final int gray = Color.rgb(82, 94, 97);
+        final int pink = Color.rgb(218, 121, 89);
+        final int light_gray = Color.rgb(146, 171, 178);
+        final int blue = Color.rgb(102, 136, 145);
+        final int yellow = Color.rgb(194, 201, 115);
+        int[] colorArray = {gray, pink,
+                light_gray, blue, yellow};
         for (Set<RatSighting> boroughSet : sightingsByBorough) {
             int[] rangeValues = new int[10];
             String borough = "Unknown";
@@ -113,9 +123,9 @@ public class HistoricalGraphActivity extends AppCompatActivity {
             }
             LineDataSet toAdd = new  LineDataSet(boroughData, borough);
             toAdd.setColor(colorArray[colorCount]);
-            toAdd.setLineWidth(1.25f);
+            toAdd.setLineWidth(lineWidth);
             toAdd.setCircleColor(colorArray[colorCount]);
-            toAdd.setCircleRadius(3f);
+            toAdd.setCircleRadius(circleRadius);
             boroughDataSets.add(toAdd);
             colorCount++;
         }
@@ -123,11 +133,11 @@ public class HistoricalGraphActivity extends AppCompatActivity {
         reportLineChart.setData(data);
         XAxis xAxis = reportLineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-        xAxis.setTextSize(7.5f);
+        xAxis.setTextSize(textSize);
         xAxis.setDrawAxisLine(true);
         xAxis.setDrawGridLines(true);
         xAxis.setLabelCount(10, true);
-        xAxis.setLabelRotationAngle(30);
+        xAxis.setLabelRotationAngle(labelRotationAngle);
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {
