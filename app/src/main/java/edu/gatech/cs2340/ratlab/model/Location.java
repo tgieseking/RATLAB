@@ -3,11 +3,11 @@ package edu.gatech.cs2340.ratlab.model;
 import java.io.Serializable;
 
 public class Location implements Serializable{
-    private double latitude;
-    private double longitude;
-    private Address address;
-    private Borough borough;
-    private LocationType locationType;
+    private final double latitude;
+    private final double longitude;
+    private final Address address;
+    private final Borough borough;
+    private final LocationType locationType;
 
     public double getLatitude() {
         return latitude;

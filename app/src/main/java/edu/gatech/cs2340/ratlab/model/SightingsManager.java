@@ -30,14 +30,15 @@ public class SightingsManager {
     public static SightingsManager getInstance() { return instance; }
 
     // The list of all rat sightings
-    private Map<String,RatSighting> ratSightings;
+    private final Map<String,RatSighting> ratSightings;
 
     // Database variables for syncing the rat sighting list with firebase
-    private DatabaseReference sightingsReference;
+    private final DatabaseReference sightingsReference;
+    private final ChildEventListener sightingsListener;
 
     private boolean loadingHistoricalDataComplete;
 
-    SightingsManager() {
+    private SightingsManager() {
         ratSightings = new HashMap<>();
         loadingHistoricalDataComplete = false;
         sightingsReference = FirebaseDatabase.getInstance().getReference().child("sightings");

@@ -15,8 +15,8 @@ public class UserManager {
 
     // Stores information on the currently logged in user
     private User currentUser;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseDatabase firebaseDatabase;
+    private final FirebaseAuth firebaseAuth;
+    private final FirebaseDatabase firebaseDatabase;
 
     public User getCurrentUser() {
         return currentUser;

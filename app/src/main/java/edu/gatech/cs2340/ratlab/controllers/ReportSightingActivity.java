@@ -22,9 +22,9 @@ import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 
 public class ReportSightingActivity extends AppCompatActivity{
-    Spinner locationSpinner;
-    EditText cityEditText;
-    Spinner boroughSpinner;
+    private Spinner locationSpinner;
+    private EditText cityEditText;
+    private Spinner boroughSpinner;
 
 
     @Override

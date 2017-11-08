@@ -1,9 +1,10 @@
 package edu.gatech.cs2340.ratlab.model;
 
 class User {
-    private String email;
-    private String username;
-    private String name;
+    private final String email;
+    private final String username;
+    private final String name;
+    private final AccountType accountType;
 
     /**
      * Creates a user with a given username and password
@@ -15,20 +16,26 @@ class User {
         this.email = email;
         this.username = username;
         this.name = name;
-        AccountType accountType1 = accountType;
+        this.accountType = accountType;
     }
 
-    /**
-     * Returns the username of the current user
-     * @return The user name of the current user.
-     */
-    public String getUsername() {
-        return username;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getName() {
-        return name;
-    }
+// --Commented out by Inspection START (11/8/2017 3:56 PM):
+// --Commented out by Inspection START (11/8/2017 3:56 PM):
+// --Commented out by Inspection START (11/8/2017 3:56 PM):
+//////    /**
+//////     * Returns the username of the current user
+//////     * @return The user name of the current user.
+//////     */
+//////    public String getUsername() {
+//////        return username;
+//////    }
+////// --Commented out by Inspection STOP (11/8/2017 3:56 PM)
+////    public String getEmail() {
+////        return email;
+////    }
+//// --Commented out by Inspection STOP (11/8/2017 3:56 PM)
+//    public String getName() {
+//        return name;
+//    }
+// --Commented out by Inspection STOP (11/8/2017 3:56 PM)
 }
