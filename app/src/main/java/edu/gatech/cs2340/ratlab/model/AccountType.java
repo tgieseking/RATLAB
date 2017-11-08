@@ -1,8 +1,6 @@
 package edu.gatech.cs2340.ratlab.model;
 
-/**
- * Created by Timothy on 10/11/2017.
- */
+
 
 public enum AccountType {
     USER,

@@ -8,9 +8,7 @@ import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 import static junit.framework.Assert.assertTrue;
 
-/**
- * Created by Timothy on 11/8/2017.
- */
+
 
 public class FilterRandomTest {
     @Test

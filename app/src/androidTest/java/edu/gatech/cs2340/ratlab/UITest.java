@@ -14,9 +14,6 @@ import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
-/**
- * Created by tiffanyxu on 11/8/17.
- */
 
 @RunWith(AndroidJUnit4.class)
 public class UITest {
