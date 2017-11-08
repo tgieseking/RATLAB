@@ -3,23 +3,10 @@ package edu.gatech.cs2340.ratlab.controllers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-//import com.google.firebase.auth.FirebaseAuth;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-
 import edu.gatech.cs2340.ratlab.R;
-import edu.gatech.cs2340.ratlab.model.Borough;
-import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.UserManager;

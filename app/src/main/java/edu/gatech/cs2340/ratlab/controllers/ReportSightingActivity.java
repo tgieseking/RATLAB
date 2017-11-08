@@ -56,8 +56,7 @@ public class ReportSightingActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         if (intent.hasExtra("address")) {
-            android.location.Address address = (android.location.Address)
-                    intent.getParcelableExtra("address");
+            android.location.Address address = intent.getParcelableExtra("address");
 
             String street = address.getThoroughfare();
             String streetNumber = address.getSubThoroughfare();

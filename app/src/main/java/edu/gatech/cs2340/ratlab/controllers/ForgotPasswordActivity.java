@@ -1,5 +1,6 @@
 package edu.gatech.cs2340.ratlab.controllers;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         firebaseAuth.sendPasswordResetEmail(email)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
-                    public void onComplete(Task<Void> task) {
+                    public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(ForgotPasswordActivity.this, "Password reset email sent",
                                     Toast.LENGTH_SHORT).show();

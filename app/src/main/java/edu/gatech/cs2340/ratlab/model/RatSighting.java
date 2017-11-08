@@ -98,9 +98,9 @@ public class RatSighting implements ClusterItem {
         String[] splitLine = csvLine.split(",");
         if (splitLine.length == 9) {
             // Expected length of line
-            Borough borough = null;
-            double latitude = 0;
-            double longitude = 0;
+            Borough borough;
+            double latitude;
+            double longitude;
             try {
                 borough = Borough.valueOf(splitLine[6]);
             } catch (Exception e) {

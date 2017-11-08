@@ -52,7 +52,7 @@ public class SightingDetailFragment extends Fragment {
             mSighting = sightingsManager.getSightingByKey(getArguments().getString(ARG_SIGHTING_ID));
 
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+            CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
                 appBarLayout.setTitle("Sighting Details");
             }
