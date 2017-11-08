@@ -31,6 +31,8 @@
 
     <FrameLayout
         android:id="@+id/sighting_detail_container"
+        tools:ignore="InconsistentLayout"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="3" />

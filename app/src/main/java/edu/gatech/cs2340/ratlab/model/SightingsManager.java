@@ -35,7 +35,6 @@ public class SightingsManager {
 
     // Database variables for syncing the rat sighting list with firebase
     private DatabaseReference sightingsReference;
-    private ChildEventListener sightingsListener;
 
     private boolean loadingHistoricalDataComplete;
 
@@ -44,7 +43,7 @@ public class SightingsManager {
         loadingHistoricalDataComplete = false;
         sightingsReference = FirebaseDatabase.getInstance().getReference().child("sightings");
 
-        sightingsListener = new ChildEventListener() {
+        ChildEventListener sightingsListener = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String previousChildName) {
                 try {
@@ -100,12 +99,12 @@ public class SightingsManager {
                 String city = dataSnapshot.child("city").getValue(String.class);
                 String boroughString = dataSnapshot.child("borough").getValue(String.class);
                 Borough borough = Borough.valueOf(boroughString);
-                double latitude,longitude;
+                double latitude, longitude;
                 latitude = dataSnapshot.child("latitude").getValue(Double.class);
                 longitude = dataSnapshot.child("longitude").getValue(Double.class);
                 RatSighting sighting = new RatSighting(key, createdDate, locationType, address, zipCode, city,
                         borough, latitude, longitude);
-                Log.d("sightings_database", "Added new Ratsighting from database to model: " + sighting);
+                Log.d("sightings_database", "Added new rat sighting from database to model: " + sighting);
                 return sighting;
             }
         };

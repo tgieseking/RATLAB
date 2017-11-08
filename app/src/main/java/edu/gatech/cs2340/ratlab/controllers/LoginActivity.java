@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity{
     }
 
     /**
-     * Starts the ForgotPassword activity wehn the forgot
+     * Starts the ForgotPassword activity when the forgot
      * password button is clicked.
      *
      * @param view forgot password button

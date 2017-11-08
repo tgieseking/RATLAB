@@ -26,7 +26,6 @@ import edu.gatech.cs2340.ratlab.model.UserManager;
 
 public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private DatabaseReference mDatabase;
     private UserManager userManager;
 
     // UI references
@@ -38,7 +37,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
         userManager = UserManager.getInstance();
 
         accountTypeSpinner = (Spinner) findViewById(R.id.accountTypeSpinner);

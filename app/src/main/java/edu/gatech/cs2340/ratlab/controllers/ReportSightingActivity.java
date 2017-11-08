@@ -56,8 +56,7 @@ public class ReportSightingActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         if (intent.hasExtra("address")) {
-            android.location.Address address = (android.location.Address)
-                    intent.getParcelableExtra("address");
+            android.location.Address address = intent.getParcelableExtra("address");
 
             String street = address.getThoroughfare();
             String streetNumber = address.getSubThoroughfare();
@@ -109,7 +108,7 @@ public class ReportSightingActivity extends AppCompatActivity{
                     }
                 });
                 if (borough != Borough.UNKNOWN) {
-                    // We do this because some of new york city has its borough as a sublocality
+                    // We do this because some of new york city has its borough as a sub-locality
                     // and no locality
                     cityEditText.setText("New York");
                 }
