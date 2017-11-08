@@ -28,7 +28,7 @@ public class SightingDetailFragment extends Fragment {
     public static final String ARG_SIGHTING_ID = "sighting_id";
 
     /**
-     * The ratsighting that this detail view is for.
+     * The rat sighting that this detail view is for.
      */
     private RatSighting mSighting;
 

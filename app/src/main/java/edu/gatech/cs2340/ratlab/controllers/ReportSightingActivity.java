@@ -109,7 +109,7 @@ public class ReportSightingActivity extends AppCompatActivity{
                     }
                 });
                 if (borough != Borough.UNKNOWN) {
-                    // We do this because some of new york city has its borough as a sublocality
+                    // We do this because some of new york city has its borough as a sub-locality
                     // and no locality
                     cityEditText.setText("New York");
                 }

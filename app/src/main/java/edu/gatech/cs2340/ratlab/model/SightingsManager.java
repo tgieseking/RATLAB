@@ -104,7 +104,7 @@ public class SightingsManager {
                 longitude = dataSnapshot.child("longitude").getValue(Double.class);
                 RatSighting sighting = new RatSighting(key, createdDate, locationType, address, zipCode, city,
                         borough, latitude, longitude);
-                Log.d("sightings_database", "Added new Ratsighting from database to model: " + sighting);
+                Log.d("sightings_database", "Added new rat sighting from database to model: " + sighting);
                 return sighting;
             }
         };

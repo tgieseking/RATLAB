@@ -38,7 +38,7 @@ public enum LocationType implements Serializable{
 
     /**
      * Creates the LocationType object with the given textName or LocationType.OTHER if invalid.
-     * @param textName the textname of a LocationType object
+     * @param textName the text name of a LocationType object
      * @return the corresponding LocationType object
      */
     public static LocationType locationTypeFromTextName(String textName) {
