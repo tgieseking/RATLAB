@@ -76,26 +76,31 @@ public class RegistrationActivity extends AppCompatActivity {
         final String username = usernameView.getText().toString();
         final String name = nameView.getText().toString();
 
-        if (email.length() == 0) {
-            Toast.makeText(RegistrationActivity.this, "Empty email",
-                    Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (password.length() < 6) {
-            Toast.makeText(RegistrationActivity.this, "Password too short",
-                    Toast.LENGTH_SHORT).show();
+        if (name.length() == 0) {
+            Toast nameEmpty = Toast.makeText(RegistrationActivity.this, "Empty name",
+                    Toast.LENGTH_SHORT);
+            nameEmpty.show();
             return;
         }
         if (username.length() == 0) {
-            Toast.makeText(RegistrationActivity.this, "Empty username",
-                    Toast.LENGTH_SHORT).show();
+            Toast userEmpty = Toast.makeText(RegistrationActivity.this, "Empty username",
+                    Toast.LENGTH_SHORT);
+            userEmpty.show();
             return;
         }
-        if (name.length() == 0) {
-            Toast.makeText(RegistrationActivity.this, "Empty name",
-                    Toast.LENGTH_SHORT).show();
+        if (email.length() == 0) {
+            Toast emptyEmail = Toast.makeText(RegistrationActivity.this, "Empty email",
+                    Toast.LENGTH_SHORT);
+            emptyEmail.show();
             return;
         }
+        if (password.length() < 6) {
+            Toast passwordLength = Toast.makeText(RegistrationActivity.this, "Password too short",
+                    Toast.LENGTH_SHORT);
+            passwordLength.show();
+            return;
+        }
+
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
