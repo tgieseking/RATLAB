@@ -22,7 +22,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 
 import edu.gatech.cs2340.ratlab.R;
 
@@ -35,7 +34,6 @@ public class SightingsManager {
 
     // Database variables for syncing the rat sighting list with firebase
     private final DatabaseReference sightingsReference;
-    private final ChildEventListener sightingsListener;
 
     private boolean loadingHistoricalDataComplete;
 
