@@ -39,7 +39,7 @@ public class RegistrationLoginTest {
         //Tests that empty email toast is displayed when trying to register without inputting email
         //onView(withText("Empty email"))
         //        .inRoot(withDecorView(not(main.get().getWindow().getDecorView())))
-        //        .check(matches(isDisplayed()));
+         //       .check(matches(isDisplayed()));
         onView(withId(R.id.emailTextBox)).perform(typeText("name@gmail.com"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordTextBox)).perform(typeText("123"), ViewActions.closeSoftKeyboard());
         //Tests that password input less than length 6 will cause password too short toast to show up/onView(withText("Password too short")).inRoot(withDecorView(not(is(main.get().getWindow().getDecorView())))).check(matches(isDisplayed()));

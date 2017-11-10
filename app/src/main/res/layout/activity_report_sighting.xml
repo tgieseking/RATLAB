@@ -19,6 +19,7 @@
 
     <TextView
         android:id="@+id/addressView"
+        android:labelFor="@+id/addressEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Address:"
@@ -41,6 +42,7 @@
 
     <TextView
         android:id="@+id/cityView"
+        android:labelFor="@+id/cityEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="City:"
@@ -52,6 +54,7 @@
 
     <TextView
         android:id="@+id/zipView"
+        android:labelFor="@+id/zipEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Zip Code:"
@@ -73,6 +76,7 @@
 
     <TextView
         android:id="@+id/latitudeView"
+        android:labelFor="@+id/latitudeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Latitude:"
@@ -85,6 +89,7 @@
 
     <TextView
         android:id="@+id/longitudeView"
+        android:labelFor="@+id/longitudeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Longitude:"
@@ -185,7 +190,8 @@
         android:inputType="textPersonName" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/stateView"
+        android:labelFor="@+id/stateEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/stateEditText"
