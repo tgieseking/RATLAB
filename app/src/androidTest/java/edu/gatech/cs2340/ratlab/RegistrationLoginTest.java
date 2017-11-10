@@ -21,10 +21,6 @@ import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
-/**
- * Created by tiffanyxu on 11/8/17.
- */
-
 public class RegistrationLoginTest {
     @Rule
     public final ActivityRule<RegistrationActivity> main = new ActivityRule<>(RegistrationActivity.class);

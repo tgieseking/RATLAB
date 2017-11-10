@@ -67,7 +67,7 @@
     <string-array name="location_types">
         <item>3+ Family Mixed Use Building</item>
         <item>Commercial Building</item>
-        <item>1-2 Family Dwelling</item>
+        <item>1–2 Family Dwelling</item>
         <item>3+ Family Apt. Building</item>
         <item>Public Stairs</item>
         <item>Vacant Lot</item>
@@ -76,7 +76,7 @@
         <item>Parking Lot/Garage</item>
         <item>Catch Basin/Sewer</item>
         <item>Vacant Building</item>
-        <item>1-2 Family Mixed Use Building</item>
+        <item>1–2 Family Mixed Use Building</item>
         <item>Public Garden</item>
         <item>Government Building</item>
         <item>Office Building</item>

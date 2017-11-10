@@ -60,8 +60,7 @@ public class UserManager {
                 String accountTypeString = (String) dataSnapshot.child("account_type").getValue();
                 AccountType accountType = AccountType.accountTypeFromString(accountTypeString);
                 if (accountType != null) {
-                    User user = new User(email, username, name, accountType);
-                    UserManager.this.currentUser = user;
+                    UserManager.this.currentUser = new User(email, username, name, accountType);
                     Log.d("Login", "Successfully logged in " + username);
                 } else {
                     UserManager.this.currentUser = null;

@@ -242,8 +242,7 @@ public class SightingsManager {
         } else {
             List<RatSighting> filteredSightingsList = new LinkedList<>(filteredSightings);
             Collections.shuffle(filteredSightingsList);
-            Collection<RatSighting> subset = new HashSet<>(filteredSightingsList.subList(0, maxSightings));
-            return subset;
+            return new HashSet<>(filteredSightingsList.subList(0, maxSightings));
         }
     }
 

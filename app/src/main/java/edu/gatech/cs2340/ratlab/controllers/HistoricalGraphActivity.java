@@ -54,7 +54,7 @@ public class HistoricalGraphActivity extends AppCompatActivity {
         Date endDate = new Date(startIntent.getLongExtra("end_date", 0));
         Collection<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
 
-        sightingsByBorough = new HashSet<Collection<RatSighting>>();
+        sightingsByBorough = new HashSet<>();
 
         Log.d("parcel_test", "1");
         Collection<Borough> boroughs = new HashSet<>();

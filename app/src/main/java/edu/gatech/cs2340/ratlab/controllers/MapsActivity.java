@@ -96,14 +96,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        GoogleMap map = googleMap;
-        map.getUiSettings().setZoomControlsEnabled(true);
-        map.getUiSettings().setCompassEnabled(true);
+        googleMap.getUiSettings().setZoomControlsEnabled(true);
+        googleMap.getUiSettings().setCompassEnabled(true);
 
-        ClusterManager<RatSighting> clusterManager = new ClusterManager<>(this, map);
+        ClusterManager<RatSighting> clusterManager = new ClusterManager<>(this, googleMap);
         clusterManager.setAnimation(false);
-        map.setOnCameraIdleListener(clusterManager);
-        map.setOnMarkerClickListener(clusterManager);
+        googleMap.setOnCameraIdleListener(clusterManager);
+        googleMap.setOnMarkerClickListener(clusterManager);
 
         for(RatSighting sighting : sightingsList) {
             if (sighting.getLocation().getLatitude() != 0) {
@@ -114,10 +113,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         final double newYorkLat = 40.730610;
         final double newYorkLng = -73.935242;
 
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(newYorkLat, newYorkLng), 10));
-        map.setOnInfoWindowClickListener(clusterManager);
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(newYorkLat, newYorkLng), 10));
+        googleMap.setOnInfoWindowClickListener(clusterManager);
         clusterManager.setOnClusterItemInfoWindowClickListener(this);
-        map.setOnMapLongClickListener(this);
+        googleMap.setOnMapLongClickListener(this);
     }
 
     public void onClusterItemInfoWindowClick(RatSighting sighting) {
