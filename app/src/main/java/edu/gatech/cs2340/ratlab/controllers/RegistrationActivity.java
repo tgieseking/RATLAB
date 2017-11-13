@@ -63,7 +63,6 @@ public class RegistrationActivity extends AppCompatActivity {
      * @param view the register button
      */
     public void createAccount(View view) {
-        //TODO: Set a better way of responding to failures
         EditText emailView = (EditText) findViewById(R.id.emailTextBox);
         EditText passwordView = (EditText) findViewById(R.id.passwordTextBox);
         EditText usernameView = (EditText) findViewById(R.id.usernameTextBox);

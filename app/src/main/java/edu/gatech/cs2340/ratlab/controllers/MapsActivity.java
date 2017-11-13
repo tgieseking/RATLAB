@@ -147,7 +147,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 startActivity(intent);
             }
         } catch (IOException e) {
-            //TODO: complete catch block
+            Log.e("map_click", "was an IO error when clicking on map", e);
         }
 
     }

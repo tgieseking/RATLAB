@@ -37,11 +37,4 @@ public class Location implements Serializable{
         this.borough = borough;
         this.locationType = locationType;
     }
-
-    /**
-     * Sets borough to default value of null.
-     */
-    public Location(double latitude, double longitude, Address address, LocationType locationType) {
-        this(latitude, longitude, address, null, locationType);
-    }
 }
