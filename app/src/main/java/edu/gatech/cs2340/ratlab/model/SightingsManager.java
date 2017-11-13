@@ -167,13 +167,13 @@ public final class SightingsManager {
         Map<String, Object> newRat = new HashMap<>();
         newRat.put("createdDate", sighting.getCreatedDateDatabaseString());
         newRat.put("locationType", sighting.getLocationType());
-        newRat.put("address", sighting.getAddress().getAddressLine());
-        newRat.put("zipCode", sighting.getAddress().getZipCode());
+        newRat.put("address", sighting.getAddressLine());
+        newRat.put("zipCode", sighting.getZipCode());
         newRat.put("city", sighting.getAddress().getCity());
-        newRat.put("state", sighting.getLocation().getAddress().getState());
+        newRat.put("state", sighting.getState());
         newRat.put("borough", sighting.getBorough());
-        newRat.put("latitude", sighting.getLocation().getLatitude());
-        newRat.put("longitude", sighting.getLocation().getLongitude());
+        newRat.put("latitude", sighting.getLatitude());
+        newRat.put("longitude", sighting.getLongitude());
         newNode.setValue(newRat);
     }
 

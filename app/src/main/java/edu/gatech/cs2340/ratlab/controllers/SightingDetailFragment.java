@@ -80,16 +80,16 @@ public class SightingDetailFragment extends Fragment {
                     + "\nDate: " + sighting.getCreatedDateString()
                     + "\nLocation Type: " + sighting.getLocationType().getTextName()
                     + "\nAddress: " + sighting.getAddress()
-                    + "\nLongitude: " + sighting.getLocation().getLongitude()
-                    + "\nLatitude: " + sighting.getLocation().getLatitude();
+                    + "\nLongitude: " + sighting.getLongitude()
+                    + "\nLatitude: " + sighting.getLatitude();
         } else {
             return "Key: " + sighting.getKey()
                     + "\nDate: " + sighting.getCreatedDateString()
                     + "\nLocation Type: " + sighting.getLocationType().getTextName()
                     + "\nAddress: " + sighting.getAddress()
                     + "\nBorough: " + sighting.getBorough()
-                    + "\nLatitude: " + sighting.getLocation().getLatitude()
-                    + "\nLongitude: " + sighting.getLocation().getLongitude();
+                    + "\nLatitude: " + sighting.getLatitude()
+                    + "\nLongitude: " + sighting.getLongitude();
         }
     }
 }

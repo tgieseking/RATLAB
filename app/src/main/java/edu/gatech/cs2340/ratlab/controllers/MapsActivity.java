@@ -103,7 +103,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setOnMarkerClickListener(clusterManager);
 
         for(RatSighting sighting : sightingsList) {
-            if (sighting.getLocation().getLatitude() != 0) {
+            if (sighting.getLatitude() != 0) {
                 clusterManager.addItem(sighting);
             }
         }
@@ -136,13 +136,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (addresses.isEmpty()) {
                 Log.d("map_click", "no matches");
             } else {
-                Log.d("map_click", "" + addresses.get(0).getLatitude());
-                Log.d("map_click", "" + addresses.get(0).getLongitude());
-                Log.d("map_click", "" + addresses.get(0).getAddressLine(0));
-                Log.d("map_click", "" + addresses.get(0).getSubThoroughfare());
-                Log.d("map_click", "" + addresses.get(0).getThoroughfare());
+                android.location.Address firstAddress = addresses.get(0);
+                Log.d("map_click", "" + firstAddress.getLatitude());
+                Log.d("map_click", "" + firstAddress.getLongitude());
+                Log.d("map_click", "" + firstAddress.getAddressLine(0));
+                Log.d("map_click", "" + firstAddress.getSubThoroughfare());
+                Log.d("map_click", "" + firstAddress.getThoroughfare());
                 Intent intent = new Intent(this, ReportSightingActivity.class);
-                intent.putExtra("address", addresses.get(0));
+                intent.putExtra("address", firstAddress);
                 startActivity(intent);
             }
         } catch (IOException e) {

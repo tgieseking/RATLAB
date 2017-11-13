@@ -133,7 +133,7 @@ public class SightingListActivity extends AppCompatActivity {
               Now we bind the data to the widgets.
              */
             holder.mIdView.setText(mSightings.get(position).getCreatedDateString());
-            holder.mContentView.setText(mSightings.get(position).getAddress().getAddressLine());
+            holder.mContentView.setText(mSightings.get(position).getAddressLine());
 
             /*
              * set up a listener to handle if the user clicks on this list item, what should happen?

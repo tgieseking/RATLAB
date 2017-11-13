@@ -43,21 +43,48 @@ public class RatSighting implements ClusterItem {
         return dateFormat.format(createdDate);
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
     public LocationType getLocationType() {
         return location.getLocationType();
+    }
+
+
+
+    public Borough getBorough() {
+        return location.getBorough();
+    }
+
+    public double getLatitude() {
+        return location.getLatitude();
+    }
+
+    public double getLongitude() {
+        return location.getLongitude();
     }
 
     public Address getAddress() {
         return location.getAddress();
     }
 
-    public Location getLocation() {
-        return location;
+    public String getAddressLine() {
+        return getAddress().getAddressLine();
     }
 
-    public Borough getBorough() {
-        return location.getBorough();
+    public String getCity() {
+        return getAddress().getCity();
     }
+
+    public String getState() {
+        return getAddress().getState();
+    }
+
+    public String getZipCode() {
+        return getAddress().getZipCode();
+    }
+
 
     public RatSighting(String key, Date createdDate, LocationType locationType, String addressLine,
                        String zipCode, String city, String state, Borough borough, double latitude,
@@ -133,7 +160,7 @@ public class RatSighting implements ClusterItem {
 
     @Override
     public LatLng getPosition() {
-        return new LatLng(getLocation().getLatitude(), getLocation().getLongitude());
+        return new LatLng(getLatitude(), getLongitude());
     }
 
     @Override
