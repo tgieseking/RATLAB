@@ -118,6 +118,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         googleMap.setOnMapLongClickListener(this);
     }
 
+    @Override
     public void onClusterItemInfoWindowClick(RatSighting sighting) {
         String key = sighting.getKey();
         Intent intent = new Intent(this, SightingDetailActivity.class);
