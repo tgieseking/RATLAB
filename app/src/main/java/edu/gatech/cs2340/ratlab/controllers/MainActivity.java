@@ -64,7 +64,8 @@ public class MainActivity extends AppCompatActivity {
         // check that it is the ReportSightingActivity with an OK result
         if (requestCode == REPORT_ACTIVITY_RESULT_CODE) {
             if (resultCode == RESULT_OK) {
-                RatSighting newSighting = (RatSighting) getIntent().getSerializableExtra("ratSighting");
+                RatSighting newSighting =
+                        (RatSighting) getIntent().getSerializableExtra("ratSighting");
                 sightingsManager.addRatSightingToDatabase(newSighting);
             }
         }

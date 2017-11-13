@@ -80,7 +80,8 @@ public class SightingListActivity extends AppCompatActivity {
      */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         SightingsManager sightingsManager = SightingsManager.getInstance();
-        recyclerView.setAdapter(new SimpleSightingRecyclerViewAdapter(sightingsManager.createSightingsList()));
+        recyclerView.setAdapter(
+                new SimpleSightingRecyclerViewAdapter(sightingsManager.createSightingsList()));
     }
 
     /**
@@ -123,8 +124,8 @@ public class SightingListActivity extends AppCompatActivity {
             final SightingsManager sightingsManager = SightingsManager.getInstance();
 
             /*
-            This is where we have to bind each data element in the list (given by position parameter)
-            to an element in the view (which is one of our two TextView widgets
+            This is where we have to bind each data element in the list (given by position
+            parameter) to an element in the view (which is one of our two TextView widgets
              */
             //start by getting the element at the correct position
             holder.mSighting = mSightings.get(position);
@@ -143,7 +144,8 @@ public class SightingListActivity extends AppCompatActivity {
                     if (mTwoPane) {
                         //if a two pane window, we change the contents on the main screen
                         Bundle arguments = new Bundle();
-                        arguments.putString(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getCreatedDateString());
+                        arguments.putString(SightingDetailFragment.ARG_SIGHTING_ID,
+                                holder.mSighting.getCreatedDateString());
                         SightingDetailFragment fragment = new SightingDetailFragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
@@ -155,10 +157,11 @@ public class SightingListActivity extends AppCompatActivity {
                         //create our new intent with the new screen (activity)
                         Intent intent = new Intent(context, SightingDetailActivity.class);
                         /*
-                            pass along the date of the sighting so we can retrieve the correct data in
-                            the next window
+                            pass along the date of the sighting so we can retrieve the correct data
+                            in the next window
                          */
-                        intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID, holder.mSighting.getKey());
+                        intent.putExtra(SightingDetailFragment.ARG_SIGHTING_ID,
+                                holder.mSighting.getKey());
 
                         //now just display the new window
                         context.startActivity(intent);
@@ -174,8 +177,8 @@ public class SightingListActivity extends AppCompatActivity {
 
         /**
          * This inner class represents a ViewHolder which provides us a way to cache information
-         * about the binding between the model element (in this case a RatSighting) and the widgets in
-         * the list view (in this case the two TextView)
+         * about the binding between the model element (in this case a RatSighting) and the widgets
+         * in the list view (in this case the two TextView)
          */
         public class ViewHolder extends RecyclerView.ViewHolder {
             public final View mView;

@@ -1,7 +1,5 @@
 package edu.gatech.cs2340.ratlab;
 
-import android.util.Log;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +13,6 @@ import java.util.HashSet;
 import java.util.Locale;
 
 import edu.gatech.cs2340.ratlab.model.Borough;
-import edu.gatech.cs2340.ratlab.model.Location;
 import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
@@ -63,7 +60,8 @@ public class FilterRandomTest {
 
         for (Borough borough : Borough.values()) {
             boroughs.add(borough);
-            sightings = sightingsManager.filterRatSightings(startDate, endDate, boroughs, locationTypes, 10);
+            sightings = sightingsManager.filterRatSightings(startDate, endDate, boroughs,
+                    locationTypes, 10);
             assertEquals("There were " + sightings.size() + " sightings with borough " + borough,
                     sightings.size(), 1);
             for (RatSighting sighting : sightings) {
@@ -95,9 +93,10 @@ public class FilterRandomTest {
 
         for (LocationType locationType : LocationType.values()) {
             locationTypes.add(locationType);
-            sightings = sightingsManager.filterRatSightings(startDate, endDate, boroughs, locationTypes, 10);
-            assertEquals("There were " + locationTypes.size() + " sightings with location type " + locationType,
-                    locationTypes.size(), 1);
+            sightings = sightingsManager.filterRatSightings(startDate, endDate, boroughs,
+                    locationTypes, 10);
+            assertEquals("There were " + locationTypes.size() + " sightings with location type "
+                            + locationType, locationTypes.size(), 1);
             for (RatSighting sighting : sightings) {
                 assertEquals(sighting.getLocationType(), locationType);
             }
@@ -130,7 +129,8 @@ public class FilterRandomTest {
         boolean allSame = true;
 
         for (int i = 0; i < 10; i++) {
-            sightings = sightingsManager.filterRatSightings(startDate, endDate, boroughs, locationTypes, maxSightings);
+            sightings = sightingsManager.filterRatSightings(startDate, endDate, boroughs,
+                    locationTypes, maxSightings);
             assertEquals("Sampled subset wrong size", sightings.size(), maxSightings);
             allSame = allSame && sightings.equals(previousSightings);
             previousSightings = sightings;

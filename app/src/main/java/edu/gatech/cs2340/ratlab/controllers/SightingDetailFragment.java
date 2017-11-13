@@ -49,7 +49,8 @@ public class SightingDetailFragment extends Fragment {
             //ask the sightingsManager to give us the course object
             SightingsManager sightingsManager = SightingsManager.getInstance();
             // mCourse = sightingsManager.getCourseById(getArguments().getInt(ARG_COURSE_ID));
-            mSighting = sightingsManager.getSightingByKey(getArguments().getString(ARG_SIGHTING_ID));
+            mSighting = sightingsManager.getSightingByKey(
+                    getArguments().getString(ARG_SIGHTING_ID));
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
@@ -66,7 +67,8 @@ public class SightingDetailFragment extends Fragment {
 
         // Show the dummy content as text in a TextView. CHANGE THIS STUFF !!!!!!!!!!!!!!!!!!!!!!!!!
         if (mSighting != null) {
-            ((TextView) rootView.findViewById(R.id.sighting_detail)).setText(ratSightingsDetails(mSighting));
+            ((TextView) rootView.findViewById(R.id.sighting_detail)).setText(
+                    ratSightingsDetails(mSighting));
         }
 
         return rootView;

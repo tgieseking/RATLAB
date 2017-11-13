@@ -1,9 +1,9 @@
 package edu.gatech.cs2340.ratlab.controllers;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,8 +18,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.UserManager;
@@ -113,7 +111,8 @@ public class RegistrationActivity extends AppCompatActivity {
                             userManager.login();
 
 
-                            Intent intent = new Intent(RegistrationActivity.this, MainActivity.class);
+                            Intent intent = new Intent(RegistrationActivity.this,
+                                    MainActivity.class);
                             startActivity(intent);
                             finish();
                         } else {
@@ -132,12 +131,14 @@ public class RegistrationActivity extends AppCompatActivity {
                                     Toast.makeText(RegistrationActivity.this, "Weak password",
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    Toast.makeText(RegistrationActivity.this, task.getException().toString(),
+                                    Toast.makeText(RegistrationActivity.this,
+                                            task.getException().toString(),
                                             Toast.LENGTH_SHORT).show();
                                     Log.d("Registration", task.getException().toString());
                                 }
                             } catch (Exception e) {
-                                Toast.makeText(RegistrationActivity.this, task.getException().toString(),
+                                Toast.makeText(RegistrationActivity.this,
+                                        task.getException().toString(),
                                         Toast.LENGTH_SHORT).show();
                                 Log.d("Registration", task.getException().toString());
                             }

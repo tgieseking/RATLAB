@@ -145,7 +145,8 @@ public class ReportSightingActivity extends AppCompatActivity{
         EditText latitudeView = (EditText) findViewById(R.id.latitudeEditText);
 
         Date currentDate = Calendar.getInstance().getTime();
-        LocationType locationType = LocationType.locationTypeFromTextName(locationSpinner.getSelectedItem().toString());
+        LocationType locationType = LocationType.locationTypeFromTextName(
+                locationSpinner.getSelectedItem().toString());
         String addressLine = addressView.getText().toString();
         if (addressLine.isEmpty()) {
             Toast.makeText(this, "Address field cannot be empty",
@@ -160,7 +161,8 @@ public class ReportSightingActivity extends AppCompatActivity{
         }
         String city = cityEditText.getText().toString();
         String state = stateView.getText().toString();
-        Borough borough = Borough.getBoroughFromTextName(boroughSpinner.getSelectedItem().toString());
+        Borough borough = Borough.getBoroughFromTextName(
+                boroughSpinner.getSelectedItem().toString());
         Double latitude;
         Double longitude;
         String latitudeString = latitudeView.getText().toString();

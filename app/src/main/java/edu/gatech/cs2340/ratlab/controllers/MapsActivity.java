@@ -2,8 +2,8 @@ package edu.gatech.cs2340.ratlab.controllers;
 
 import android.content.Intent;
 import android.location.Geocoder;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -19,7 +19,6 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.Borough;
@@ -73,7 +72,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Log.d("parcel_test", "3");
 
-        Collection<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
+        Collection<LocationType> locationTypes =
+                new HashSet<>(Arrays.asList(LocationType.values()));
 
         sightingsList = SightingsManager.getInstance()
                 .filterRatSightings(startDate, endDate, boroughs, locationTypes, 1000);
@@ -111,7 +111,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         final double newYorkLat = 40.730610;
         final double newYorkLng = -73.935242;
 
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(newYorkLat, newYorkLng), 10));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(newYorkLat, newYorkLng),
+                10));
         googleMap.setOnInfoWindowClickListener(clusterManager);
         clusterManager.setOnClusterItemInfoWindowClickListener(this);
         googleMap.setOnMapLongClickListener(this);

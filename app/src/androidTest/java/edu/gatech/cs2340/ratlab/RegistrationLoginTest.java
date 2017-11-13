@@ -15,15 +15,10 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.AllOf.allOf;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.not;
 
 public class RegistrationLoginTest {
     @Rule
-    public final ActivityRule<RegistrationActivity> main = new ActivityRule<>(RegistrationActivity.class);
+    public final ActivityRule<RegistrationActivity> main =new ActivityRule<>(RegistrationActivity.class);
 
     @Test
     public void shouldBeAbleToRegister() {

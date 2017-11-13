@@ -91,8 +91,10 @@ public final class SightingsManager {
                 Log.d("sightings_database", "Starting to create RatSighting");
                 String key = dataSnapshot.getKey();
                 String createdDate = dataSnapshot.child("createdDate").getValue(String.class);
-                String locationTypeString = dataSnapshot.child("locationType").getValue(String.class);
-                LocationType locationType = LocationType.locationTypeFromTextName(locationTypeString);
+                String locationTypeString =
+                        dataSnapshot.child("locationType").getValue(String.class);
+                LocationType locationType =
+                        LocationType.locationTypeFromTextName(locationTypeString);
                 String address = dataSnapshot.child("address").getValue(String.class);
                 String zipCode = dataSnapshot.child("zipCode").getValue(String.class);
                 String city = dataSnapshot.child("city").getValue(String.class);
@@ -102,9 +104,10 @@ public final class SightingsManager {
                 double longitude;
                 latitude = dataSnapshot.child("latitude").getValue(Double.class);
                 longitude = dataSnapshot.child("longitude").getValue(Double.class);
-                RatSighting sighting = new RatSighting(key, createdDate, locationType, address, zipCode, city,
-                        borough, latitude, longitude);
-                Log.d("sightings_database", "Added new rat sighting from database to model: " + sighting);
+                RatSighting sighting = new RatSighting(key, createdDate, locationType, address,
+                        zipCode, city, borough, latitude, longitude);
+                Log.d("sightings_database", "Added new rat sighting from database to model: "
+                        + sighting);
                 return sighting;
             }
         };
@@ -123,7 +126,8 @@ public final class SightingsManager {
         @Override
         protected Void doInBackground(Context... contexts) {
             Log.d("async_data", "Starting to read data");
-            InputStream historicalDataStream = contexts[0].getResources().openRawResource(R.raw.rat_sightings);
+            InputStream historicalDataStream =
+                    contexts[0].getResources().openRawResource(R.raw.rat_sightings);
             Scanner historicalDataScanner = new Scanner(historicalDataStream);
             historicalDataScanner.nextLine(); // Don't read the header
 
@@ -208,7 +212,8 @@ public final class SightingsManager {
      * @param locationTypes the list of location types which will be included
      * @return a set of rat sightings which meet all criteria
      */
-    public Collection<RatSighting> filterRatSightings(Date startDate, Date endDate, Collection<Borough> boroughs,
+    public Collection<RatSighting> filterRatSightings(Date startDate, Date endDate,
+                                                      Collection<Borough> boroughs,
                                                       Collection<LocationType> locationTypes) {
         Collection<RatSighting> filteredSightings = new HashSet<>();
         for (RatSighting sighting : ratSightings.values()) {
@@ -234,8 +239,10 @@ public final class SightingsManager {
      * @param maxSightings the maximum size of the returned set
      * @return a set of rat sightings which meet all criteria of size at most maxSightings
      */
-    public Collection<RatSighting> filterRatSightings(Date startDate, Date endDate, Collection<Borough> boroughs,
-                                               Collection<LocationType> locationTypes, int maxSightings) {
+    public Collection<RatSighting> filterRatSightings(Date startDate, Date endDate,
+                                                      Collection<Borough> boroughs,
+                                                      Collection<LocationType> locationTypes,
+                                                      int maxSightings) {
         Collection<RatSighting> filteredSightings = filterRatSightings(startDate, endDate, boroughs,
                 locationTypes);
         if (filteredSightings.size() <= maxSightings) {

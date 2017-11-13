@@ -2,8 +2,8 @@ package edu.gatech.cs2340.ratlab.controllers;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -25,7 +25,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.Borough;
@@ -54,7 +53,8 @@ public class HistoricalGraphActivity extends AppCompatActivity {
 
         Date startDate = new Date(startIntent.getLongExtra("start_date", 0));
         Date endDate = new Date(startIntent.getLongExtra("end_date", 0));
-        Collection<LocationType> locationTypes = new HashSet<>(Arrays.asList(LocationType.values()));
+        Collection<LocationType> locationTypes =
+                new HashSet<>(Arrays.asList(LocationType.values()));
 
         sightingsByBorough = new HashSet<>();
 
@@ -113,8 +113,8 @@ public class HistoricalGraphActivity extends AppCompatActivity {
             for (RatSighting sighting : boroughSet) {
                 borough = sighting.getBorough().toString();
                 //adds one to the time range that this entry fits into
-                rangeValues[(int)((Math.abs(startDate.getTime() - sighting.getCreatedDate().getTime()))
-                        / timeRange)]++;
+                rangeValues[(int)((Math.abs(startDate.getTime()
+                        - sighting.getCreatedDate().getTime())) / timeRange)]++;
             }
             List<Entry> boroughData = new ArrayList<>();
             for (int i = 0; i < 10; i++) {
