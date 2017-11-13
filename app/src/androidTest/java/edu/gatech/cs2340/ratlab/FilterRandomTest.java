@@ -22,8 +22,14 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
-
+/**
+ * Testing of the FilterRatSightings method in SightingsManager with the maxSightings parameter
+ */
 public class FilterRandomTest {
+    /**
+     * Loads the rat sightings from firebase before tests are run. If the sightings take more than
+     * 2000ms to load, the test fails because of suspected connection issue.
+     */
     @Before
     public void loadSightings() {
         final int totalSightings = 26;
@@ -38,6 +44,10 @@ public class FilterRandomTest {
         }
     }
 
+    /**
+     * Tests whether boroughs are included/excluded from the filtered list correctly based on the
+     * boroughs list.
+     */
     @Test
     public void testBoroughs() {
         SightingsManager sightingsManager = SightingsManager.getInstance();
@@ -71,6 +81,10 @@ public class FilterRandomTest {
         }
     }
 
+    /**
+     * Tests whether location types are included/excluded from the filtered list correctly based on
+     * the location types list.
+     */
     @Test
     public void testLocationTypes() {
         SightingsManager sightingsManager = SightingsManager.getInstance();
@@ -104,6 +118,10 @@ public class FilterRandomTest {
         }
     }
 
+    /**
+     * Tests whether a subset of the correct size is taken from the filtered list and whether the
+     * subset is the same every time.
+     */
     @Test
     public void testSubset() {
         SightingsManager sightingsManager = SightingsManager.getInstance();
