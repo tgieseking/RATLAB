@@ -22,9 +22,7 @@ import static junit.framework.Assert.assertFalse;
 import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
-/**
- * Class that tests the filter for map.
- */
+
 public class FilterRandomTest {
     @Before
     public void loadSightings() {

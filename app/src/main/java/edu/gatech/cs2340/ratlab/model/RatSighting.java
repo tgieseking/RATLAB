@@ -116,7 +116,7 @@ public class RatSighting implements ClusterItem {
      * @return String address line for the rat sighting
      */
     public String getAddressLine() {
-        return getAddress().getAddressLine();
+        return location.getAddressLine();
     }
 
     /**
@@ -125,7 +125,7 @@ public class RatSighting implements ClusterItem {
      * @return String city of the rat sighting
      */
     public String getCity() {
-        return getAddress().getCity();
+        return location.getCity();
     }
 
     /**
@@ -134,7 +134,7 @@ public class RatSighting implements ClusterItem {
      * @return String state of the rat sighting.
      */
     public String getState() {
-        return getAddress().getState();
+        return location.getState();
     }
 
     /**
@@ -143,7 +143,7 @@ public class RatSighting implements ClusterItem {
      * @return String zip code of the rat sighting
      */
     public String getZipCode() {
-        return getAddress().getZipCode();
+        return location.getZipCode();
     }
 
     /**
