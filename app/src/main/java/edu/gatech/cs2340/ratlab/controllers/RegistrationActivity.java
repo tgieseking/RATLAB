@@ -76,19 +76,19 @@ public class RegistrationActivity extends AppCompatActivity {
         final String username = usernameView.getText().toString();
         final String name = nameView.getText().toString();
 
-        if (name.length() == 0) {
+        if (name.isEmpty()) {
             Toast nameEmpty = Toast.makeText(RegistrationActivity.this, "Empty name",
                     Toast.LENGTH_SHORT);
             nameEmpty.show();
             return;
         }
-        if (username.length() == 0) {
+        if (username.isEmpty()) {
             Toast userEmpty = Toast.makeText(RegistrationActivity.this, "Empty username",
                     Toast.LENGTH_SHORT);
             userEmpty.show();
             return;
         }
-        if (email.length() == 0) {
+        if (email.isEmpty()) {
             Toast emptyEmail = Toast.makeText(RegistrationActivity.this, "Empty email",
                     Toast.LENGTH_SHORT);
             emptyEmail.show();

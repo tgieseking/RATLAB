@@ -98,7 +98,8 @@ public final class SightingsManager {
                 String city = dataSnapshot.child("city").getValue(String.class);
                 String boroughString = dataSnapshot.child("borough").getValue(String.class);
                 Borough borough = Borough.valueOf(boroughString);
-                double latitude, longitude;
+                double latitude;
+                double longitude;
                 latitude = dataSnapshot.child("latitude").getValue(Double.class);
                 longitude = dataSnapshot.child("longitude").getValue(Double.class);
                 RatSighting sighting = new RatSighting(key, createdDate, locationType, address, zipCode, city,
@@ -211,10 +212,10 @@ public final class SightingsManager {
                                                       Collection<LocationType> locationTypes) {
         Collection<RatSighting> filteredSightings = new HashSet<>();
         for (RatSighting sighting : ratSightings.values()) {
-            if (sighting.getCreatedDate().compareTo(startDate) >= 0
-                    && sighting.getCreatedDate().compareTo(endDate) <= 0
-                    && boroughs.contains(sighting.getBorough())
-                    && locationTypes.contains(sighting.getLocationType())) {
+            if ((sighting.getCreatedDate().compareTo(startDate) >= 0)
+                    && (sighting.getCreatedDate().compareTo(endDate) <= 0)
+                    && (boroughs.contains(sighting.getBorough()))
+                    && (locationTypes.contains(sighting.getLocationType()))) {
                 filteredSightings.add(sighting);
             }
         }

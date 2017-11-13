@@ -52,12 +52,12 @@ public class LoginActivity extends AppCompatActivity{
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
 
-        if (email.length() == 0) {
+        if (email.isEmpty()) {
             Toast.makeText(LoginActivity.this, "Empty email",
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        if (password.length() == 0) {
+        if (password.isEmpty()) {
             Toast.makeText(LoginActivity.this, "Empty password",
                     Toast.LENGTH_SHORT).show();
             return;

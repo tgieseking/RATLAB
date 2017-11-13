@@ -60,7 +60,7 @@ public class ReportSightingActivity extends AppCompatActivity{
 
             String street = address.getThoroughfare();
             String streetNumber = address.getSubThoroughfare();
-            if (street != null && streetNumber != null) {
+            if ((street != null) && (streetNumber != null)) {
                 addressEditText.setText(streetNumber + " " + street);
             }
 
@@ -147,13 +147,13 @@ public class ReportSightingActivity extends AppCompatActivity{
         Date currentDate = Calendar.getInstance().getTime();
         LocationType locationType = LocationType.locationTypeFromTextName(locationSpinner.getSelectedItem().toString());
         String addressLine = addressView.getText().toString();
-        if (addressLine.length() == 0) {
+        if (addressLine.isEmpty()) {
             Toast.makeText(this, "Address field cannot be empty",
                     Toast.LENGTH_SHORT).show();
             return;
         }
         String zipCode = zipView.getText().toString();
-        if (zipCode.length() == 0) {
+        if (zipCode.isEmpty()) {
             Toast.makeText(this, "Zip code field cannot be empty",
                     Toast.LENGTH_SHORT).show();
             return;
@@ -161,9 +161,10 @@ public class ReportSightingActivity extends AppCompatActivity{
         String city = cityEditText.getText().toString();
         String state = stateView.getText().toString();
         Borough borough = Borough.getBoroughFromTextName(boroughSpinner.getSelectedItem().toString());
-        Double latitude,longitude;
+        Double latitude;
+        Double longitude;
         String latitudeString = latitudeView.getText().toString();
-        if (latitudeString.length() == 0) {
+        if (latitudeString.isEmpty()) {
             Toast.makeText(this, "latitude field cannot be empty",
                     Toast.LENGTH_SHORT).show();
             return;
@@ -177,13 +178,13 @@ public class ReportSightingActivity extends AppCompatActivity{
         }
         final double minLat = -90.0;
         final double maxLat = 90.0;
-        if (latitude <  minLat || latitude > maxLat) {
+        if ((latitude <  minLat) || (latitude > maxLat)) {
             Toast.makeText(this, "latitude must be between -90 and 90",
                     Toast.LENGTH_SHORT).show();
             return;
         }
         String longitudeString = longitudeView.getText().toString();
-        if (longitudeString.length() == 0) {
+        if (longitudeString.isEmpty()) {
             Toast.makeText(this, "longitude field cannot be empty",
                     Toast.LENGTH_SHORT).show();
             return;
@@ -197,7 +198,7 @@ public class ReportSightingActivity extends AppCompatActivity{
         }
         final double minLng = -180.0;
         final double maxLng = 180.0;
-        if (longitude <  minLng || longitude > maxLng) {
+        if ((longitude <  minLng) || (longitude > maxLng)) {
             Toast.makeText(this, "latitude must be between -90 and 90",
                     Toast.LENGTH_SHORT).show();
             return;
