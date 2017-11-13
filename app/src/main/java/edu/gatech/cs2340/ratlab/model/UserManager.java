@@ -9,8 +9,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * User Manager class
+ */
 public final class UserManager {
     private static final UserManager instance = new UserManager();
+
+    /**
+     * Getter method that returns the singleton user manager instance.
+     *
+     * @return UserManager instance
+     */
     public static UserManager getInstance() { return instance; }
 
     // Stores information on the currently logged in user
@@ -18,6 +27,11 @@ public final class UserManager {
     private final FirebaseAuth firebaseAuth;
     private final FirebaseDatabase firebaseDatabase;
 
+    /**
+     * Getter method that returns the current user.
+     *
+     * @return User current user
+     */
     public User getCurrentUser() {
         return currentUser;
     }

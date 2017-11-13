@@ -20,7 +20,9 @@ import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
-
+/**
+ * Activity where users can report a rat sighting.
+ */
 public class ReportSightingActivity extends AppCompatActivity{
     private Spinner locationSpinner;
     private EditText cityEditText;

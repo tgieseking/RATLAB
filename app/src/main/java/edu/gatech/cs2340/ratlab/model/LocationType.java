@@ -3,7 +3,9 @@ package edu.gatech.cs2340.ratlab.model;
 import java.io.Serializable;
 
 
-
+/**
+ * Enumerated type that represents location type.
+ */
 public enum LocationType implements Serializable{
     THREE_PLUS_FAMILY_MIXED_USE_BUILDING("3+ Family Mixed Use Building"),
     COMMERCIAL_BUILDING("Commercial Building"),
@@ -28,6 +30,11 @@ public enum LocationType implements Serializable{
 
     private final String textName;
 
+    /**
+     * Getter method that returns the text name of the location type.
+     *
+     * @return string representation of the location type
+     */
     public String getTextName() {
         return textName;
     }

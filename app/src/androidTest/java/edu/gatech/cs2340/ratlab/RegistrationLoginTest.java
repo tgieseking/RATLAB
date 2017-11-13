@@ -16,10 +16,16 @@ import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.AllOf.allOf;
 
+/**
+ * Espresso test that tests the UI of registration activity.
+ */
 public class RegistrationLoginTest {
     @Rule
     public final ActivityRule<RegistrationActivity> main =new ActivityRule<>(RegistrationActivity.class);
 
+    /**
+     * Method that performs actions on registration activity.
+     */
     @Test
     public void shouldBeAbleToRegister() {
         onView(withId(R.id.nameTextBox)).perform(typeText("name"), ViewActions.closeSoftKeyboard());
@@ -28,9 +34,6 @@ public class RegistrationLoginTest {
         onView(withId(R.id.usernameTextBox)).perform(typeText("nameUser"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.registerButton)).perform(click());
         //Tests that empty email toast is displayed when trying to register without inputting email
-        //onView(withText("Empty email"))
-        //        .inRoot(withDecorView(not(main.get().getWindow().getDecorView())))
-         //       .check(matches(isDisplayed()));
         onView(withId(R.id.emailTextBox)).perform(typeText("name@gmail.com"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.passwordTextBox)).perform(typeText("123"), ViewActions.closeSoftKeyboard());
         //Tests that password input less than length 6 will cause password too short toast to show up/onView(withText("Password too short")).inRoot(withDecorView(not(is(main.get().getWindow().getDecorView())))).check(matches(isDisplayed()));

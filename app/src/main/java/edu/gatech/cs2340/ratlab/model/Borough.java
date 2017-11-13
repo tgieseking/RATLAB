@@ -2,6 +2,9 @@ package edu.gatech.cs2340.ratlab.model;
 
 import java.io.Serializable;
 
+/**
+ * Enumerated type representing the boroughs of the city.
+ */
 public enum Borough implements Serializable{
     BRONX ("Bronx"),
     BROOKLYN ("Brooklyn"),
@@ -21,6 +24,11 @@ public enum Borough implements Serializable{
         return textName;
     }
 
+    /**
+     * Getter that gets the borough enum from its text name.
+     * @param textName the borough name
+     * @return the enumerated borough type
+     */
     public static Borough getBoroughFromTextName(String textName) {
         switch (textName) {
             case "Bronx" : return BRONX;

@@ -15,18 +15,36 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import edu.gatech.cs2340.ratlab.R;
 
+/**
+ * Activity for the forgot password page.
+ */
 public class ForgotPasswordActivity extends AppCompatActivity {
-
+    /**
+     * Creates the ForgotPasswordActivity instance.
+     *
+     * @param savedInstanceState the current saved instance state
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
     }
 
+    /**
+     * Ends the current activity which then allows
+     * the previous activity on the stack to be shown.
+     *
+     * @param view back button
+     */
     public void goBack(View view) {
         finish();
     }
 
+    /**
+     * Takes in the input from the form.
+     *
+     * @param view reset password button
+     */
     public void resetPassword(View view) {
         EditText emailView = (EditText) findViewById(R.id.emailEditText);
         String email = emailView.getText().toString();

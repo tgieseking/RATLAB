@@ -14,6 +14,9 @@ import java.util.Locale;
 
 import edu.gatech.cs2340.ratlab.R;
 
+/**
+ * Activity that displays the filter for the map.
+ */
 public class MapFilterActivity extends AppCompatActivity {
 
     @Override
@@ -22,6 +25,11 @@ public class MapFilterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map_filter);
     }
 
+    /**
+     * Creates a MapsActivity instance when view is clicked.
+     *
+     * @param view filter button
+     */
     public void onClickFilter(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
 

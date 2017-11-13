@@ -15,6 +15,10 @@ import java.util.Locale;
 
 import edu.gatech.cs2340.ratlab.R;
 
+/**
+ * Class that filters for the graph that displays the
+ * history of rat sightings depending on time range and borough.
+ */
 public class HistogramFilterActivity extends AppCompatActivity {
 
     @Override
@@ -23,6 +27,12 @@ public class HistogramFilterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_histogram_filter);
     }
 
+    /**
+     * Takes the filter input and grabs the appropriate data
+     * that matches the filter input.
+     *
+     * @param view filter button
+     */
     public void onClickFilterGraph(View view) {
         Intent intent = new Intent(this, HistoricalGraphActivity.class);
 

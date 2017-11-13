@@ -1,7 +1,10 @@
 package edu.gatech.cs2340.ratlab.model;
 
 
-
+/**
+ * Enumerated class type AccountType
+ * that is limited to Administrator and User.
+ */
 public enum AccountType {
     USER,
     ADMINISTRATOR;

@@ -8,6 +8,9 @@ import android.view.View;
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
+/**
+ * Welcome Activity that has Login and Registration buttons.
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override

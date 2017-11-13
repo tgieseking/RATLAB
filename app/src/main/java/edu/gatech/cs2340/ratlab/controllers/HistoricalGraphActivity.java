@@ -32,6 +32,10 @@ import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
+/**
+ * Graph that displays the historic data of rat sightings which
+ * can be filtered by date and borough.
+ */
 public class HistoricalGraphActivity extends AppCompatActivity {
 
     private Collection<Collection<RatSighting>> sightingsByBorough;

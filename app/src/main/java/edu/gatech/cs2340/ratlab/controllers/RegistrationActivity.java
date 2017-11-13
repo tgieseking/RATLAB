@@ -22,6 +22,9 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.UserManager;
 
+/**
+ * Activity displaying registration screen.
+ */
 public class RegistrationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     // --Commented out by Inspection (11/8/2017 3:55 PM):private DatabaseReference mDatabase;

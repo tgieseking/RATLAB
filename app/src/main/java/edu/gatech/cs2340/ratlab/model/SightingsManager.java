@@ -25,8 +25,15 @@ import java.util.Scanner;
 
 import edu.gatech.cs2340.ratlab.R;
 
+/**
+ * SightingsManager class that manages the rat sightings
+ */
 public final class SightingsManager {
     private static final SightingsManager instance = new SightingsManager();
+    /**
+     * Getter method that returns the singleton SightingsManager instance.
+     * @return SightingsManager singleton instance
+     */
     public static SightingsManager getInstance() { return instance; }
 
     // The list of all rat sightings
@@ -151,6 +158,11 @@ public final class SightingsManager {
         }
     }
 
+    /**
+     * Method that returns true if historical data is done loading, and false otherwise.
+     *
+     * @return boolean representing if the historical data is done loading
+     */
     public boolean isLoadingHistoricalDataComplete() {
         return loadingHistoricalDataComplete;
     }
@@ -236,6 +248,7 @@ public final class SightingsManager {
      * @param startDate the start of the date range
      * @param endDate tne end of the date range
      * @param boroughs the list of boroughs which will be included
+     * @param locationTypes collection of locationTypes
      * @param maxSightings the maximum size of the returned set
      * @return a set of rat sightings which meet all criteria of size at most maxSightings
      */
@@ -254,6 +267,11 @@ public final class SightingsManager {
         }
     }
 
+    /**
+     * Getter method that returns the number of rat sightings there are.
+     *
+     * @return int representing number of rat sightings
+     */
     public int numSightings() {
         return ratSightings.size();
     }

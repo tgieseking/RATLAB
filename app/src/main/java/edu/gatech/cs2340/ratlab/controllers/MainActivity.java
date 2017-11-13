@@ -11,6 +11,10 @@ import edu.gatech.cs2340.ratlab.model.SightingsManager;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.UserManager;
 
+/**
+ * Activity for the main page of the app that displays buttons
+ * for other functionality of the application.
+ */
 public class MainActivity extends AppCompatActivity {
     private UserManager userManager;
     private SightingsManager sightingsManager;
@@ -103,6 +107,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Creates a historical graph instance when the view is clicked.
+     *
+     * @param view historical graph button
+     */
     public void onClickHistoricalGraph(View view) {
         Intent intent = new Intent(this, HistogramFilterActivity.class);
         startActivity(intent);

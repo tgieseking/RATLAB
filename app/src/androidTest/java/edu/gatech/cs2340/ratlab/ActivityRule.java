@@ -61,6 +61,11 @@ public class ActivityRule<T extends Activity> implements TestRule {
     private T activity;
     private Instrumentation instrumentation;
 
+    /**
+     * Sets the ActivityRule to the class that is tested
+     *
+     * @param activityClass the class that is tested
+     */
     public ActivityRule(Class<T> activityClass) {
         this.activityClass = activityClass;
     }
@@ -75,13 +80,18 @@ public class ActivityRule<T extends Activity> implements TestRule {
     /**
      * Get the running instance of the specified activity. This will launch it if it is not already
      * running.
+     *
+     * @return the launch activity
      */
     public final T get() {
         launchActivity();
         return activity;
     }
 
-    /** Get the {@link Instrumentation} instance for this test. */
+    /** Get the {@link Instrumentation} instance for this test.
+     *
+     * @return instrumentation of the launch activity
+     */
     public final Instrumentation instrumentation() {
         launchActivity();
         return instrumentation;

@@ -26,7 +26,9 @@ import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
-
+/**
+ * Activity that displays the map view of the rat sightings.
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback ,
         ClusterManager.OnClusterItemInfoWindowClickListener<RatSighting>,
         GoogleMap.OnMapLongClickListener {
