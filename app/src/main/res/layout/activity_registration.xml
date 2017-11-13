@@ -1,110 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
     tools:context="edu.gatech.cs2340.ratlab.controllers.RegistrationActivity">
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+    <TextView
+        android:id="@+id/regNameView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:text="@string/name"
+        android:textAlignment="textStart" />
 
-            <TextView
-                android:id="@+id/regNameView"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:text="@string/name"
-                android:textAlignment="textStart" />
+    <EditText
+        android:id="@+id/nameTextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:labelFor="@id/nameTextBox"
+        android:textAlignment="textStart" />
 
-            <EditText
-                android:id="@+id/nameTextBox"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:labelFor="@id/nameTextBox"
-                android:textAlignment="textStart" />
+    <TextView
+        android:id="@+id/regUserView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/username" />
 
-            <TextView
-                android:id="@+id/regUserView"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:text="@string/username" />
+    <EditText
+        android:id="@+id/usernameTextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:inputType="textVisiblePassword|textNoSuggestions"
+        android:labelFor="@id/usernameTextBox"
+        android:textAlignment="textStart" />
 
-            <EditText
-                android:id="@+id/usernameTextBox"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:ems="10"
-                android:inputType="textVisiblePassword|textNoSuggestions"
-                android:labelFor="@id/usernameTextBox"
-                android:textAlignment="textStart" />
+    <TextView
+        android:id="@+id/regPassView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/password" />
 
-            <TextView
-                android:id="@+id/regEmailView"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:text="@string/email" />
+    <EditText
+        android:id="@+id/passwordTextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:labelFor="@id/passwordTextBox"
+        android:textAlignment="textStart" />
 
-            <EditText
-                android:id="@+id/emailTextBox"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:ems="10"
-                android:inputType="textEmailAddress"
-                android:labelFor="@id/emailTextBox"
-                android:textAlignment="textStart" />
+    <TextView
+        android:id="@+id/regEmailView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/email" />
 
-            <TextView
-                android:id="@+id/regPassView"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:text="@string/password" />
+    <EditText
+        android:id="@+id/emailTextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:labelFor="@id/emailTextBox"
+        android:textAlignment="textStart" />
 
-            <EditText
-                android:id="@+id/passwordTextBox"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:ems="10"
-                android:inputType="textPassword"
-                android:labelFor="@id/passwordTextBox"
-                android:textAlignment="textStart" />
+    <TextView
+        android:id="@+id/regAccountTypeView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_type" />
 
-            <TextView
-                android:id="@+id/regAccountTypeView"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:text="@string/select_type" />
+    <Spinner
+        android:id="@+id/accountTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginBottom="15dp" />
 
-            <Spinner
-                android:id="@+id/accountTypeSpinner"
-                android:layout_width="320dp"
-                android:layout_height="38dp"
-                android:layout_marginBottom="15dp" />
+    <Button
+        android:id="@+id/registerButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="createAccount"
+        android:text="@string/action_create_acc" />
 
-            <Button
-                android:id="@+id/registerButton"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:onClick="createAccount"
-                android:text="@string/action_create_acc" />
+    <Button
+        android:id="@+id/cancelButton"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:onClick="registrationCancel"
+        android:text="@string/cancel_entry" />
 
-            <Button
-                android:id="@+id/cancelButton"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:onClick="registrationCancel"
-                android:text="@string/cancel_entry" />
-        </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
