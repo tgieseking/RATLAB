@@ -25,7 +25,7 @@ import java.util.Scanner;
 
 import edu.gatech.cs2340.ratlab.R;
 
-public class SightingsManager {
+public final class SightingsManager {
     private static final SightingsManager instance = new SightingsManager();
     public static SightingsManager getInstance() { return instance; }
 

@@ -48,6 +48,8 @@ public class HistoricalGraphActivity extends AppCompatActivity {
         final float textSize = 7.5f;
         final int labelRotationAngle = 30;
 
+        SightingsManager sightingsManager = SightingsManager.getInstance();
+
         LineChart reportLineChart = (LineChart) findViewById(R.id.reportLineChart);
 
         Date startDate = new Date(startIntent.getLongExtra("start_date", 0));
@@ -60,35 +62,35 @@ public class HistoricalGraphActivity extends AppCompatActivity {
         Collection<Borough> boroughs = new HashSet<>();
         if (startIntent.getBooleanExtra("bronx", false)) {
             boroughs.add(Borough.BRONX);
-            sightingsByBorough.add(SightingsManager.getInstance()
+            sightingsByBorough.add(sightingsManager
                     .filterRatSightings(startDate, endDate, boroughs, locationTypes, 1000));
             boroughs.clear();
             Log.d("filters", "bronx");
         }
         if (startIntent.getBooleanExtra("brooklyn", false)) {
             boroughs.add(Borough.BROOKLYN);
-            sightingsByBorough.add(SightingsManager.getInstance()
+            sightingsByBorough.add(sightingsManager
                     .filterRatSightings(startDate, endDate, boroughs, locationTypes, 1000));
             boroughs.clear();
             Log.d("filters", "brooklyn");
         }
         if (startIntent.getBooleanExtra("queens", false)) {
             boroughs.add(Borough.QUEENS);
-            sightingsByBorough.add(SightingsManager.getInstance()
+            sightingsByBorough.add(sightingsManager
                     .filterRatSightings(startDate, endDate, boroughs, locationTypes, 1000));
             boroughs.clear();
             Log.d("filters", "queens");
         }
         if (startIntent.getBooleanExtra("manhattan", false)) {
             boroughs.add(Borough.MANHATTAN);
-            sightingsByBorough.add(SightingsManager.getInstance()
+            sightingsByBorough.add(sightingsManager
                     .filterRatSightings(startDate, endDate, boroughs, locationTypes, 1000));
             boroughs.clear();
             Log.d("filters", "manhattan");
         }
         if (startIntent.getBooleanExtra("staten_island", false)) {
             boroughs.add(Borough.STATEN_ISLAND);
-            sightingsByBorough.add(SightingsManager.getInstance()
+            sightingsByBorough.add(sightingsManager
                     .filterRatSightings(startDate, endDate, boroughs, locationTypes, 1000));
             boroughs.clear();
             Log.d("filters", "staten_island");

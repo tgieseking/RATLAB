@@ -9,7 +9,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class UserManager {
+public final class UserManager {
     private static final UserManager instance = new UserManager();
     public static UserManager getInstance() { return instance; }
 
