@@ -29,12 +29,15 @@ import static junit.framework.Assert.fail;
 public class FilterRandomTest {
     @Before
     public void loadSightings() {
+        final int totalSightings = 26;
+        final int timeoutCycles = 20;
         int count = 0;
+
         SightingsManager sightingsManager = SightingsManager.getInstance();
-        while (sightingsManager.numSightings() < 26) {
+        while (sightingsManager.numSightings() < totalSightings) {
             android.os.SystemClock.sleep(100);
             count++;
-            assertTrue("Sightings failed to load", count < 20);
+            assertTrue("Sightings failed to load", count < timeoutCycles);
         }
     }
 
