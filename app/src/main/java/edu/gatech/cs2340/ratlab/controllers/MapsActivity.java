@@ -32,9 +32,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ClusterManager.OnClusterItemInfoWindowClickListener<RatSighting>,
         GoogleMap.OnMapLongClickListener {
 
-    private GoogleMap map;
     private Collection<RatSighting> sightingsList;
-    private ClusterManager<RatSighting> clusterManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
