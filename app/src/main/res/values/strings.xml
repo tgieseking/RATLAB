@@ -12,27 +12,13 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>
     <string name="back">Back</string>
-    <string name="error_invalid_user">This username is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
-    <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
 
     <!-- Registration page strings -->
     <string name="name">Name</string>
-    <string name="create_name">Enter name here</string>
     <string name="username">Username</string>
-    <string name="create_user">Enter username here</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
-    <string name="create_pass">Enter password here</string>
     <string name="select_type">Account type</string>
-    <string-array name="user_type_array">
-        <item>User</item>
-        <item>Admin</item>
-    </string-array>
     <string name="action_create_acc">Create account</string>
     <string name="cancel_entry">Cancel</string>
 
@@ -46,6 +32,5 @@
     <string name="title_sighting_list">Sightings</string>
     <string name="title_sighting_detail">Sighting Detail</string>
     <string name="title_activity_maps">Map</string>
-    <string name="title_activity_history_graph_filter">HistoryGraphFilter</string>
 
 </resources>
