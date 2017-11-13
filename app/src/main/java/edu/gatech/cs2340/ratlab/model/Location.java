@@ -56,7 +56,38 @@ public class Location implements Serializable{
     public Borough getBorough() {
         return borough;
     }
-
+    /**
+     * Getter method for location's address line.
+     *
+     * @return String address line
+     */
+    public String getAddressLine() {
+        return address.getAddressLine();
+    }
+    /**
+     * Getter method for location's city
+     *
+     * @return String city
+     */
+    public String getCity() {
+        return address.getCity();
+    }
+    /**
+     * Getter method for location's state
+     *
+     * @return String state
+     */
+    public String getState() {
+        return address.getState();
+    }
+    /**
+     * Getter method for location's zip code.
+     *
+     * @return String zip code
+     */
+    public String getZipCode() {
+        return address.getZipCode();
+    }
     /**
      * Constructor for the location.
      *
