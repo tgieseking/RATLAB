@@ -70,19 +70,19 @@ public class RatSighting implements ClusterItem {
     }
 
     public String getAddressLine() {
-        return getAddress().getAddressLine();
+        return location.getAddressLine();
     }
 
     public String getCity() {
-        return getAddress().getCity();
+        return location.getCity();
     }
 
     public String getState() {
-        return getAddress().getState();
+        return location.getState();
     }
 
     public String getZipCode() {
-        return getAddress().getZipCode();
+        return location.getZipCode();
     }
 
 

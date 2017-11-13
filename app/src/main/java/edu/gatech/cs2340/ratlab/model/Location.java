@@ -29,6 +29,22 @@ public class Location implements Serializable{
         return borough;
     }
 
+    public String getAddressLine() {
+        return address.getAddressLine();
+    }
+
+    public String getCity() {
+        return address.getCity();
+    }
+
+    public String getState() {
+        return address.getState();
+    }
+
+    public String getZipCode() {
+        return address.getZipCode();
+    }
+
     public Location(double latitude, double longitude, Address address, Borough borough,
                     LocationType locationType) {
         this.latitude = latitude;
