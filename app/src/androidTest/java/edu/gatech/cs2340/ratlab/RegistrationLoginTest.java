@@ -21,7 +21,8 @@ import static org.hamcrest.core.AllOf.allOf;
  */
 public class RegistrationLoginTest {
     @Rule
-    public final ActivityRule<RegistrationActivity> main =new ActivityRule<>(RegistrationActivity.class);
+    public final ActivityRule<RegistrationActivity> main =
+            new ActivityRule<>(RegistrationActivity.class);
 
     /**
      * Method that performs actions on registration activity.
@@ -31,13 +32,20 @@ public class RegistrationLoginTest {
         onView(withId(R.id.nameTextBox)).perform(typeText("name"), ViewActions.closeSoftKeyboard());
         onView(withId(R.id.registerButton)).perform(click());
         //Test that empty user name causes empty username toast to appear
-        onView(withId(R.id.usernameTextBox)).perform(typeText("nameUser"), ViewActions.closeSoftKeyboard());
+        onView(withId(R.id.usernameTextBox)).perform(typeText("nameUser"),
+                ViewActions.closeSoftKeyboard());
         onView(withId(R.id.registerButton)).perform(click());
         //Tests that empty email toast is displayed when trying to register without inputting email
-        onView(withId(R.id.emailTextBox)).perform(typeText("name@gmail.com"), ViewActions.closeSoftKeyboard());
-        onView(withId(R.id.passwordTextBox)).perform(typeText("123"), ViewActions.closeSoftKeyboard());
-        //Tests that password input less than length 6 will cause password too short toast to show up/onView(withText("Password too short")).inRoot(withDecorView(not(is(main.get().getWindow().getDecorView())))).check(matches(isDisplayed()));
-        onView(withId(R.id.passwordTextBox)).perform(typeText("name123"), ViewActions.closeSoftKeyboard());
+        onView(withId(R.id.emailTextBox)).perform(typeText("name@gmail.com"),
+                ViewActions.closeSoftKeyboard());
+        onView(withId(R.id.passwordTextBox)).perform(typeText("123"),
+                ViewActions.closeSoftKeyboard());
+        //Tests that password input less than length 6 will cause password too
+        // short toast to show up/onView(withText("Password too short"))
+        // .inRoot(withDecorView(not(is(main.get().getWindow().getDecorView()))))
+        // .check(matches(isDisplayed()));
+        onView(withId(R.id.passwordTextBox)).perform(typeText("name123"),
+                ViewActions.closeSoftKeyboard());
         onView(withId(R.id.accountTypeSpinner)).perform(click());
         onData(allOf(is(instanceOf(String.class)), is("User"))).perform(click());
         onView(withId(R.id.registerButton)).perform(click());
