@@ -28,12 +28,12 @@ import static junit.framework.Assert.fail;
 public class FilterRandomTest {
     /**
      * Loads the rat sightings from firebase before tests are run. If the sightings take more than
-     * 2000ms to load, the test fails because of suspected connection issue.
+     * 5000ms to load, the test fails because of suspected connection issue.
      */
     @Before
     public void loadSightings() {
         final int totalSightings = 26;
-        final int timeoutCycles = 20;
+        final int timeoutCycles = 50;
         int count = 0;
 
         SightingsManager sightingsManager = SightingsManager.getInstance();
