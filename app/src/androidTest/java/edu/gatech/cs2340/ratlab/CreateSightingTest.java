@@ -1,35 +1,24 @@
 package edu.gatech.cs2340.ratlab;
 
-import android.util.Log;
-
-import org.junit.Before;
 import org.junit.Test;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Locale;
-
 import edu.gatech.cs2340.ratlab.model.Borough;
-import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
-import edu.gatech.cs2340.ratlab.model.SightingsManager;
 
 import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertFalse;
-import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
 
-
+/**
+ * Testing of the createRatSightingFromCsvLine method in the RatSighting class
+ */
 public class CreateSightingTest {
 
-    RatSighting sighting;
+    private RatSighting sighting;
 
+    /**
+     * Tests whether an empty line is caught
+     */
     @Test
     public void testLengthZero() {
         try {
@@ -40,28 +29,50 @@ public class CreateSightingTest {
         assertEquals(sighting, null);
     }
 
+    /**
+     * Tests the functionality of a normal CSV line input
+     */
     @Test
     public void testNormalCsvLine() {
         try {
-            sighting = RatSighting.createRatSightingFromCsvLine("\n" +
-                    "31464024,9/4/2015 0:00,Commercial Building,10306,2270 HYLAN BOULEVARD,STATEN ISLAND,STATEN_ISLAND,40.57520924,-74.10454652");
+            sighting = RatSighting.createRatSightingFromCsvLine("31464024,9/4/2015 0:00," +
+                    "Commercial Building,10306,2270 HYLAN BOULEVARD,STATEN ISLAND,STATEN_ISLAND," +
+                    "40.57520924,-74.10454652");
         } catch (Exception e) {
             fail("Improper processing of information.");
         }
-        assertEquals(sighting, sighting);
+        assertEquals(sighting.getAddressLine(), "2270 HYLAN BOULEVARD");
+        assertEquals(sighting.getLocation().getLatitude(), 40.57520924);
+        assertEquals(sighting.getLocation().getLongitude(), -74.10454652);
+        assertEquals(sighting.getTitle(), "31464024");
+        assertEquals(sighting.getCreatedDateString(), "9/4/15");
+        assertEquals(sighting.getBorough(), Borough.STATEN_ISLAND);
+
     }
 
+    /**
+     * A test to check for a missing borough attribute
+     */
     @Test
-    public void testWeirdCsvLine() {
+    public void testMissingBorough() {
         try {
-            sighting = RatSighting.createRatSightingFromCsvLine("\n" +
-                    "31464024,9/4/2015 0:00,Commercial Building,10306,2270 HYLAN BOULEVARD,STATEN ISLAND,STATEN_ISLAND,40.57520924,-74.10454652");
+            sighting = RatSighting.createRatSightingFromCsvLine("31464024,9/4/2015 0:00," +
+                    "Commercial Building,10306,2270 HYLAN BOULEVARD,STATEN ISLAND,," +
+                    "40.57520924,-74.10454652");
         } catch (Exception e) {
             fail("Improper processing of information.");
         }
-        assertEquals(sighting, sighting);
+        assertEquals(sighting.getAddressLine(), "2270 HYLAN BOULEVARD");
+        assertEquals(sighting.getLocation().getLatitude(), 40.57520924);
+        assertEquals(sighting.getLocation().getLongitude(), -74.10454652);
+        assertEquals(sighting.getTitle(), "31464024");
+        assertEquals(sighting.getCreatedDateString(), "9/4/15");
+        assertEquals(sighting.getBorough(), Borough.UNKNOWN);
     }
 
+    /**
+     * Tests the functionality of a CSV line missing the location attribute
+     */
     @Test
     public void testStrangeCsvLine() {
         try {
@@ -72,21 +83,4 @@ public class CreateSightingTest {
         }
         assertEquals(sighting, sighting);
     }
-
-
-
-//    try {
-//        borough = Borough.valueOf(splitLine[6]);
-//    } catch (Exception e) {
-//        borough = Borough.UNKNOWN;
-//    }
-//    LocationType locationType = LocationType.locationTypeFromTextName(splitLine[2]);
-//            try {
-//        latitude = Double.parseDouble(splitLine[7]);
-//        longitude = Double.parseDouble(splitLine[8]);
-//        return new RatSighting(splitLine[0], splitLine[1], locationType, splitLine[4],
-//                splitLine[3], splitLine[5], borough, latitude, longitude);
-//    } catch (Exception e) {
-//        Log.d("historical_data", "Row with id " + splitLine[0] + " could not be parsed");
-//    }
 }
