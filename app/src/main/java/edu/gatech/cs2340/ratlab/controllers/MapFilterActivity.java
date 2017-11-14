@@ -43,20 +43,10 @@ public class MapFilterActivity extends AppCompatActivity {
         int endMonth = startDatePicker.getMonth() + 1;
         int endYear = endDatePicker.getYear();
 
-        String format = "M/d/yyyy H:mm";
-        DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
-        Date startDate = new Date();
-        Date endDate = new Date();
         String start = startMonth + "/" + startDay + "/" + startYear + " 0:00";
         String end = endMonth + "/" + endDay + "/" + endYear + " 23:59";
-
-        //not sure if this needs to be a try catch but it was so I'm gonna leave it that way
-        try {
-            startDate = dateFormat.parse(start);
-            endDate = dateFormat.parse(end);
-        } catch (Exception e) {
-            Log.e("filter_test", "parse error", e);
-        }
+        Date startDate = parseDate(start);
+        Date endDate = parseDate(end);
 
         intent.putExtra("start_date", startDate.getTime());
         intent.putExtra("end_date", endDate.getTime());
@@ -75,5 +65,16 @@ public class MapFilterActivity extends AppCompatActivity {
         intent.putExtra("unknown_borough", unknownBox.isChecked());
 
         startActivity(intent);
+    }
+
+    private Date parseDate(String dateString) {
+        String format = "M/d/yyyy H:mm";
+        DateFormat dateFormat = new SimpleDateFormat(format, Locale.ENGLISH);
+        try {
+            return dateFormat.parse(dateString);
+        } catch (Exception e) {
+            Log.e("filter_test", "parse error", e);
+            return new Date();
+        }
     }
 }
