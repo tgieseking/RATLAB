@@ -41,9 +41,11 @@ public class CreateSightingTest {
         } catch (Exception e) {
             fail("Improper processing of information.");
         }
+        final double latitude = 40.57520924;
+        final double longitude = -74.10454652;
         assertEquals(sighting.getAddressLine(), "2270 HYLAN BOULEVARD");
-        assertEquals(sighting.getLocation().getLatitude(), 40.57520924);
-        assertEquals(sighting.getLocation().getLongitude(), -74.10454652);
+        assertEquals(sighting.getLatitude(), latitude);
+        assertEquals(sighting.getLongitude(), longitude);
         assertEquals(sighting.getTitle(), "31464024");
         assertEquals(sighting.getCreatedDateString(), "9/4/15");
         assertEquals(sighting.getBorough(), Borough.STATEN_ISLAND);
@@ -62,9 +64,11 @@ public class CreateSightingTest {
         } catch (Exception e) {
             fail("Improper processing of information.");
         }
+        final double latitude = 40.57520924;
+        final double longitude = -74.10454652;
         assertEquals(sighting.getAddressLine(), "2270 HYLAN BOULEVARD");
-        assertEquals(sighting.getLocation().getLatitude(), 40.57520924);
-        assertEquals(sighting.getLocation().getLongitude(), -74.10454652);
+        assertEquals(sighting.getLatitude(), latitude);
+        assertEquals(sighting.getLongitude(), longitude);
         assertEquals(sighting.getTitle(), "31464024");
         assertEquals(sighting.getCreatedDateString(), "9/4/15");
         assertEquals(sighting.getBorough(), Borough.UNKNOWN);
@@ -77,7 +81,8 @@ public class CreateSightingTest {
     public void testStrangeCsvLine() {
         try {
             sighting = RatSighting.createRatSightingFromCsvLine("\n" +
-                    "31464024,9/4/2015 0:00,Commercial Building,10306,2270 HYLAN BOULEVARD,STATEN ISLAND,STATEN_ISLAND,40.57520924,-74.10454652");
+                    "31464024,9/4/2015 0:00,Commercial Building,10306,2270 HYLAN BOULEVARD," +
+                    "STATEN ISLAND,STATEN_ISLAND,40.57520924,-74.10454652");
         } catch (Exception e) {
             fail("Improper processing of information.");
         }
