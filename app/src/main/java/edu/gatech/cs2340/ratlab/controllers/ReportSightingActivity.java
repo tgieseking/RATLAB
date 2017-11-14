@@ -48,87 +48,92 @@ public class ReportSightingActivity extends AppCompatActivity{
         boroughAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         boroughSpinner.setAdapter(boroughAdapter);
 
-        EditText addressEditText = (EditText) findViewById(R.id.addressEditText);
-        EditText zipEditText = (EditText) findViewById(R.id.zipEditText);
-        EditText latitudeEditText = (EditText) findViewById(R.id.latitudeEditText);
-        EditText longitudeEditText = (EditText) findViewById(R.id.longitudeEditText);
-        EditText stateEditText = (EditText) findViewById(R.id.stateEditText);
+
 
         Button createReportButton = (Button) findViewById(R.id.reportSubmitButton);
 
         Intent intent = getIntent();
         if (intent.hasExtra("address")) {
             android.location.Address address = intent.getParcelableExtra("address");
+            setFieldDefaults(address);
+        }
+    }
 
-            String street = address.getThoroughfare();
-            String streetNumber = address.getSubThoroughfare();
-            if ((street != null) && (streetNumber != null)) {
-                addressEditText.setText(streetNumber + " " + street);
+    private void setFieldDefaults(android.location.Address address) {
+        EditText addressEditText = (EditText) findViewById(R.id.addressEditText);
+        EditText zipEditText = (EditText) findViewById(R.id.zipEditText);
+        EditText latitudeEditText = (EditText) findViewById(R.id.latitudeEditText);
+        EditText longitudeEditText = (EditText) findViewById(R.id.longitudeEditText);
+        EditText stateEditText = (EditText) findViewById(R.id.stateEditText);
+
+        String street = address.getThoroughfare();
+        String streetNumber = address.getSubThoroughfare();
+        if ((street != null) && (streetNumber != null)) {
+            addressEditText.setText(streetNumber + " " + street);
+        }
+
+        String zipCode = address.getPostalCode();
+        if (zipCode != null) {
+            zipEditText.setText(zipCode);
+        }
+
+        String state = address.getAdminArea();
+        if (state != null) {
+            stateEditText.setText(state);
+        }
+
+        String city = address.getLocality();
+        if (city != null) {
+            cityEditText.setText(city);
+        }
+
+        String subLocality = address.getSubLocality();
+        if (subLocality != null) {
+            Log.d("address_parse", subLocality);
+            Borough borough = Borough.getBoroughFromTextName(subLocality);
+            Log.d("address_parse", borough.toString());
+            int selection = 5;
+            switch (borough) {
+                case BRONX: selection = 0;
+                    break;
+                case BROOKLYN: selection = 1;
+                    break;
+                case MANHATTAN: selection = 2;
+                    break;
+                case QUEENS: selection = 3;
+                    break;
+                case STATEN_ISLAND: selection = 4;
+                    break;
+                case UNKNOWN: selection = 5;
+                    break;
             }
-
-            String zipCode = address.getPostalCode();
-            if (zipCode != null) {
-                zipEditText.setText(zipCode);
-            }
-
-            String state = address.getAdminArea();
-            if (state != null) {
-                stateEditText.setText(state);
-            }
-
-            String city = address.getLocality();
-            if (city != null) {
-                cityEditText.setText(city);
-            }
-
-            String subLocality = address.getSubLocality();
-            if (subLocality != null) {
-                Log.d("address_parse", subLocality);
-                Borough borough = Borough.getBoroughFromTextName(subLocality);
-                Log.d("address_parse", borough.toString());
-                int selection = 5;
-                switch (borough) {
-                    case BRONX: selection = 0;
-                        break;
-                    case BROOKLYN: selection = 1;
-                        break;
-                    case MANHATTAN: selection = 2;
-                        break;
-                    case QUEENS: selection = 3;
-                        break;
-                    case STATEN_ISLAND: selection = 4;
-                        break;
-                    case UNKNOWN: selection = 5;
-                        break;
+            final int selectionFinal = selection;
+            Log.d("address_parse", "" + selectionFinal);
+            boroughSpinner.post(new Runnable() {
+                @Override
+                public void run() {
+                    boroughSpinner.setSelection(selectionFinal);
                 }
-                final int selectionFinal = selection;
-                Log.d("address_parse", "" + selectionFinal);
-                boroughSpinner.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        boroughSpinner.setSelection(selectionFinal);
-                    }
-                });
-                if (borough != Borough.UNKNOWN) {
-                    // We do this because some of new york city has its borough as a sub-locality
-                    // and no locality
-                    cityEditText.setText("New York");
+            });
+            if (borough != Borough.UNKNOWN) {
+                // We do this because some of new york city has its borough as a sub-locality
+                // and no locality
+                cityEditText.setText("New York");
+            }
+        } else {
+            boroughSpinner.post(new Runnable() {
+                @Override
+                public void run() {
+                    boroughSpinner.setSelection(5);
                 }
-            } else {
-                boroughSpinner.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        boroughSpinner.setSelection(5);
-                    }
-                });
-            }
+            });
+        }
 
 
 
-            if (address.hasLatitude() && address.hasLongitude()) {
-                latitudeEditText.setText("" + address.getLatitude());
-                longitudeEditText.setText("" + address.getLongitude());
-            }
+        if (address.hasLatitude() && address.hasLongitude()) {
+            latitudeEditText.setText("" + address.getLatitude());
+            longitudeEditText.setText("" + address.getLongitude());
         }
     }
 
