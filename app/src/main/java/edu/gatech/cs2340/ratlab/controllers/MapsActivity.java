@@ -41,38 +41,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         Intent startIntent = getIntent();
 
-        Log.d("parcel_test", "1");
         Collection<Borough> boroughs = new HashSet<>();
         if (startIntent.getBooleanExtra("bronx", false)) {
             boroughs.add(Borough.BRONX);
-            Log.d("filters", "bronx");
         }
         if (startIntent.getBooleanExtra("brooklyn", false)) {
             boroughs.add(Borough.BROOKLYN);
-            Log.d("filters", "brooklyn");
         }
         if (startIntent.getBooleanExtra("queens", false)) {
             boroughs.add(Borough.QUEENS);
-            Log.d("filters", "queens");
         }
         if (startIntent.getBooleanExtra("manhattan", false)) {
             boroughs.add(Borough.MANHATTAN);
-            Log.d("filters", "manhattan");
         }
         if (startIntent.getBooleanExtra("staten_island", false)) {
             boroughs.add(Borough.STATEN_ISLAND);
-            Log.d("filters", "staten_island");
         }
         if (startIntent.getBooleanExtra("unknown_borough", false)) {
             boroughs.add(Borough.UNKNOWN);
-            Log.d("filters", "unknown");
         }
-        Log.d("parcel_test", "2");
 
         Date startDate = new Date(startIntent.getLongExtra("start_date", 0));
         Date endDate = new Date(startIntent.getLongExtra("end_date", 0));
-
-        Log.d("parcel_test", "3");
 
         Collection<LocationType> locationTypes =
                 new HashSet<>(Arrays.asList(LocationType.values()));
