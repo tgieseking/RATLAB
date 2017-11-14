@@ -28,7 +28,6 @@ import java.util.Locale;
 
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.Borough;
-import edu.gatech.cs2340.ratlab.model.Location;
 import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
