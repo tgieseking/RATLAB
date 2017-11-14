@@ -208,7 +208,7 @@ public class RatSighting implements ClusterItem {
      * @param csvLine a line of the historical data csv
      * @return a new rat sighting corresponding to the data in the csv line
      */
-    static RatSighting createRatSightingFromCsvLine(String csvLine) {
+    public static RatSighting createRatSightingFromCsvLine(String csvLine) {
         String[] splitLine = csvLine.split(",");
         if (splitLine.length == 9) {
             // Expected length of line
