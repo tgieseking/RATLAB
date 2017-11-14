@@ -28,6 +28,7 @@ import java.util.Locale;
 
 import edu.gatech.cs2340.ratlab.R;
 import edu.gatech.cs2340.ratlab.model.Borough;
+import edu.gatech.cs2340.ratlab.model.Location;
 import edu.gatech.cs2340.ratlab.model.LocationType;
 import edu.gatech.cs2340.ratlab.model.RatSighting;
 import edu.gatech.cs2340.ratlab.model.SightingsManager;
@@ -39,6 +40,7 @@ import edu.gatech.cs2340.ratlab.model.SightingsManager;
 public class HistoricalGraphActivity extends AppCompatActivity {
 
     private Collection<Collection<RatSighting>> sightingsByBorough;
+    private SightingsManager sightingsManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,20 +48,24 @@ public class HistoricalGraphActivity extends AppCompatActivity {
         setContentView(R.layout.activity_historical_graph);
         Intent startIntent = getIntent();
 
-        final float lineWidth = 1.25f;
-        final float circleRadius = 3f;
-        final float textSize = 7.5f;
-        final int labelRotationAngle = 30;
 
-        SightingsManager sightingsManager = SightingsManager.getInstance();
 
-        LineChart reportLineChart = (LineChart) findViewById(R.id.reportLineChart);
+        sightingsManager = SightingsManager.getInstance();
+
+
 
         Date startDate = new Date(startIntent.getLongExtra("start_date", 0));
         Date endDate = new Date(startIntent.getLongExtra("end_date", 0));
         Collection<LocationType> locationTypes =
                 new HashSet<>(Arrays.asList(LocationType.values()));
 
+        setSightingsByBorough(startIntent, startDate, endDate, locationTypes);
+
+        createGraph(startDate, endDate);
+    }
+
+    private void setSightingsByBorough(Intent startIntent, Date startDate, Date endDate,
+                                       Collection<LocationType> locationTypes) {
         sightingsByBorough = new HashSet<>();
 
         Log.d("parcel_test", "1");
@@ -99,6 +105,13 @@ public class HistoricalGraphActivity extends AppCompatActivity {
             boroughs.clear();
             Log.d("filters", "staten_island");
         }
+    }
+
+    private void createGraph(Date startDate, Date endDate) {
+        final float lineWidth = 1.25f;
+        final float circleRadius = 3f;
+        final float textSize = 7.5f;
+        final int labelRotationAngle = 30;
 
         double timeRange = (endDate.getTime() - startDate.getTime()) / 10;
         //iterates through the individual borough sets of sightings
@@ -134,6 +147,7 @@ public class HistoricalGraphActivity extends AppCompatActivity {
             colorCount++;
         }
         LineData data = new LineData(boroughDataSets);
+        LineChart reportLineChart = (LineChart) findViewById(R.id.reportLineChart);
         reportLineChart.setData(data);
         XAxis xAxis = reportLineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
