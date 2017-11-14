@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.DatePicker;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -51,17 +52,17 @@ public class MapFilterActivity extends AppCompatActivity {
         intent.putExtra("start_date", startDate.getTime());
         intent.putExtra("end_date", endDate.getTime());
 
-        CheckBox bronxBox = (CheckBox) findViewById(R.id.bronxBox);
+        Checkable bronxBox = (CheckBox) findViewById(R.id.bronxBox);
         intent.putExtra("bronx", bronxBox.isChecked());
-        CheckBox brooklynBox = (CheckBox) findViewById(R.id.brooklynBox);
+        Checkable brooklynBox = (CheckBox) findViewById(R.id.brooklynBox);
         intent.putExtra("brooklyn", brooklynBox.isChecked());
-        CheckBox queensBox = (CheckBox) findViewById(R.id.queensBox);
+        Checkable queensBox = (CheckBox) findViewById(R.id.queensBox);
         intent.putExtra("queens", queensBox.isChecked());
-        CheckBox manhattanBox = (CheckBox) findViewById(R.id.manhattanBox);
+        Checkable manhattanBox = (CheckBox) findViewById(R.id.manhattanBox);
         intent.putExtra("manhattan", manhattanBox.isChecked());
-        CheckBox statenIslandBox = (CheckBox) findViewById(R.id.statenIslandBox);
+        Checkable statenIslandBox = (CheckBox) findViewById(R.id.statenIslandBox);
         intent.putExtra("staten_island", statenIslandBox.isChecked());
-        CheckBox unknownBox = (CheckBox) findViewById(R.id.unknownBox);
+        Checkable unknownBox = (CheckBox) findViewById(R.id.unknownBox);
         intent.putExtra("unknown_borough", unknownBox.isChecked());
 
         startActivity(intent);

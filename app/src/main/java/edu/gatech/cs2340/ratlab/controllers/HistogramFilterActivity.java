@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.Checkable;
 import android.widget.DatePicker;
 
 import java.text.DateFormat;
@@ -55,15 +56,15 @@ public class HistogramFilterActivity extends AppCompatActivity {
         intent.putExtra("start_date", startDate.getTime());
         intent.putExtra("end_date", endDate.getTime());
 
-        CheckBox bronxBox = (CheckBox) findViewById(R.id.bronxCheckBox);
+        Checkable bronxBox = (CheckBox) findViewById(R.id.bronxCheckBox);
         intent.putExtra("bronx", bronxBox.isChecked());
-        CheckBox brooklynBox = (CheckBox) findViewById(R.id.brooklynCheckBox);
+        Checkable brooklynBox = (CheckBox) findViewById(R.id.brooklynCheckBox);
         intent.putExtra("brooklyn", brooklynBox.isChecked());
-        CheckBox queensBox = (CheckBox) findViewById(R.id.queensCheckBox);
+        Checkable queensBox = (CheckBox) findViewById(R.id.queensCheckBox);
         intent.putExtra("queens", queensBox.isChecked());
-        CheckBox manhattanBox = (CheckBox) findViewById(R.id.manhattanCheckBox);
+        Checkable manhattanBox = (CheckBox) findViewById(R.id.manhattanCheckBox);
         intent.putExtra("manhattan", manhattanBox.isChecked());
-        CheckBox statenIslandBox = (CheckBox) findViewById(R.id.statenCheckBox);
+        Checkable statenIslandBox = (CheckBox) findViewById(R.id.statenCheckBox);
         intent.putExtra("staten_island", statenIslandBox.isChecked());
 
         startActivity(intent);
